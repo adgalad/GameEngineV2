@@ -1,0 +1,3 @@
+
+name = "yoshi"
+texture = "yoshi"

@@ -6,10 +6,15 @@
 //  Copyright © 2015 ARSC. All rights reserved.
 //
 
-#include <iostream>
+#include "Game.hpp"
 
 int main(int argc, const char * argv[]) {
-	// insert code here...
+	
+	Game g;
+	g.init();
+	g.start();
+	
+	
 	std::cout << "Hello, World!\n";
     return 0;
 }

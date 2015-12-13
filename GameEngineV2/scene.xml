@@ -1,0 +1,4 @@
+<scene texture="wall">
+	<entityXML path="/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV2/GameEngineV2/entities.xml"/>
+	<playerXML path="/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV2/GameEngineV2/players.xml"/>
+</scene>

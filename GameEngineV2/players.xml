@@ -1,0 +1,8 @@
+
+<player name="player1" texture="yoshi" X="50" Y="50">
+	<script path="/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV2/GameEngineV2/player.lua"/>
+</player>
+
+<player name="player2" texture="yoshi2" X="50" Y="0">
+	<script path="/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV2/GameEngineV2/player.lua"/>
+</player>
