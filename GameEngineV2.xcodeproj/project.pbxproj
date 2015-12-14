@@ -35,6 +35,7 @@
 		07A0D1481C1DE2E0008EBF83 /* TextureRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07A0D1151C1DE20D008EBF83 /* TextureRenderer.cpp */; };
 		07A0D1491C1DE2E0008EBF83 /* Widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07A0D1161C1DE20D008EBF83 /* Widget.cpp */; };
 		07A0D14A1C1DE2E0008EBF83 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07A0D10C1C1DE20D008EBF83 /* main.cpp */; };
+		07E279EF1C1E84910004CBE7 /* liblua.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E279DC1C1E84860004CBE7 /* liblua.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -109,6 +110,52 @@
 		07A0D14E1C1DE44B008EBF83 /* scene.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = scene.xml; path = GameEngineV2/scene.xml; sourceTree = "<group>"; };
 		07A0D14F1C1DE44B008EBF83 /* Textures.lua */ = {isa = PBXFileReference; lastKnownFileType = text; name = Textures.lua; path = GameEngineV2/Textures.lua; sourceTree = "<group>"; };
 		07A0D1501C1DE44B008EBF83 /* textures.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = textures.xml; path = GameEngineV2/textures.xml; sourceTree = "<group>"; };
+		07E279BF1C1E83EF0004CBE7 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		07E279C01C1E83EF0004CBE7 /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
+		07E279C11C1E83EF0004CBE7 /* board.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = board.jpg; sourceTree = "<group>"; };
+		07E279C21C1E83EF0004CBE7 /* character.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = character.png; sourceTree = "<group>"; };
+		07E279C31C1E83EF0004CBE7 /* cosa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cosa.png; sourceTree = "<group>"; };
+		07E279C41C1E83EF0004CBE7 /* coso.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coso.png; sourceTree = "<group>"; };
+		07E279C51C1E83EF0004CBE7 /* ErrorTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ErrorTexture.jpg; sourceTree = "<group>"; };
+		07E279C61C1E83EF0004CBE7 /* ground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ground.jpg; sourceTree = "<group>"; };
+		07E279C71C1E83EF0004CBE7 /* ken.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ken.png; sourceTree = "<group>"; };
+		07E279C81C1E83EF0004CBE7 /* paisaje.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = paisaje.jpg; sourceTree = "<group>"; };
+		07E279C91C1E83EF0004CBE7 /* pieces.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pieces.png; sourceTree = "<group>"; };
+		07E279CA1C1E83EF0004CBE7 /* sf2-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "sf2-bg.jpg"; sourceTree = "<group>"; };
+		07E279CB1C1E83EF0004CBE7 /* sf2-ground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "sf2-ground.jpg"; sourceTree = "<group>"; };
+		07E279CC1C1E83EF0004CBE7 /* sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sprite.png; sourceTree = "<group>"; };
+		07E279CD1C1E83EF0004CBE7 /* Tree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tree.png; sourceTree = "<group>"; };
+		07E279CE1C1E83EF0004CBE7 /* wall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wall.jpg; sourceTree = "<group>"; };
+		07E279CF1C1E83EF0004CBE7 /* yoshi copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yoshi copy.png"; sourceTree = "<group>"; };
+		07E279D01C1E83EF0004CBE7 /* yoshi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yoshi.png; sourceTree = "<group>"; };
+		07E279D11C1E83EF0004CBE7 /* yoshi2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yoshi2.png; sourceTree = "<group>"; };
+		07E279D41C1E84860004CBE7 /* lapi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lapi.h; sourceTree = "<group>"; };
+		07E279D51C1E84860004CBE7 /* lauxlib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lauxlib.h; sourceTree = "<group>"; };
+		07E279D61C1E84860004CBE7 /* lcode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lcode.h; sourceTree = "<group>"; };
+		07E279D71C1E84860004CBE7 /* lctype.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lctype.h; sourceTree = "<group>"; };
+		07E279D81C1E84860004CBE7 /* ldebug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ldebug.h; sourceTree = "<group>"; };
+		07E279D91C1E84860004CBE7 /* ldo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ldo.h; sourceTree = "<group>"; };
+		07E279DA1C1E84860004CBE7 /* lfunc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lfunc.h; sourceTree = "<group>"; };
+		07E279DB1C1E84860004CBE7 /* lgc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lgc.h; sourceTree = "<group>"; };
+		07E279DC1C1E84860004CBE7 /* liblua.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liblua.a; path = GameEngineV2/lua/lua/liblua.a; sourceTree = "<group>"; };
+		07E279DD1C1E84860004CBE7 /* llex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = llex.h; sourceTree = "<group>"; };
+		07E279DE1C1E84860004CBE7 /* llimits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = llimits.h; sourceTree = "<group>"; };
+		07E279DF1C1E84860004CBE7 /* lmem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lmem.h; sourceTree = "<group>"; };
+		07E279E01C1E84860004CBE7 /* lobject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lobject.h; sourceTree = "<group>"; };
+		07E279E11C1E84860004CBE7 /* lopcodes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lopcodes.h; sourceTree = "<group>"; };
+		07E279E21C1E84860004CBE7 /* lparser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lparser.h; sourceTree = "<group>"; };
+		07E279E31C1E84860004CBE7 /* lprefix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lprefix.h; sourceTree = "<group>"; };
+		07E279E41C1E84860004CBE7 /* lstate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lstate.h; sourceTree = "<group>"; };
+		07E279E51C1E84860004CBE7 /* lstring.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lstring.h; sourceTree = "<group>"; };
+		07E279E61C1E84860004CBE7 /* ltable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ltable.h; sourceTree = "<group>"; };
+		07E279E71C1E84860004CBE7 /* ltm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ltm.h; sourceTree = "<group>"; };
+		07E279E81C1E84860004CBE7 /* lua.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lua.h; sourceTree = "<group>"; };
+		07E279E91C1E84860004CBE7 /* lua.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = lua.hpp; sourceTree = "<group>"; };
+		07E279EA1C1E84860004CBE7 /* luaconf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = luaconf.h; sourceTree = "<group>"; };
+		07E279EB1C1E84860004CBE7 /* lualib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lualib.h; sourceTree = "<group>"; };
+		07E279EC1C1E84860004CBE7 /* lundump.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lundump.h; sourceTree = "<group>"; };
+		07E279ED1C1E84860004CBE7 /* lvm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lvm.h; sourceTree = "<group>"; };
+		07E279EE1C1E84860004CBE7 /* lzio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lzio.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +167,7 @@
 				07A0D12E1C1DE2A0008EBF83 /* SDL2_image.framework in Frameworks */,
 				07A0D12F1C1DE2A0008EBF83 /* SDL2_mixer.framework in Frameworks */,
 				07A0D1301C1DE2A0008EBF83 /* SDL2_ttf.framework in Frameworks */,
+				07E279EF1C1E84910004CBE7 /* liblua.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +200,8 @@
 		0700CC481BFE7A75009A4AFA /* GameEngineV2 */ = {
 			isa = PBXGroup;
 			children = (
+				07E279D21C1E84860004CBE7 /* lua */,
+				07E279BE1C1E83EF0004CBE7 /* Resources */,
 				07A0D1171C1DE20D008EBF83 /* xml */,
 				07A0D1031C1DE20D008EBF83 /* Sources */,
 				07A0D0F11C1DE20D008EBF83 /* Headers */,
@@ -247,12 +297,81 @@
 		07A0D1311C1DE2AE008EBF83 /* Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				07E279DC1C1E84860004CBE7 /* liblua.a */,
 				07A0D1291C1DE2A0008EBF83 /* SDL2.framework */,
 				07A0D12A1C1DE2A0008EBF83 /* SDL2_image.framework */,
 				07A0D12B1C1DE2A0008EBF83 /* SDL2_mixer.framework */,
 				07A0D12C1C1DE2A0008EBF83 /* SDL2_ttf.framework */,
 			);
 			name = "Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		07E279BE1C1E83EF0004CBE7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				07E279BF1C1E83EF0004CBE7 /* background.png */,
+				07E279C01C1E83EF0004CBE7 /* bg.jpg */,
+				07E279C11C1E83EF0004CBE7 /* board.jpg */,
+				07E279C21C1E83EF0004CBE7 /* character.png */,
+				07E279C31C1E83EF0004CBE7 /* cosa.png */,
+				07E279C41C1E83EF0004CBE7 /* coso.png */,
+				07E279C51C1E83EF0004CBE7 /* ErrorTexture.jpg */,
+				07E279C61C1E83EF0004CBE7 /* ground.jpg */,
+				07E279C71C1E83EF0004CBE7 /* ken.png */,
+				07E279C81C1E83EF0004CBE7 /* paisaje.jpg */,
+				07E279C91C1E83EF0004CBE7 /* pieces.png */,
+				07E279CA1C1E83EF0004CBE7 /* sf2-bg.jpg */,
+				07E279CB1C1E83EF0004CBE7 /* sf2-ground.jpg */,
+				07E279CC1C1E83EF0004CBE7 /* sprite.png */,
+				07E279CD1C1E83EF0004CBE7 /* Tree.png */,
+				07E279CE1C1E83EF0004CBE7 /* wall.jpg */,
+				07E279CF1C1E83EF0004CBE7 /* yoshi copy.png */,
+				07E279D01C1E83EF0004CBE7 /* yoshi.png */,
+				07E279D11C1E83EF0004CBE7 /* yoshi2.png */,
+			);
+			name = Resources;
+			path = GameEngineV2/Resources;
+			sourceTree = SOURCE_ROOT;
+		};
+		07E279D21C1E84860004CBE7 /* lua */ = {
+			isa = PBXGroup;
+			children = (
+				07E279D31C1E84860004CBE7 /* lua */,
+			);
+			path = lua;
+			sourceTree = "<group>";
+		};
+		07E279D31C1E84860004CBE7 /* lua */ = {
+			isa = PBXGroup;
+			children = (
+				07E279D41C1E84860004CBE7 /* lapi.h */,
+				07E279D51C1E84860004CBE7 /* lauxlib.h */,
+				07E279D61C1E84860004CBE7 /* lcode.h */,
+				07E279D71C1E84860004CBE7 /* lctype.h */,
+				07E279D81C1E84860004CBE7 /* ldebug.h */,
+				07E279D91C1E84860004CBE7 /* ldo.h */,
+				07E279DA1C1E84860004CBE7 /* lfunc.h */,
+				07E279DB1C1E84860004CBE7 /* lgc.h */,
+				07E279DD1C1E84860004CBE7 /* llex.h */,
+				07E279DE1C1E84860004CBE7 /* llimits.h */,
+				07E279DF1C1E84860004CBE7 /* lmem.h */,
+				07E279E01C1E84860004CBE7 /* lobject.h */,
+				07E279E11C1E84860004CBE7 /* lopcodes.h */,
+				07E279E21C1E84860004CBE7 /* lparser.h */,
+				07E279E31C1E84860004CBE7 /* lprefix.h */,
+				07E279E41C1E84860004CBE7 /* lstate.h */,
+				07E279E51C1E84860004CBE7 /* lstring.h */,
+				07E279E61C1E84860004CBE7 /* ltable.h */,
+				07E279E71C1E84860004CBE7 /* ltm.h */,
+				07E279E81C1E84860004CBE7 /* lua.h */,
+				07E279E91C1E84860004CBE7 /* lua.hpp */,
+				07E279EA1C1E84860004CBE7 /* luaconf.h */,
+				07E279EB1C1E84860004CBE7 /* lualib.h */,
+				07E279EC1C1E84860004CBE7 /* lundump.h */,
+				07E279ED1C1E84860004CBE7 /* lvm.h */,
+				07E279EE1C1E84860004CBE7 /* lzio.h */,
+			);
+			path = lua;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -423,6 +542,10 @@
 		0700CC4E1BFE7A75009A4AFA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GameEngineV2/lua/lua",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -430,6 +553,10 @@
 		0700CC4F1BFE7A75009A4AFA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GameEngineV2/lua/lua",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
