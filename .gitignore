@@ -4,6 +4,8 @@
 *.tex
 *.pdf
 
+*/Resource/*
+
 # Compiled source #
 ###################
 *.com
