@@ -108,13 +108,6 @@ public:
 				
 				Tuple<int> point = Point<int>(event->button.x,event->button.y);
 				point = point - Renderer::camera->position.to_int();
-				
-				printf("%s (%d %d)(%d %d) (%d %d) \n",texture->name.c_str(),
-					   visualRect.x,
-					   visualRect.y,
-					   visualRect.w,
-					   visualRect.h,
-					   point.x, point.y);
 				if ((visualRect.x < point.x)		and
 					(visualRect.w > point.x)and
 					(visualRect.y < point.y)		and

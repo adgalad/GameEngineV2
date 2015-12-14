@@ -46,7 +46,7 @@ protected:
 	SDL_Surface *surface = NULL; /**< SDL_Surface used to create a SDL_Texture*/
 	int r = 1;					 /**< Number of rows. */
 	int c = 1;					 /**< Number of columns. */
-	Rect srcRect;			 /**< Part of the texture that will be rendered*/
+	Rect srcRect;				/**< Part of the texture that will be rendered*/
 	
 public:
 	static List textures;
