@@ -13,6 +13,7 @@
 #include <vector>
 
 
+
 class List {
 	std::vector<ListObject*> objects;
 	bool sorted = false;

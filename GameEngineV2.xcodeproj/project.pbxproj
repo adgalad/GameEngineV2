@@ -152,6 +152,7 @@
 		07E605FE1C2EA96C00F3EB4B /* Containers.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Containers.cpp; sourceTree = "<group>"; };
 		07E605FF1C2EA96C00F3EB4B /* Geometry.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Geometry.cpp; sourceTree = "<group>"; };
 		07E606001C2EA96C00F3EB4B /* Math.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Math.cpp; sourceTree = "<group>"; };
+		07E606051C2EB77C00F3EB4B /* define.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = define.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,8 +256,8 @@
 		07E279F01C1E8AF30004CBE7 /* Game Engine */ = {
 			isa = PBXGroup;
 			children = (
-				07E605F71C2EA96C00F3EB4B /* Utilities */,
 				07E27A031C1E8AF30004CBE7 /* Sources */,
+				07E605F71C2EA96C00F3EB4B /* Utilities */,
 				07E279F91C1E8AF30004CBE7 /* Protocols */,
 				07E27A101C1E8AF30004CBE7 /* Widgets */,
 				07E279F11C1E8AF30004CBE7 /* Camera.hpp */,
@@ -384,6 +385,7 @@
 				07E605FA1C2EA96C00F3EB4B /* Geometry.hpp */,
 				07E605FB1C2EA96C00F3EB4B /* Math.hpp */,
 				07E279F51C1E8AF30004CBE7 /* Utilities.hpp */,
+				07E606051C2EB77C00F3EB4B /* define.h */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";

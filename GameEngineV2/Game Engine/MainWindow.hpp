@@ -16,6 +16,7 @@ class MainWindow {
 	
 private:
 	SDL_Window   *window   = NULL;
+	SDL_Event	 event;
 	List subwidgets;
 public:
 	MainWindow(){
@@ -46,12 +47,58 @@ public:
 		return size;
 	}
 	
+	virtual bool eventHandler(){
+		Uint8 *keyStates = (Uint8*)	SDL_GetKeyboardState(NULL);
+		
+		while(SDL_PollEvent(&event))
+		{
+			switch (event.type) {
+				case SDL_QUIT:
+					return false;
+					
+				case SDL_KEYDOWN:
+					if (keyStates[SDL_GetScancodeFromKey(SDLK_ESCAPE)])
+					{
+						return false;
+					}
+					if (keyStates[SDL_GetScancodeFromKey(SDLK_m)])
+					{
+						
+					}
+					switch (event.key.keysym.sym) {
+						case SDLK_n:{
+							Widget *w = (Widget*)subwidgets.getByName("container");
+							w->setHide(false);
+							break;
+						}
+							
+						default:
+							break;
+					}
+				default:
+					
+					break;
+			}
+			for (int i = 0 ; i < subwidgets.size(); i++){
+				((Widget*)subwidgets[i])->eventHandler(&event, keyStates);
+			}
+		}
+		return true;
+	}
+	virtual void loop(){
+		for (int i = 0 ; i < subwidgets.size(); i++){
+			((Widget*)subwidgets[i])->loop();
+		}
+	}
 	virtual void render(){
 		for (int i = 0 ; i < subwidgets.size(); i++){
 			((Widget*)subwidgets[i])->render();
 		}
 	}
 
+	virtual void addSubwidget(Widget *w){
+		subwidgets.pushBack(w);
+	}
 };
 
 

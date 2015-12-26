@@ -9,7 +9,7 @@
 #ifndef Utilities_hpp
 #define Utilities_hpp
 
-#define GameEngineDebug
+
 
 #include "Color.hpp"
 #include "Geometry.hpp"

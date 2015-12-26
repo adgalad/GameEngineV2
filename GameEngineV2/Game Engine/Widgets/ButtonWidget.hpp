@@ -18,9 +18,12 @@ class ButtonWidget : public Widget{
 		currentFrame.y = 1;
 	}
 	
-	virtual void released(){
+	virtual void released(bool inside){
 		printf("Button Released -- \n");
 		currentFrame.y = 0;
+		if (inside){
+			father->setHide(true);
+		}
 	}
 };
 

@@ -8,7 +8,7 @@
 
 #ifndef ListObject_hpp
 #define ListObject_hpp
-
+#include "define.h"
 #include <string>
 
 class ListObject {

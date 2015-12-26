@@ -22,7 +22,7 @@ public:
 	List players; /**< List with all the Widget objects inside the scene */
 	
 	virtual ~Scene(){
-		texture = NULL;
+		Widget::~Widget();
 	}
 	Scene(){
 		_id = __id++;

@@ -18,7 +18,9 @@ class Widget : public TextureRenderer{
 	Texture *widgetTexture = NULL;
 	Tuple<float> absolutePosition;
 	Rect		 visualRect;
+	bool hide = false;
 protected:
+
 	bool _pressed;
 	Widget *father = NULL;
 	List subwidgets;
@@ -36,9 +38,19 @@ public:
 	Widget(){
 		_id = __id++;
 	}
-
+	
+	~Widget(){
+		TextureRenderer::~TextureRenderer();
+		widgetTexture = NULL;
+		father = NULL;
+	}
+	
+	inline void setHide(bool b){
+		hide = b;
+	}
 	virtual void eventHandler(SDL_Event *event, Uint8 *keyStates){
 		int n = 10;
+		if (hide) return;
 		if (keyStates[SDL_GetScancodeFromKey(SDLK_KP_2)]){
 			movePosition(Point<float>(0,n));
 			return;
@@ -110,22 +122,29 @@ public:
 				Tuple<int> point = Point<int>(event->button.x,event->button.y) -
 								   Renderer::camera->position.to_int();
 				
-				if ((visualRect.x < point.x)		and
-					(visualRect.w > point.x)and
-					(visualRect.y < point.y)		and
-					(visualRect.h > point.y )){
+				if ((visualRect.x < point.x) and
+					(visualRect.w > point.x) and
+					(visualRect.y < point.y) and
+					(visualRect.h > point.y ))
+				{
 					pressed();
-					
 					_pressed = true;
 				}
 				break;
 
-		}
-			case SDL_MOUSEBUTTONUP:
+			}
+			case SDL_MOUSEBUTTONUP:{
 				if (!_pressed) break;
-				released();
+				Tuple<int> point = Point<int>(event->button.x,event->button.y) -
+								   Renderer::camera->position.to_int();
+				bool inside =	(visualRect.x < point.x) and
+								(visualRect.w > point.x) and
+								(visualRect.y < point.y) and
+								(visualRect.h > point.y );
+				released(inside);
 				_pressed = false;
 				break;
+			}
 			default:
 
 				break;
@@ -137,9 +156,9 @@ public:
 
 	virtual inline void loadTextureById(int id){
 		TextureRenderer::loadTextureById(id);
-#ifdef GameEngineDebugger
-		if (!texture) exit(EXIT_FAILURE);
-#endif
+		#ifdef GameEngineDebugger
+			if (!texture) exit(EXIT_FAILURE);
+		#endif
 		visualRect = texture->getRect();
 		widgetTexture = Texture::createTargetTexture(texture->getRect());
 		
@@ -147,21 +166,24 @@ public:
 	
 	virtual inline void loadTextureByName(string name){
 		TextureRenderer::loadTextureByName(name);
-#ifdef GameEngineDebugger
-		if (!texture) exit(EXIT_FAILURE);
-#endif
+		#ifdef GameEngineDebugger
+			if (!texture) exit(EXIT_FAILURE);
+		#endif
 		visualRect = texture->getRect();
 		widgetTexture = Texture::createTargetTexture(texture->getRect());
-		printf("cargando %p\n",widgetTexture);
 	}
+	
+	
 	virtual void loop(){
 		TextureRenderer::loop();
 		for (int i = 0 ; i < subwidgets.size() ; i++){
 			((Widget*)subwidgets[i])->loop();
 		}
 	}
+	
+	
 	virtual void render(){
-		
+		if (hide) return;
 		if (!widgetTexture){
 			widgetTexture = Texture::createTargetTexture(texture->getRect());
 		}
@@ -194,7 +216,7 @@ public:
 		printf("pressed\n");
 	}
 	
-	virtual void released(){
+	virtual void released(bool inside){
 		printf("Released\n");
 	}
 };

@@ -26,7 +26,7 @@ class Game
 private:
 	MainWindow mainWindow;
 	SDL_Event event;
-	Scene *currentScene = NULL;
+
 	
 public:
 	
@@ -34,7 +34,7 @@ public:
 	Game(){};
 	~Game(){
 		printf("Renderer deleted\n");
-		delete currentScene;
+
 		delete Renderer::camera;
 		SDL_DestroyRenderer(Renderer::renderer);
 		Renderer::camera   = NULL;
@@ -57,6 +57,7 @@ public:
 
 		XMLSceneLoader sceneLoader;
 		sceneLoader.openXMLFile("/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV2/GameEngineV2/scene.xml");
+		Scene *currentScene;
 		currentScene = new Scene();
 		sceneLoader.load(currentScene);
 		
@@ -76,58 +77,25 @@ public:
 		c->addSubwidget(b);		
 		c->setPosition(Point<float>(180,100));
 
-		currentScene->addSubwidget(c);
+		mainWindow.addSubwidget(currentScene);
+		mainWindow.addSubwidget(c);
+		c->name = "container";
 
 		Renderer::camera->setCameraTarget(p->getPosition());
 		Renderer::setCanvasSize(currentScene->getTextureSize());
 
 		while(running){
 			
-			currentScene->loop();
+			mainWindow.loop();
 			Renderer::camera->loop();
-			if (!(running = eventHandler())) break;
-			currentScene->render();
+			if (!(running = mainWindow.eventHandler())) break;
+			mainWindow.render();
 			
 			Renderer::renderPresent();
 			SDL_Delay(50);
 		}
-
 	}
 
-	bool eventHandler()
-	{
-		Uint8 *keyStates = (Uint8*)	SDL_GetKeyboardState(NULL);
-
-		while(SDL_PollEvent(&event))
-		{
-			switch (event.type) {
-				case SDL_QUIT:
-					return false;
-			
-				case SDL_KEYDOWN:
-					if (keyStates[SDL_GetScancodeFromKey(SDLK_ESCAPE)])
-					{
-						return false;
-					}
-					if (keyStates[SDL_GetScancodeFromKey(SDLK_m)])
-					{
-
-					}
-					switch (event.key.keysym.sym) {
-						case SDLK_n:
-							break;
-							
-						default:
-							break;
-					}
-				default:
-					
-					break;
-			}
-		}
-		currentScene->eventHandler(&event,keyStates);
-		return true;
-	}
 };
 
 
