@@ -18,7 +18,6 @@
 		07A0D1351C1DE2E0008EBF83 /* XMLSceneLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07A0D1221C1DE20D008EBF83 /* XMLSceneLoader.cpp */; };
 		07A0D1361C1DE2E0008EBF83 /* XMLTextureLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07A0D1241C1DE20D008EBF83 /* XMLTextureLoader.cpp */; };
 		07A0D1371C1DE2E0008EBF83 /* pugixml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07A0D11A1C1DE20D008EBF83 /* pugixml.cpp */; };
-		07E279EF1C1E84910004CBE7 /* liblua.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E279DC1C1E84860004CBE7 /* liblua.a */; };
 		07E27A191C1E8AF30004CBE7 /* ListObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07E279FD1C1E8AF30004CBE7 /* ListObject.cpp */; };
 		07E27A1A1C1E8AF30004CBE7 /* PhysicObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07E279FE1C1E8AF30004CBE7 /* PhysicObject.cpp */; };
 		07E27A1B1C1E8AF30004CBE7 /* TextureRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07E279FF1C1E8AF30004CBE7 /* TextureRenderer.cpp */; };
@@ -37,7 +36,7 @@
 		07E27A281C1E8AF30004CBE7 /* ContainerWidget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07E27A151C1E8AF30004CBE7 /* ContainerWidget.cpp */; };
 		07E27A291C1E8AF30004CBE7 /* Widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07E27A161C1E8AF30004CBE7 /* Widget.cpp */; };
 		07E27A2A1C1E8AF30004CBE7 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07E27A181C1E8AF30004CBE7 /* main.cpp */; };
-
+		07E605E91C2E89DA00F3EB4B /* liblua.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E605D61C2E89DA00F3EB4B /* liblua.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -79,51 +78,6 @@
 		07A0D14E1C1DE44B008EBF83 /* scene.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = scene.xml; path = GameEngineV2/scene.xml; sourceTree = "<group>"; };
 		07A0D14F1C1DE44B008EBF83 /* Textures.lua */ = {isa = PBXFileReference; lastKnownFileType = text; name = Textures.lua; path = GameEngineV2/Textures.lua; sourceTree = "<group>"; };
 		07A0D1501C1DE44B008EBF83 /* textures.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = textures.xml; path = GameEngineV2/textures.xml; sourceTree = "<group>"; };
-		07E279BF1C1E83EF0004CBE7 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
-		07E279C01C1E83EF0004CBE7 /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
-		07E279C11C1E83EF0004CBE7 /* board.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = board.jpg; sourceTree = "<group>"; };
-		07E279C31C1E83EF0004CBE7 /* cosa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cosa.png; sourceTree = "<group>"; };
-		07E279C41C1E83EF0004CBE7 /* coso.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coso.png; sourceTree = "<group>"; };
-		07E279C51C1E83EF0004CBE7 /* ErrorTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ErrorTexture.jpg; sourceTree = "<group>"; };
-		07E279C61C1E83EF0004CBE7 /* ground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ground.jpg; sourceTree = "<group>"; };
-		07E279C71C1E83EF0004CBE7 /* ken.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ken.png; sourceTree = "<group>"; };
-		07E279C81C1E83EF0004CBE7 /* paisaje.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = paisaje.jpg; sourceTree = "<group>"; };
-		07E279C91C1E83EF0004CBE7 /* pieces.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pieces.png; sourceTree = "<group>"; };
-		07E279CA1C1E83EF0004CBE7 /* sf2-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "sf2-bg.jpg"; sourceTree = "<group>"; };
-		07E279CB1C1E83EF0004CBE7 /* sf2-ground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "sf2-ground.jpg"; sourceTree = "<group>"; };
-		07E279CC1C1E83EF0004CBE7 /* sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sprite.png; sourceTree = "<group>"; };
-		07E279CD1C1E83EF0004CBE7 /* Tree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tree.png; sourceTree = "<group>"; };
-		07E279CE1C1E83EF0004CBE7 /* wall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wall.jpg; sourceTree = "<group>"; };
-		07E279CF1C1E83EF0004CBE7 /* yoshi copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yoshi copy.png"; sourceTree = "<group>"; };
-		07E279D01C1E83EF0004CBE7 /* yoshi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yoshi.png; sourceTree = "<group>"; };
-		07E279D11C1E83EF0004CBE7 /* yoshi2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yoshi2.png; sourceTree = "<group>"; };
-		07E279D41C1E84860004CBE7 /* lapi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lapi.h; sourceTree = "<group>"; };
-		07E279D51C1E84860004CBE7 /* lauxlib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lauxlib.h; sourceTree = "<group>"; };
-		07E279D61C1E84860004CBE7 /* lcode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lcode.h; sourceTree = "<group>"; };
-		07E279D71C1E84860004CBE7 /* lctype.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lctype.h; sourceTree = "<group>"; };
-		07E279D81C1E84860004CBE7 /* ldebug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ldebug.h; sourceTree = "<group>"; };
-		07E279D91C1E84860004CBE7 /* ldo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ldo.h; sourceTree = "<group>"; };
-		07E279DA1C1E84860004CBE7 /* lfunc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lfunc.h; sourceTree = "<group>"; };
-		07E279DB1C1E84860004CBE7 /* lgc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lgc.h; sourceTree = "<group>"; };
-		07E279DC1C1E84860004CBE7 /* liblua.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liblua.a; path = GameEngineV2/lua/lua/liblua.a; sourceTree = "<group>"; };
-		07E279DD1C1E84860004CBE7 /* llex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = llex.h; sourceTree = "<group>"; };
-		07E279DE1C1E84860004CBE7 /* llimits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = llimits.h; sourceTree = "<group>"; };
-		07E279DF1C1E84860004CBE7 /* lmem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lmem.h; sourceTree = "<group>"; };
-		07E279E01C1E84860004CBE7 /* lobject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lobject.h; sourceTree = "<group>"; };
-		07E279E11C1E84860004CBE7 /* lopcodes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lopcodes.h; sourceTree = "<group>"; };
-		07E279E21C1E84860004CBE7 /* lparser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lparser.h; sourceTree = "<group>"; };
-		07E279E31C1E84860004CBE7 /* lprefix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lprefix.h; sourceTree = "<group>"; };
-		07E279E41C1E84860004CBE7 /* lstate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lstate.h; sourceTree = "<group>"; };
-		07E279E51C1E84860004CBE7 /* lstring.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lstring.h; sourceTree = "<group>"; };
-		07E279E61C1E84860004CBE7 /* ltable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ltable.h; sourceTree = "<group>"; };
-		07E279E71C1E84860004CBE7 /* ltm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ltm.h; sourceTree = "<group>"; };
-		07E279E81C1E84860004CBE7 /* lua.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lua.h; sourceTree = "<group>"; };
-		07E279E91C1E84860004CBE7 /* lua.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = lua.hpp; sourceTree = "<group>"; };
-		07E279EA1C1E84860004CBE7 /* luaconf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = luaconf.h; sourceTree = "<group>"; };
-		07E279EB1C1E84860004CBE7 /* lualib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lualib.h; sourceTree = "<group>"; };
-		07E279EC1C1E84860004CBE7 /* lundump.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lundump.h; sourceTree = "<group>"; };
-		07E279ED1C1E84860004CBE7 /* lvm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lvm.h; sourceTree = "<group>"; };
-		07E279EE1C1E84860004CBE7 /* lzio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lzio.h; sourceTree = "<group>"; };
 		07E279F11C1E8AF30004CBE7 /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
 		07E279F21C1E8AF30004CBE7 /* Entity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Entity.hpp; sourceTree = "<group>"; };
 		07E279F31C1E8AF30004CBE7 /* Game.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
@@ -159,7 +113,33 @@
 		07E27A161C1E8AF30004CBE7 /* Widget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Widget.cpp; sourceTree = "<group>"; };
 		07E27A171C1E8AF30004CBE7 /* Widget.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Widget.hpp; sourceTree = "<group>"; };
 		07E27A181C1E8AF30004CBE7 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = GameEngineV2/main.cpp; sourceTree = "<group>"; };
-
+		07E605CE1C2E89DA00F3EB4B /* lapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lapi.h; sourceTree = "<group>"; };
+		07E605CF1C2E89DA00F3EB4B /* lauxlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lauxlib.h; sourceTree = "<group>"; };
+		07E605D01C2E89DA00F3EB4B /* lcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lcode.h; sourceTree = "<group>"; };
+		07E605D11C2E89DA00F3EB4B /* lctype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lctype.h; sourceTree = "<group>"; };
+		07E605D21C2E89DA00F3EB4B /* ldebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ldebug.h; sourceTree = "<group>"; };
+		07E605D31C2E89DA00F3EB4B /* ldo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ldo.h; sourceTree = "<group>"; };
+		07E605D41C2E89DA00F3EB4B /* lfunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lfunc.h; sourceTree = "<group>"; };
+		07E605D51C2E89DA00F3EB4B /* lgc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lgc.h; sourceTree = "<group>"; };
+		07E605D61C2E89DA00F3EB4B /* liblua.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liblua.a; path = GameEngineV2/lua/lua/liblua.a; sourceTree = "<group>"; };
+		07E605D71C2E89DA00F3EB4B /* llex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = llex.h; sourceTree = "<group>"; };
+		07E605D81C2E89DA00F3EB4B /* llimits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = llimits.h; sourceTree = "<group>"; };
+		07E605D91C2E89DA00F3EB4B /* lmem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lmem.h; sourceTree = "<group>"; };
+		07E605DA1C2E89DA00F3EB4B /* lobject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lobject.h; sourceTree = "<group>"; };
+		07E605DB1C2E89DA00F3EB4B /* lopcodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lopcodes.h; sourceTree = "<group>"; };
+		07E605DC1C2E89DA00F3EB4B /* lparser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lparser.h; sourceTree = "<group>"; };
+		07E605DD1C2E89DA00F3EB4B /* lprefix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lprefix.h; sourceTree = "<group>"; };
+		07E605DE1C2E89DA00F3EB4B /* lstate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lstate.h; sourceTree = "<group>"; };
+		07E605DF1C2E89DA00F3EB4B /* lstring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lstring.h; sourceTree = "<group>"; };
+		07E605E01C2E89DA00F3EB4B /* ltable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ltable.h; sourceTree = "<group>"; };
+		07E605E11C2E89DA00F3EB4B /* ltm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ltm.h; sourceTree = "<group>"; };
+		07E605E21C2E89DA00F3EB4B /* lua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lua.h; sourceTree = "<group>"; };
+		07E605E31C2E89DA00F3EB4B /* lua.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua.hpp; sourceTree = "<group>"; };
+		07E605E41C2E89DA00F3EB4B /* luaconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = luaconf.h; sourceTree = "<group>"; };
+		07E605E51C2E89DA00F3EB4B /* lualib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lualib.h; sourceTree = "<group>"; };
+		07E605E61C2E89DA00F3EB4B /* lundump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lundump.h; sourceTree = "<group>"; };
+		07E605E71C2E89DA00F3EB4B /* lvm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lvm.h; sourceTree = "<group>"; };
+		07E605E81C2E89DA00F3EB4B /* lzio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzio.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +151,7 @@
 				07A0D12E1C1DE2A0008EBF83 /* SDL2_image.framework in Frameworks */,
 				07A0D12F1C1DE2A0008EBF83 /* SDL2_mixer.framework in Frameworks */,
 				07A0D1301C1DE2A0008EBF83 /* SDL2_ttf.framework in Frameworks */,
+				07E605E91C2E89DA00F3EB4B /* liblua.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +185,7 @@
 		0700CC481BFE7A75009A4AFA /* GameEngineV2 */ = {
 			isa = PBXGroup;
 			children = (
+				07E605CC1C2E895300F3EB4B /* lua */,
 				07A0D1171C1DE20D008EBF83 /* xml */,
 				07E279F01C1E8AF30004CBE7 /* Game Engine */,
 			);
@@ -249,80 +231,13 @@
 		07A0D1311C1DE2AE008EBF83 /* Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				07E605D61C2E89DA00F3EB4B /* liblua.a */,
 				07A0D1291C1DE2A0008EBF83 /* SDL2.framework */,
 				07A0D12A1C1DE2A0008EBF83 /* SDL2_image.framework */,
 				07A0D12B1C1DE2A0008EBF83 /* SDL2_mixer.framework */,
 				07A0D12C1C1DE2A0008EBF83 /* SDL2_ttf.framework */,
 			);
 			name = "Frameworks and Libraries";
-			sourceTree = "<group>";
-		};
-
-		07E279BE1C1E83EF0004CBE7 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				07E279BF1C1E83EF0004CBE7 /* background.png */,
-				07E279C01C1E83EF0004CBE7 /* bg.jpg */,
-				07E279C11C1E83EF0004CBE7 /* board.jpg */,
-				07E279C31C1E83EF0004CBE7 /* cosa.png */,
-				07E279C41C1E83EF0004CBE7 /* coso.png */,
-				07E279C51C1E83EF0004CBE7 /* ErrorTexture.jpg */,
-				07E279C61C1E83EF0004CBE7 /* ground.jpg */,
-				07E279C71C1E83EF0004CBE7 /* ken.png */,
-				07E279C81C1E83EF0004CBE7 /* paisaje.jpg */,
-				07E279C91C1E83EF0004CBE7 /* pieces.png */,
-				07E279CA1C1E83EF0004CBE7 /* sf2-bg.jpg */,
-				07E279CB1C1E83EF0004CBE7 /* sf2-ground.jpg */,
-				07E279CC1C1E83EF0004CBE7 /* sprite.png */,
-				07E279CD1C1E83EF0004CBE7 /* Tree.png */,
-				07E279CE1C1E83EF0004CBE7 /* wall.jpg */,
-				07E279CF1C1E83EF0004CBE7 /* yoshi copy.png */,
-				07E279D01C1E83EF0004CBE7 /* yoshi.png */,
-				07E279D11C1E83EF0004CBE7 /* yoshi2.png */,
-			);
-			name = Resources;
-			path = GameEngineV2/Resources;
-			sourceTree = SOURCE_ROOT;
-		};
-		07E279D21C1E84860004CBE7 /* lua */ = {
-			isa = PBXGroup;
-			children = (
-				07E279D31C1E84860004CBE7 /* lua */,
-			);
-			path = lua;
-			sourceTree = "<group>";
-		};
-		07E279D31C1E84860004CBE7 /* lua */ = {
-			isa = PBXGroup;
-			children = (
-				07E279D41C1E84860004CBE7 /* lapi.h */,
-				07E279D51C1E84860004CBE7 /* lauxlib.h */,
-				07E279D61C1E84860004CBE7 /* lcode.h */,
-				07E279D71C1E84860004CBE7 /* lctype.h */,
-				07E279D81C1E84860004CBE7 /* ldebug.h */,
-				07E279D91C1E84860004CBE7 /* ldo.h */,
-				07E279DA1C1E84860004CBE7 /* lfunc.h */,
-				07E279DB1C1E84860004CBE7 /* lgc.h */,
-				07E279DD1C1E84860004CBE7 /* llex.h */,
-				07E279DE1C1E84860004CBE7 /* llimits.h */,
-				07E279DF1C1E84860004CBE7 /* lmem.h */,
-				07E279E01C1E84860004CBE7 /* lobject.h */,
-				07E279E11C1E84860004CBE7 /* lopcodes.h */,
-				07E279E21C1E84860004CBE7 /* lparser.h */,
-				07E279E31C1E84860004CBE7 /* lprefix.h */,
-				07E279E41C1E84860004CBE7 /* lstate.h */,
-				07E279E51C1E84860004CBE7 /* lstring.h */,
-				07E279E61C1E84860004CBE7 /* ltable.h */,
-				07E279E71C1E84860004CBE7 /* ltm.h */,
-				07E279E81C1E84860004CBE7 /* lua.h */,
-				07E279E91C1E84860004CBE7 /* lua.hpp */,
-				07E279EA1C1E84860004CBE7 /* luaconf.h */,
-				07E279EB1C1E84860004CBE7 /* lualib.h */,
-				07E279EC1C1E84860004CBE7 /* lundump.h */,
-				07E279ED1C1E84860004CBE7 /* lvm.h */,
-				07E279EE1C1E84860004CBE7 /* lzio.h */,
-			);
-			path = lua;
 			sourceTree = "<group>";
 		};
 		07E279F01C1E8AF30004CBE7 /* Game Engine */ = {
@@ -408,7 +323,47 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
-
+		07E605CC1C2E895300F3EB4B /* lua */ = {
+			isa = PBXGroup;
+			children = (
+				07E605CD1C2E895300F3EB4B /* lua */,
+			);
+			path = lua;
+			sourceTree = "<group>";
+		};
+		07E605CD1C2E895300F3EB4B /* lua */ = {
+			isa = PBXGroup;
+			children = (
+				07E605CE1C2E89DA00F3EB4B /* lapi.h */,
+				07E605CF1C2E89DA00F3EB4B /* lauxlib.h */,
+				07E605D01C2E89DA00F3EB4B /* lcode.h */,
+				07E605D11C2E89DA00F3EB4B /* lctype.h */,
+				07E605D21C2E89DA00F3EB4B /* ldebug.h */,
+				07E605D31C2E89DA00F3EB4B /* ldo.h */,
+				07E605D41C2E89DA00F3EB4B /* lfunc.h */,
+				07E605D51C2E89DA00F3EB4B /* lgc.h */,
+				07E605D71C2E89DA00F3EB4B /* llex.h */,
+				07E605D81C2E89DA00F3EB4B /* llimits.h */,
+				07E605D91C2E89DA00F3EB4B /* lmem.h */,
+				07E605DA1C2E89DA00F3EB4B /* lobject.h */,
+				07E605DB1C2E89DA00F3EB4B /* lopcodes.h */,
+				07E605DC1C2E89DA00F3EB4B /* lparser.h */,
+				07E605DD1C2E89DA00F3EB4B /* lprefix.h */,
+				07E605DE1C2E89DA00F3EB4B /* lstate.h */,
+				07E605DF1C2E89DA00F3EB4B /* lstring.h */,
+				07E605E01C2E89DA00F3EB4B /* ltable.h */,
+				07E605E11C2E89DA00F3EB4B /* ltm.h */,
+				07E605E21C2E89DA00F3EB4B /* lua.h */,
+				07E605E31C2E89DA00F3EB4B /* lua.hpp */,
+				07E605E41C2E89DA00F3EB4B /* luaconf.h */,
+				07E605E51C2E89DA00F3EB4B /* lualib.h */,
+				07E605E61C2E89DA00F3EB4B /* lundump.h */,
+				07E605E71C2E89DA00F3EB4B /* lvm.h */,
+				07E605E81C2E89DA00F3EB4B /* lzio.h */,
+			);
+			path = lua;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -578,6 +533,10 @@
 		0700CC4E1BFE7A75009A4AFA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GameEngineV2/lua/lua",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -585,6 +544,10 @@
 		0700CC4F1BFE7A75009A4AFA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GameEngineV2/lua/lua",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
