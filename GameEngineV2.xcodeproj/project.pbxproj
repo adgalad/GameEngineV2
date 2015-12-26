@@ -37,6 +37,7 @@
 		07E27A281C1E8AF30004CBE7 /* ContainerWidget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07E27A151C1E8AF30004CBE7 /* ContainerWidget.cpp */; };
 		07E27A291C1E8AF30004CBE7 /* Widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07E27A161C1E8AF30004CBE7 /* Widget.cpp */; };
 		07E27A2A1C1E8AF30004CBE7 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07E27A181C1E8AF30004CBE7 /* main.cpp */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -158,6 +159,7 @@
 		07E27A161C1E8AF30004CBE7 /* Widget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Widget.cpp; sourceTree = "<group>"; };
 		07E27A171C1E8AF30004CBE7 /* Widget.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Widget.hpp; sourceTree = "<group>"; };
 		07E27A181C1E8AF30004CBE7 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = GameEngineV2/main.cpp; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,7 +171,6 @@
 				07A0D12E1C1DE2A0008EBF83 /* SDL2_image.framework in Frameworks */,
 				07A0D12F1C1DE2A0008EBF83 /* SDL2_mixer.framework in Frameworks */,
 				07A0D1301C1DE2A0008EBF83 /* SDL2_ttf.framework in Frameworks */,
-				07E279EF1C1E84910004CBE7 /* liblua.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,8 +204,6 @@
 		0700CC481BFE7A75009A4AFA /* GameEngineV2 */ = {
 			isa = PBXGroup;
 			children = (
-				07E279D21C1E84860004CBE7 /* lua */,
-				07E279BE1C1E83EF0004CBE7 /* Resources */,
 				07A0D1171C1DE20D008EBF83 /* xml */,
 				07E279F01C1E8AF30004CBE7 /* Game Engine */,
 			);
@@ -250,7 +249,6 @@
 		07A0D1311C1DE2AE008EBF83 /* Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				07E279DC1C1E84860004CBE7 /* liblua.a */,
 				07A0D1291C1DE2A0008EBF83 /* SDL2.framework */,
 				07A0D12A1C1DE2A0008EBF83 /* SDL2_image.framework */,
 				07A0D12B1C1DE2A0008EBF83 /* SDL2_mixer.framework */,
@@ -259,6 +257,7 @@
 			name = "Frameworks and Libraries";
 			sourceTree = "<group>";
 		};
+
 		07E279BE1C1E83EF0004CBE7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -409,6 +408,7 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
+
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -578,10 +578,6 @@
 		0700CC4E1BFE7A75009A4AFA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/GameEngineV2/lua/lua",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -589,10 +585,6 @@
 		0700CC4F1BFE7A75009A4AFA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/GameEngineV2/lua/lua",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

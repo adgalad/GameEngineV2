@@ -71,7 +71,7 @@ public:
 		b->loadTextureByName("boton");
 		b->setPosition(Point<float>(0,0));
 		
-		ContainerWidget *c = new ContainerWidget(Color(230,200,230,150), 300,300);
+		ContainerWidget *c = new ContainerWidget(Color(0,00,0,150), 300,700);
 		
 		c->addSubwidget(b);		
 		c->setPosition(Point<float>(180,100));

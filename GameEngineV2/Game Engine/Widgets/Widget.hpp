@@ -60,7 +60,7 @@ public:
 		switch (event->type) {
 			case SDL_MOUSEBUTTONDOWN:{
 				
-				Rect rect = frameRect;
+				Rect rect = texture->getRect();
 				
 				if (father) {
 					Rect frect = father->visualRect;
@@ -175,21 +175,16 @@ public:
 		for (int i = 0 ; i < subwidgets.size() ; i++) {
 			((Widget*)subwidgets[i])->render();
 		}
-
+		Rect r = texture->getRect();
 		if (!father){
 			Renderer::setRendererTarget(NULL);
-			texture->renderTexture(position,&frameRect,isStatic,angle,inverted);
+			widgetTexture->renderTexture(position,&r);
 		}
 		else{
 			father->widgetTexture->setAsRenderTarget();
-			texture->renderTexture(position,&frameRect,true,angle,inverted);
+			widgetTexture->renderTexture(position,&r,true,angle,inverted);
 		}
-	
-		
-
-
 	}
-
 	
 	void addSubwidget(Widget *w){
 		w->father = this;
