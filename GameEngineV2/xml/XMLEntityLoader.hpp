@@ -39,7 +39,7 @@ protected:
 	}
 public:
 	virtual void load(List *entities){
-		if (xmlDocument.empty()) {
+		if (xmlDocument.empty() && node.empty()) {
 			printf("ERROR load a xml file first\n");
 			return;
 		}

@@ -3,6 +3,7 @@
 *.html
 *.tex
 *.pdf
+*.lua
 
 */Resources/*
 

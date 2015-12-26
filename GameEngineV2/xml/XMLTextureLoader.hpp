@@ -10,7 +10,7 @@
 #define XMLTextureLoader_hpp
 
 #include "XMLLoader.hpp"
-#include "Texture.hpp"
+#include "Sprite.hpp"
 class XMLTextureLoader : public XMLLoader{
 
 public:
@@ -23,7 +23,7 @@ public:
 		pugi::xml_node textureNode;
 		textureNode = xmlDocument.child("texture");
 		while (!textureNode.empty()){
-			Texture *t = new Texture();
+			Sprite *t = new Sprite();
 			/* Search for image path */
 			if (!textureNode.attribute("path").empty()){
 				int r,c;
@@ -57,5 +57,7 @@ public:
 		}
 	}
 };
+
+
 
 #endif /* XMLTextureLoader_hpp */

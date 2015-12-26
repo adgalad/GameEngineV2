@@ -9,8 +9,6 @@ columns = "1" rows = "8"/>
 
 <texture name="boton" path="/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV2/GameEngineV2/Resources/button.png" rows="2" columns="1"/>
 
-<texture name="character" path="/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV2/GameEngineV2/Resources/character.png" />
-
 <texture name="paisaje" path="/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV2/GameEngineV2/Resources/paisaje.jpg" />
 
 <texture name="wall" path="/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV2/GameEngineV2/Resources/wall.jpg" />
