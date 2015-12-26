@@ -122,8 +122,11 @@ public:
 	 Given the position and the frame that will be rendered,
 	 the Texture send the information needed to the Renderer.
 	 */
-	virtual void renderTexture(Tuple<float> position, Rect *srcRect, bool isStatic = false,
-							   int angle = 0, bool inverted = false);
+	virtual void renderTexture(Tuple<float> position,
+							   Rect			*srcRect,
+							   bool			isStatic = false,
+							   int			angle    = 0,
+							   bool			inverted = false);
 	
 	inline void setAsRenderTarget() { Renderer::setRendererTarget(texture); }
 	

@@ -61,6 +61,7 @@ public:
 			case SDL_MOUSEBUTTONDOWN:{
 				
 				Rect rect = frameRect;
+				
 				if (father) {
 					Rect frect = father->visualRect;
 					absolutePosition = position + father->absolutePosition;
@@ -98,12 +99,12 @@ public:
 						
 				}
 				else {
+					
 					absolutePosition = position ;
-					Rect frect = frameRect;
 					visualRect = Rect(absolutePosition.x,
 									  absolutePosition.y,
-									  absolutePosition.x + frect.w,
-  									  absolutePosition.y + frect.h);
+									  absolutePosition.x + rect.w,
+  									  absolutePosition.y + rect.h);
 				}
 				
 				Tuple<int> point = Point<int>(event->button.x,event->button.y) -
@@ -114,6 +115,7 @@ public:
 					(visualRect.y < point.y)		and
 					(visualRect.h > point.y )){
 					pressed();
+					
 					_pressed = true;
 				}
 				break;
@@ -138,7 +140,7 @@ public:
 #ifdef GameEngineDebugger
 		if (!texture) exit(EXIT_FAILURE);
 #endif
-		visualRect = frameRect;
+		visualRect = texture->getRect();
 		widgetTexture = Texture::createTargetTexture(texture->getRect());
 		
 	}
@@ -148,7 +150,7 @@ public:
 #ifdef GameEngineDebugger
 		if (!texture) exit(EXIT_FAILURE);
 #endif
-		visualRect = frameRect;
+		visualRect = texture->getRect();
 		widgetTexture = Texture::createTargetTexture(texture->getRect());
 		printf("cargando %p\n",widgetTexture);
 	}
@@ -168,7 +170,7 @@ public:
 		if (animated) {
 			currentFrame.y = (currentFrame.y + 1) % texture->rows();
 		}
-		texture->renderTexture(Point<float>(0, 0), &frameRect, true);
+		texture->renderTexture(Point<float>(0, 0), &frameRect, true,angle,inverted);
 
 		for (int i = 0 ; i < subwidgets.size() ; i++) {
 			((Widget*)subwidgets[i])->render();
@@ -176,11 +178,11 @@ public:
 
 		if (!father){
 			Renderer::setRendererTarget(NULL);
-			widgetTexture->renderTexture(position,&frameRect);
+			texture->renderTexture(position,&frameRect,isStatic,angle,inverted);
 		}
 		else{
 			father->widgetTexture->setAsRenderTarget();
-			widgetTexture->renderTexture(position,&frameRect,true);
+			texture->renderTexture(position,&frameRect,true,angle,inverted);
 		}
 	
 		

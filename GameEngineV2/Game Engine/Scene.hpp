@@ -15,9 +15,6 @@
 
 class Scene : public Widget{
 	static int __id;
-	Texture *texture = NULL;
-	
-	Rect rect;
 	
 public:
 
