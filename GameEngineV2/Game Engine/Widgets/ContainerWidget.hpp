@@ -15,7 +15,7 @@ class ContainerWidget : public Widget {
 	
 public:
 	
-	ContainerWidget(SDL_Color color, int w, int h){
+	ContainerWidget(Color color, int w, int h){
 		texture = Texture::createRGBTexture(color, w, h);
 		frameRect = Rect(0, 0, w, h);
 	}

@@ -26,7 +26,7 @@ Texture::~Texture(){
 	texture = NULL;
 }
 
-Texture *Texture::createRGBTexture(SDL_Color color,
+Texture *Texture::createRGBTexture(Color color,
 								   unsigned int w,
 								   unsigned int h
 								 ){

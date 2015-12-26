@@ -68,7 +68,7 @@ public:
 	/**
 	 Create a rectangle Texture filled with the given color.
 	 */
-	static Texture *createRGBTexture(SDL_Color color,
+	static Texture *createRGBTexture(Color color,
 									 unsigned int w,
 									 unsigned int h
 									 );

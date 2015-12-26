@@ -37,7 +37,7 @@ protected:
 	}
 	
 public:
-	SDL_Color color;
+	Color color;
 	Polygon(){
 		
 	}

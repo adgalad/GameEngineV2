@@ -10,7 +10,7 @@
 #define Renderer_hpp
 
 #include <cstdio>
-#include "GameEngineUtilities.hpp"
+#include "Utilities.hpp"
 #include "Camera.hpp"
 
 
@@ -96,7 +96,7 @@ public:
 	/**
 	 Use this function to set the color used for drawing operations (Rect, Line, Point and Clear).
 	 */
-	static inline void setRenderColor(SDL_Color color){
+	static inline void setRenderColor(Color color){
 		SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
 	}
 	/**

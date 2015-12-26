@@ -10,7 +10,7 @@
 #define Camera_hpp
 
 
-#include "GameEngineUtilities.hpp"
+#include "Utilities.hpp"
 class Renderer;
 
 class Camera {
