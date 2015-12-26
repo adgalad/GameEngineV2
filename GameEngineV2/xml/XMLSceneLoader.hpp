@@ -23,6 +23,7 @@ public:
 
 		XMLEntityLoader entityLoader;
 		XMLPlayerLoader playerLoader;
+		
 		entityLoader.node = node;
 		entityLoader.load(&scene->entities);
 		playerLoader.node = node;

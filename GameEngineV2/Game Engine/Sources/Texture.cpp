@@ -20,9 +20,6 @@ Texture::Texture() {
 
 Texture::~Texture(){
 	ListObject::~ListObject();
-#ifdef GameEngineDebug
-	printf("Deleting object: %p id: %d name: '%s'\n",this,id(),name.c_str());
-#endif
 	SDL_FreeSurface(surface);
 	SDL_DestroyTexture(texture);
 	surface = NULL;
@@ -70,42 +67,30 @@ void Texture::loadImage(string file, int rows, int columns){
 				);
 		exit(EXIT_FAILURE);
 	}
-	r = rows;
-	c = columns;
-	
 	srcRect.x = 0;
 	srcRect.y = 0;
-	srcRect.w = surface->w / columns;
-	srcRect.h = surface->h / rows;
+	srcRect.w = surface->w;
+	srcRect.h = surface->h;
 }
 
 void Texture::renderTexture(Tuple<float> position,
-							Tuple<int> frame,
-							int angle,
-							bool inverted,
-							Rect *rect){
+							Rect *srcRect,
+							bool isStatic,
+							int  angle,
+							bool inverted){
 	if (!texture) {
 		printf("ERROR Trying to render a NULL texture\ntexture: %p\nid %d\n",texture,_id);
 		exit(EXIT_FAILURE);
 	}
-	srcRect.x   = frame.x*srcRect.w;
-	srcRect.y   = frame.y*srcRect.h;
-	Rect destRect;
+
 	
-	if (rect) {
-		destRect.w = rect->w;
-		destRect.h = rect->h;
-		destRect.x = (int)position.x;
-		destRect.y = (int)position.y;
-		Renderer::renderCopy(texture, rect, &destRect, angle, inverted);
-	}
-	else {
-		destRect.w = srcRect.w;
-		destRect.h = srcRect.h;
-		destRect.x = (int)position.x;
-		destRect.y = (int)position.y;
-		Renderer::renderCopy(texture, &srcRect, &destRect, angle, inverted);
-	}
+	Rect destRect;
+	destRect.w = srcRect->w;
+	destRect.h = srcRect->h;
+	destRect.x = (int)position.x;
+	destRect.y = (int)position.y;
+	Renderer::renderCopy(texture, srcRect, &destRect, isStatic, angle, inverted);
+
 
 
 

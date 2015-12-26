@@ -104,6 +104,36 @@ Tuple<float> Tuple<float>::operator-(){
 	return Point<float>(-x, -y, -z);
 }
 
+
+/////////////////
+//	  VECTOR   //
+/////////////////
+
+float Vector::operator * (Vector p)
+{
+	return x*y + p.x*p.y ;
+}
+
+Vector Vector::operator + (int p)
+{
+	return Vector(x+p, y+p, z+p) ;
+}
+
+
+Vector Vector::unitaryVector()
+{
+	float mag = sqrt(x*x + y*y + z*z);
+	Vector b(x/mag, y/mag, z/mag);    // vector b's length is always 1 
+	return b;
+}
+
+Vector Vector::normalVector()
+{
+	return Vector(y,-x);
+}
+
+
+
 /////////////////
 //     LIST    //
 /////////////////
@@ -112,10 +142,12 @@ Tuple<float> Tuple<float>::operator-(){
 List::~List(){
 	int size = (int)objects.size();
 	for (int i = 0 ; i < size; i++){
+		printf("hola\n");
 		delete objects[0];
 		objects.erase(objects.begin());
 	}
 	objects.clear();
+
 }
 
 

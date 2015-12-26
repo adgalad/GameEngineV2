@@ -10,13 +10,13 @@
 #define MainWindow_hpp
 
 
-#include "Renderer.hpp"
+#include "Widget.hpp"
 
 class MainWindow {
 	
 private:
 	SDL_Window   *window   = NULL;
-	
+	List subwidgets;
 public:
 	MainWindow(){
 		if (SDL_Init(0) < 0){
@@ -44,6 +44,12 @@ public:
 		Size size;
 		SDL_GetWindowSize(window, &size.w, &size.h);
 		return size;
+	}
+	
+	virtual void render(){
+		for (int i = 0 ; i < subwidgets.size(); i++){
+			((Widget*)subwidgets[i])->render();
+		}
 	}
 
 };

@@ -18,8 +18,6 @@ protected:
 	
 	void createPolygon(int w, int h){
 		
-		c = 1;
-		r = 1;
 		srcRect.w = w;
 		srcRect.h = h;
 		texture = Renderer::createTexture(SDL_PIXELFORMAT_ABGR8888,
@@ -83,12 +81,12 @@ public:
 		addVertex(p);
 	}
 	
-	virtual void renderTexture(Tuple<float> position,Tuple<int> frame){
+	virtual void renderTexture(Tuple<float> position){
 		if (!builded){
 			buildPolygon();
 			builded = true;
 		}
-		Texture::renderTexture(position, frame);
+		Texture::renderTexture(position, &srcRect);
 		
 	}
 

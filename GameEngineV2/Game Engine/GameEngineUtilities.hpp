@@ -95,6 +95,8 @@ public:
 	
 	Rect(int x, int y, int w, int h);
 	
+	Rect intersection(Rect a, Rect b){ return Rect(0,0,0,0);};
+	
 	SDL_Rect toSDLRect();
 	
 	Tuple<int> size();
@@ -104,12 +106,44 @@ public:
 
 
 
-template <typename type>
-class Vector : public Tuple<type> {
+
+class Vector : public Tuple<float> {
 public:
 	
-	Vector<type> operator*(Vector<type> b);
-	Vector<type> operator$(Vector<type> b);
+	Vector(float x, float y, float z = 0){
+		this->x = x;
+		this->y = y;
+	}
+	
+	float operator * (Vector p);
+
+	Vector operator + (int p);
+	
+	Vector unitaryVector();
+	
+	Vector normalVector();
+};
+
+class Segment
+{
+public:
+	Vector *p0, *p1;
+	float length;
+	
+	Segment(){}
+	
+	explicit Segment(Vector *v1, Vector *v2)
+	{
+		p0 = v1;
+		p1 = v2;
+		length = sqrtf((p1->x - p0->x) * (p1->x - p0->x) +
+					   (p1->y - p0->y) * (p1->y - p0->y) );
+	}
+
+	Vector direction()
+	{
+		return Vector(p1->x-p0->x, p1->y-p0->y);
+	}
 };
 
 

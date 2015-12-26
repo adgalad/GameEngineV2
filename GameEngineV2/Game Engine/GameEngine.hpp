@@ -9,6 +9,6 @@
 #ifndef GameEngine_hpp
 #define GameEngine_hpp
 
-#include <stdio.h>
+#include "Game.hpp"
 
 #endif /* GameEngine_hpp */

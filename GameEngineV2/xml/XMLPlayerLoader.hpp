@@ -17,13 +17,15 @@ class XMLPlayerLoader : public XMLEntityLoader {
 		loadEntity(p);
 	}
 public:
-	void load(List *players){
-		if (xmlDocument.empty()) {
+	virtual void load(List *players){
+		printf("Entro\n");
+		if (xmlDocument.empty() && node.empty()) {
 			printf("ERROR load a xml file first\n");
 			return;
 		}
 		node = xmlDocument.child("player");
 		while (node.empty() == false){
+			
 			Player *p = new Player();
 			loadPlayer(p);
 			

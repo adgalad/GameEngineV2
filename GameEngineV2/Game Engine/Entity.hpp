@@ -12,7 +12,7 @@
 #include "ListObject.hpp"
 #include "PhysicObject.hpp"
 
-class Entity : public PhysicObject, public ListObject{
+class Entity : public PhysicObject{
 	static int	__id;
 	
 public:
@@ -25,7 +25,7 @@ public:
 	}
 
 	virtual inline void loop(){
-		moveEvent();
+		PhysicObject::loop();
 	}
 	
 	virtual void eventHandler(SDL_Event *event, Uint8 *keyStates){

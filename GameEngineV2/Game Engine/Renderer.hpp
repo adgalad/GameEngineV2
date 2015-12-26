@@ -135,7 +135,8 @@ public:
 	static void renderCopy(SDL_Texture	*texture,
 						   Rect		*srcRect,
 						   Rect		*destRect,
-						   double		angle,
-						   bool			invert);
+						   bool		isStatic,
+						   double	angle,
+						   bool		invert);
 };
 #endif /* Renderer_hpp */

@@ -48,6 +48,7 @@ void Renderer::createRenderer(SDL_Window *window){
 void Renderer::renderCopy(SDL_Texture	*texture,
 						  Rect			*srcRect,
 						  Rect			*destRect,
+						  bool			isStatic,
 						  double		angle,
 						  bool			invert)
 {
@@ -57,9 +58,10 @@ void Renderer::renderCopy(SDL_Texture	*texture,
 		exit(EXIT_FAILURE);
 	}
 #endif
-	
-	destRect->x += camera->position.x;
-	destRect->y += camera->position.y;
+	if (!isStatic){
+		destRect->x += camera->position.x;
+		destRect->y += camera->position.y;
+	}
 
 	SDL_Rect srect = srcRect->toSDLRect();
 	SDL_Rect drect = destRect->toSDLRect();

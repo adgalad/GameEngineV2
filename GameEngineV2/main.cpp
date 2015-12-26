@@ -6,7 +6,7 @@
 //  Copyright © 2015 ARSC. All rights reserved.
 //
 
-#include "Game.hpp"
+#include "GameEngine.hpp"
 
 int main(int argc, const char * argv[]) {
 	

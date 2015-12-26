@@ -11,14 +11,16 @@
 
 #include "Texture.hpp"
 
-class TextureRenderer{
+class TextureRenderer : public ListObject{
 
 
 protected:
 	bool animated = false;
 	Texture *texture = NULL;
 	Tuple<int> currentFrame;
-	Rect   *frameRect = NULL;
+	Rect frameRect;
+	bool isStatic = false;
+	
 
 	Tuple<float> position;
 public:
@@ -44,9 +46,11 @@ public:
 	}
 	virtual inline void loadTextureById(int id){
 		texture = (Texture*)Texture::textures.getById(id);
+		frameRect = texture->getRect();
 	}
 	virtual inline void loadTextureByName(std::string name){
 		texture = (Texture*)Texture::textures.getByName(name);
+		frameRect = texture->getRect();
 	}
 	
 	inline void setAnimated(bool animated){
@@ -59,9 +63,13 @@ public:
 		position = p;
 	}
 	
+	virtual void loop(){
+		frameRect.x = frameRect.w*currentFrame.x;
+		frameRect.y = frameRect.h*currentFrame.y;
+	}
+	
 	virtual void render(){
 #ifdef GameEngineDebug
-
 		if (!texture){
 			printf("WARNING: trying to render a NULL Texture\ntexture: %p\n",texture);
 			texture = (Texture*)Texture::textures[0];
@@ -70,7 +78,7 @@ public:
 		if (animated) {
 			currentFrame.y = (currentFrame.y + 1) % texture->rows();
 		}
-		texture->renderTexture(position,currentFrame,angle,inverted,frameRect);
+		texture->renderTexture(position,&frameRect,isStatic,angle,inverted);
 	}
 	
 };

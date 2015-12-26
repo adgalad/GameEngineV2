@@ -44,8 +44,6 @@ protected:
 	string path = "";			 /**< Path to the image on disk. */
 	SDL_Texture *texture = NULL; /**< SDL_Texture used to render using the GPU*/
 	SDL_Surface *surface = NULL; /**< SDL_Surface used to create a SDL_Texture*/
-	int r = 1;					 /**< Number of rows. */
-	int c = 1;					 /**< Number of columns. */
 	Rect srcRect;			 /**< Part of the texture that will be rendered*/
 	
 public:
@@ -77,8 +75,6 @@ public:
 	
 	static Texture *createTargetTexture(Rect r){
 		Texture *t = new Texture();
-		t->c = 1;
-		t->r = 1;
 		t->srcRect.w = r.w;
 		t->srcRect.h = r.h;
 		t->texture = Renderer::createTexture(SDL_PIXELFORMAT_ABGR8888,
@@ -105,12 +101,12 @@ public:
 	/**
 	 Returns the number of rows. if the texture is not a sprite, it's always 1.
 	 */
-	inline int rows() {return r;}
+	virtual inline int rows() {return 1;}
 
 	/**
 	 Returns the number of columns. if the texture is not a sprite, it's always 1.
 	 */
-	inline int columns() {return c;}
+	virtual inline int columns() {return 1;}
 	
 	/**
 	 Get the texture dimensions or frame's dimension if its a sprite.
@@ -120,17 +116,20 @@ public:
 	/**
 	 Fill the texture with an image loaded from disk.
 	 */
-	void loadImage(string file, int rows, int columns);
+	virtual void loadImage(string file, int rows = 1, int columns = 1);
 	
 	/**
 	 Given the position and the frame that will be rendered,
 	 the Texture send the information needed to the Renderer.
 	 */
-	virtual void renderTexture(Tuple<float> position,Tuple<int> frame,
-							   int angle = 0, bool inverted = false,
-							   Rect *rect = NULL);
+	virtual void renderTexture(Tuple<float> position, Rect *srcRect, bool isStatic = false,
+							   int angle = 0, bool inverted = false);
 	
 	inline void setAsRenderTarget() { Renderer::setRendererTarget(texture); }
+	
+	virtual inline Rect getCollisionRect(Tuple<int> frame){
+		return srcRect;
+	}
 	
 };
 
