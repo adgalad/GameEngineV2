@@ -20,6 +20,28 @@ public:
 		frameRect = Rect(0, 0, w, h);
 	}
 	
+	virtual void eventHandler(){
+		int n = 10;
+		
+		if (EventHandler::event.type == SDL_KEYDOWN){
+			if (EventHandler::keyState[SDL_GetScancodeFromKey(SDLK_KP_2)]){
+				movePosition(Point<float>(0,n));
+				return;
+			}
+			if (EventHandler::keyState[SDL_GetScancodeFromKey(SDLK_KP_8)]){
+				movePosition(Point<float>(0,-n));
+				return;
+			}
+			if (EventHandler::keyState[SDL_GetScancodeFromKey(SDLK_KP_6)]){
+				movePosition(Point<float>(n,0));
+				return;
+			}
+			if (EventHandler::keyState[SDL_GetScancodeFromKey(SDLK_KP_4)]){
+				movePosition(Point<float>(-n,0));
+				return;
+			}
+		}
+	}
 //	virtual void loop(){
 //		
 //		

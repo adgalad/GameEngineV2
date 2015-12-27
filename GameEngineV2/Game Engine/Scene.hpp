@@ -17,7 +17,7 @@ class Scene : public Widget{
 	static int __id;
 	
 public:
-
+	
 	List entities;/**< List with all the Entity objects inside the scene */
 	List players; /**< List with all the Widget objects inside the scene */
 	
@@ -26,19 +26,23 @@ public:
 	}
 	Scene(){
 		_id = __id++;
+		isStatic = false;
 	};
 	
-	virtual void eventHandler(SDL_Event *event, Uint8 *keyStates){
-		switch (event->type) {
-		}
+	virtual void eventHandler(){
+		
+	}
+	
+	virtual void _eventHandler(){
+		eventHandler();
 		for (int i = 0; i < subwidgets.size(); i++){
-			((Widget*)subwidgets[i])->eventHandler(event, keyStates);
+			((Widget*)subwidgets[i])->_eventHandler();
 		}
 		for (int i = 0; i < entities.size(); i++) {
-			((Entity*)entities[i])->eventHandler(event, keyStates);
+			((Entity*)entities[i])->_eventHandler();
 		}
 		for (int i = 0; i < players.size(); i++) {
-			((Player*)players[i])->eventHandler(event, keyStates);
+			((Player*)players[i])->_eventHandler();
 		}
 		
 	}

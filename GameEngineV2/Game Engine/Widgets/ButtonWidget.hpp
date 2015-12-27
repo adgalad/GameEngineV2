@@ -18,6 +18,10 @@ class ButtonWidget : public Widget{
 		currentFrame.y = 1;
 	}
 	
+	virtual void eventHandler(){
+		
+	}
+	
 	virtual void released(bool inside){
 		printf("Button Released -- \n");
 		currentFrame.y = 0;

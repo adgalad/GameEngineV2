@@ -19,7 +19,20 @@
 #include "XMLSceneLoader.hpp"
 #include "ButtonWidget.hpp"
 #include "ContainerWidget.hpp"
+#include "Thread.hpp"
 using namespace std;
+
+static bool running = true;
+static bool finishMainLoop = true;
+
+static int loopFn(void *ptr)
+{
+	MainWindow *mainWindow = (MainWindow*)ptr;
+	mainWindow->loop();
+	Renderer::camera->loop();
+	
+	return 0;
+}
 
 class Game
 {
@@ -48,8 +61,6 @@ public:
 	}
 	
 	void start(){
-		bool running = true;
-
 		
 		XMLTextureLoader loader;
 		loader.openXMLFile("/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV2/GameEngineV2/textures.xml");
@@ -72,7 +83,7 @@ public:
 		b->loadTextureByName("boton");
 		b->setPosition(Point<float>(0,0));
 		
-		ContainerWidget *c = new ContainerWidget(Color(0,00,0,150), 300,700);
+		ContainerWidget *c = new ContainerWidget(Color(0,0,0,150), 300,700);
 		
 		c->addSubwidget(b);		
 		c->setPosition(Point<float>(180,100));
@@ -83,19 +94,21 @@ public:
 
 		Renderer::camera->setCameraTarget(p->getPosition());
 		Renderer::setCanvasSize(currentScene->getTextureSize());
-
+		
 		while(running){
 			
-			mainWindow.loop();
-			Renderer::camera->loop();
+			Thread loopThread = Thread(loopFn, "loop", (void*)&mainWindow);
+			
 			if (!(running = mainWindow.eventHandler())) break;
 			mainWindow.render();
 			
 			Renderer::renderPresent();
+			loopThread.waitThread();
+			
 			SDL_Delay(50);
+
 		}
 	}
-
 };
 
 

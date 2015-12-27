@@ -27,36 +27,36 @@ public:
 					SDLK_LEFT,
 					SDLK_RIGHT};
 	
-	virtual void eventHandler(SDL_Event *event, Uint8 *keyStates){
+	virtual void eventHandler(){
 		acceleration = Point<float>(0, 0);
 		int a = 8;
-		if (keyStates[SDL_GetScancodeFromKey(key[Up])]){
+		if (EventHandler::keyState[SDL_GetScancodeFromKey(key[Up])]){
 			acceleration.y += -a;
 			setAnimated(true);
 		}
-		if (keyStates[SDL_GetScancodeFromKey(key[Down])]){
+		if (EventHandler::keyState[SDL_GetScancodeFromKey(key[Down])]){
 			acceleration.y += a;
 			setAnimated(true);
 		}
 		
-		if (keyStates[SDL_GetScancodeFromKey(key[Left])]){
+		if (EventHandler::keyState[SDL_GetScancodeFromKey(key[Left])]){
 			acceleration.x += -a;
 			inverted = true;
 			setAnimated(true);
 		}
-		if (keyStates[SDL_GetScancodeFromKey(key[Right])]){
+		if (EventHandler::keyState[SDL_GetScancodeFromKey(key[Right])]){
 			acceleration.x += a;
 			inverted = false;
 			setAnimated(true);
 		}
 	
-		switch (event->type) {
+		switch (EventHandler::event.type) {
 			case SDL_KEYDOWN:
-				if (keyStates[SDL_GetScancodeFromKey(SDLK_m)])
+				if (EventHandler::keyState[SDL_GetScancodeFromKey(SDLK_m)])
 				{
 					
 				}
-				switch (event->key.keysym.sym) {
+				switch (EventHandler::event.key.keysym.sym) {
 					case SDLK_n:
 						break;
 						
@@ -66,10 +66,10 @@ public:
 				break;
 			
 			case SDL_KEYUP:
-				bool moveOnY =	keyStates[SDL_GetScancodeFromKey(key[Up])] ||
-								keyStates[SDL_GetScancodeFromKey(key[Down])],
-					 moveOnX =	keyStates[SDL_GetScancodeFromKey(key[Left])] ||
-								keyStates[SDL_GetScancodeFromKey(key[Right])];
+				bool moveOnY =	EventHandler::keyState[SDL_GetScancodeFromKey(key[Up])] ||
+								EventHandler::keyState[SDL_GetScancodeFromKey(key[Down])],
+					 moveOnX =	EventHandler::keyState[SDL_GetScancodeFromKey(key[Left])] ||
+								EventHandler::keyState[SDL_GetScancodeFromKey(key[Right])];
 
 				if ( !moveOnX && !moveOnY ){
 					setAnimated(false);
@@ -113,14 +113,14 @@ public:
 		angle+= 3;
 		Player::loop();
 	}
-	void eventHandler(SDL_Event *event, Uint8 *keyStates){
-		Player::eventHandler(event, keyStates);
-		switch (event->type) {
+	void eventHandler(){
+		Player::eventHandler();
+		switch (EventHandler::event.type) {
 			case SDL_KEYDOWN:
-				if (keyStates[SDL_GetScancodeFromKey(SDLK_COMMA)]){
+				if (EventHandler::keyState[SDL_GetScancodeFromKey(SDLK_COMMA)]){
 					removeVertex();
 				}
-				else if (keyStates[SDL_GetScancodeFromKey(SDLK_PERIOD)]){
+				else if (EventHandler::keyState[SDL_GetScancodeFromKey(SDLK_PERIOD)]){
 					addVertex();
 				}
 				break;

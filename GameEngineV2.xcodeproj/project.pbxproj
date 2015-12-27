@@ -41,6 +41,9 @@
 		07E606021C2EADFE00F3EB4B /* Containers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07E605FE1C2EA96C00F3EB4B /* Containers.cpp */; };
 		07E606031C2EADFE00F3EB4B /* Geometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07E605FF1C2EA96C00F3EB4B /* Geometry.cpp */; };
 		07E606041C2EADFE00F3EB4B /* Math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07E606001C2EA96C00F3EB4B /* Math.cpp */; };
+		07E606081C2EC85500F3EB4B /* EventHandlerObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07E606061C2EC85500F3EB4B /* EventHandlerObject.cpp */; };
+		07E6060B1C2EC9B900F3EB4B /* EventHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07E606091C2EC9B900F3EB4B /* EventHandler.cpp */; };
+		07E6060E1C2ED4C000F3EB4B /* Thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07E6060C1C2ED4C000F3EB4B /* Thread.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -153,6 +156,12 @@
 		07E605FF1C2EA96C00F3EB4B /* Geometry.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Geometry.cpp; sourceTree = "<group>"; };
 		07E606001C2EA96C00F3EB4B /* Math.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Math.cpp; sourceTree = "<group>"; };
 		07E606051C2EB77C00F3EB4B /* define.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = define.h; sourceTree = "<group>"; };
+		07E606061C2EC85500F3EB4B /* EventHandlerObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventHandlerObject.cpp; path = ../../Widgets/EventHandlerObject.cpp; sourceTree = "<group>"; };
+		07E606071C2EC85500F3EB4B /* EventHandlerObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = EventHandlerObject.hpp; path = ../Widgets/EventHandlerObject.hpp; sourceTree = "<group>"; };
+		07E606091C2EC9B900F3EB4B /* EventHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventHandler.cpp; path = ../EventHandler.cpp; sourceTree = "<group>"; };
+		07E6060A1C2EC9B900F3EB4B /* EventHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EventHandler.hpp; sourceTree = "<group>"; };
+		07E6060C1C2ED4C000F3EB4B /* Thread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Thread.cpp; path = ../Thread.cpp; sourceTree = "<group>"; };
+		07E6060D1C2ED4C000F3EB4B /* Thread.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Thread.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,7 +273,9 @@
 				07E279F21C1E8AF30004CBE7 /* Entity.hpp */,
 				07E279F31C1E8AF30004CBE7 /* Game.hpp */,
 				07E279F41C1E8AF30004CBE7 /* GameEngine.hpp */,
+				07E6060D1C2ED4C000F3EB4B /* Thread.hpp */,
 				07E279F61C1E8AF30004CBE7 /* MainWindow.hpp */,
+				07E6060A1C2EC9B900F3EB4B /* EventHandler.hpp */,
 				07E279F71C1E8AF30004CBE7 /* Player.hpp */,
 				07E279F81C1E8AF30004CBE7 /* Polygon.hpp */,
 				07E27A011C1E8AF30004CBE7 /* Renderer.hpp */,
@@ -282,6 +293,7 @@
 				07E279FA1C1E8AF30004CBE7 /* ListObject.hpp */,
 				07E279FB1C1E8AF30004CBE7 /* PhysicObject.hpp */,
 				07E27A001C1E8AF30004CBE7 /* TextureRenderer.hpp */,
+				07E606071C2EC85500F3EB4B /* EventHandlerObject.hpp */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -289,6 +301,7 @@
 		07E279FC1C1E8AF30004CBE7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				07E606061C2EC85500F3EB4B /* EventHandlerObject.cpp */,
 				07E279FD1C1E8AF30004CBE7 /* ListObject.cpp */,
 				07E279FE1C1E8AF30004CBE7 /* PhysicObject.cpp */,
 				07E279FF1C1E8AF30004CBE7 /* TextureRenderer.cpp */,
@@ -299,6 +312,8 @@
 		07E27A031C1E8AF30004CBE7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				07E6060C1C2ED4C000F3EB4B /* Thread.cpp */,
+				07E606091C2EC9B900F3EB4B /* EventHandler.cpp */,
 				07E27A041C1E8AF30004CBE7 /* Camera.cpp */,
 				07E27A051C1E8AF30004CBE7 /* Entity.cpp */,
 				07E27A061C1E8AF30004CBE7 /* Game.cpp */,
@@ -468,6 +483,7 @@
 				071AE64A1C1F6466004751FA /* Sprite.cpp in Sources */,
 				07A0D1341C1DE2E0008EBF83 /* XMLPlayerLoader.cpp in Sources */,
 				07A0D1351C1DE2E0008EBF83 /* XMLSceneLoader.cpp in Sources */,
+				07E606081C2EC85500F3EB4B /* EventHandlerObject.cpp in Sources */,
 				07E27A221C1E8AF30004CBE7 /* Player.cpp in Sources */,
 				07A0D1361C1DE2E0008EBF83 /* XMLTextureLoader.cpp in Sources */,
 				07A0D1371C1DE2E0008EBF83 /* pugixml.cpp in Sources */,
@@ -476,6 +492,7 @@
 				07E27A281C1E8AF30004CBE7 /* ContainerWidget.cpp in Sources */,
 				07E27A1D1C1E8AF30004CBE7 /* Entity.cpp in Sources */,
 				07E27A1E1C1E8AF30004CBE7 /* Game.cpp in Sources */,
+				07E6060E1C2ED4C000F3EB4B /* Thread.cpp in Sources */,
 				07E27A1F1C1E8AF30004CBE7 /* GameEngine.cpp in Sources */,
 				07E27A251C1E8AF30004CBE7 /* Scene.cpp in Sources */,
 				07E27A191C1E8AF30004CBE7 /* ListObject.cpp in Sources */,
@@ -487,6 +504,7 @@
 				07E27A1C1C1E8AF30004CBE7 /* Camera.cpp in Sources */,
 				07E27A211C1E8AF30004CBE7 /* MainWindow.cpp in Sources */,
 				07E27A1A1C1E8AF30004CBE7 /* PhysicObject.cpp in Sources */,
+				07E6060B1C2EC9B900F3EB4B /* EventHandler.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

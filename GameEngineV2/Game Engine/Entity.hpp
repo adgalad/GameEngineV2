@@ -9,10 +9,10 @@
 #ifndef Entity_hpp
 #define Entity_hpp
 
-#include "ListObject.hpp"
+#include "EventHandlerObject.hpp"
 #include "PhysicObject.hpp"
 
-class Entity : public PhysicObject{
+class Entity : public PhysicObject, public EventHandlerObject{
 	static int	__id;
 	
 public:
@@ -28,15 +28,15 @@ public:
 		PhysicObject::loop();
 	}
 	
-	virtual void eventHandler(SDL_Event *event, Uint8 *keyStates){
-		switch (event->type) {
+	virtual void eventHandler(){
+		switch (EventHandler::event.type) {
 				
 			case SDL_KEYDOWN:
-				if (keyStates[SDL_GetScancodeFromKey(SDLK_m)])
+				if (EventHandler::keyState[SDL_GetScancodeFromKey(SDLK_m)])
 				{
 					
 				}
-				switch (event->key.keysym.sym) {
+				switch (EventHandler::event.key.keysym.sym) {
 					case SDLK_n:
 						break;
 						
