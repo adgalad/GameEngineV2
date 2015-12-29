@@ -27,7 +27,7 @@ public:
 	};
 	
 
-	bool openXMLFile(string file){
+	virtual bool openXMLFile(string file){
 		if (!xmlDocument.load_file(file.c_str())) {
 			fprintf(stderr,"ERROR Couldn't load the xml file \nfile: %s\n",file.c_str());
 			return false;

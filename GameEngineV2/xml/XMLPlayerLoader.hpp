@@ -17,13 +17,19 @@ class XMLPlayerLoader : public XMLEntityLoader {
 		loadEntity(p);
 	}
 public:
+	
+	virtual bool openXMLFile(std::string file){
+		if (not XMLLoader::openXMLFile(file)) return false;
+		node = xmlDocument.child("player");
+		return true;
+	}
+	
 	virtual void load(List *players){
 		printf("Entro\n");
-		if (xmlDocument.empty() && node.empty()) {
-			printf("ERROR load a xml file first\n");
+		if (node.empty()) {
+			printf("ERROR (XMLPlayerLoader) load a xml node first\n");
 			return;
 		}
-		node = xmlDocument.child("player");
 		while (node.empty() == false){
 			
 			Player *p = new Player();

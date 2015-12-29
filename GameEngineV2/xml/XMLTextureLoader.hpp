@@ -14,46 +14,49 @@
 class XMLTextureLoader : public XMLLoader{
 
 public:
+	virtual bool openXMLFile(std::string file){
+		if (not XMLLoader::openXMLFile(file)) return false;
+		node = xmlDocument.child("texture");
+		return true;
+	}
+	
 	void load(){
-		if (xmlDocument.empty()) {
-			printf("ERROR load a xml file first\n");
+		if (node.empty()) {
+			printf("ERROR load a xml node first\n");
 			return;
 		}
-		
-		pugi::xml_node textureNode;
-		textureNode = xmlDocument.child("texture");
-		while (!textureNode.empty()){
+		while (!node.empty()){
 			Sprite *t = new Sprite();
 			/* Search for image path */
-			if (!textureNode.attribute("path").empty()){
+			if (!node.attribute("path").empty()){
 				int r,c;
 				
 				//Load number of rows
-				if (textureNode.attribute("rows").empty()) {
+				if (node.attribute("rows").empty()) {
 					r = 1;
 				} else {
-					r = textureNode.attribute("rows").as_int();
+					r = node.attribute("rows").as_int();
 				}
 				//Get number of columns
-				if (textureNode.attribute("columns").empty()) {
+				if (node.attribute("columns").empty()) {
 					c = 1;
 				} else {
-					c = textureNode.attribute("columns").as_int();
+					c = node.attribute("columns").as_int();
 				}
 				//Get path
-				string image = textureNode.attribute("path").as_string();
+				string image = node.attribute("path").as_string();
 				
 				//Load image on Texture
 				t->loadImage(image, r, c);
 			}
 			
 			/* Search for name */
-			if (!textureNode.attribute("name").empty()){
-				t->name = textureNode.attribute("name").as_string();
+			if (!node.attribute("name").empty()){
+				t->name = node.attribute("name").as_string();
 			} else {
 				t->name = "";
 			}
-			textureNode = textureNode.next_sibling("texture");
+			node = node.next_sibling("texture");
 		}
 	}
 };

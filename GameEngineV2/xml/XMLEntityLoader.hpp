@@ -38,12 +38,18 @@ protected:
 		}
 	}
 public:
+	
+	virtual bool openXMLFile(std::string file){
+		if (not XMLLoader::openXMLFile(file)) return false;
+		node = xmlDocument.child("entity");
+		return true;
+	}
+	
 	virtual void load(List *entities){
-		if (xmlDocument.empty() && node.empty()) {
-			printf("ERROR load a xml file first\n");
+		if (node.empty()) {
+			printf("ERROR (XMLEntityLoader) load a xml file first\n");
 			return;
 		}
-		node = xmlDocument.child("entity");
 		while (node.empty() == false) {
 			Entity *e = new Entity();
 			loadEntity(e);

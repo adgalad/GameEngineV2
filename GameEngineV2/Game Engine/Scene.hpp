@@ -48,6 +48,7 @@ public:
 	}
 	
 	virtual void loop(){
+
 		for (int i = 0; i < subwidgets.size(); i++){
 			((Widget*)subwidgets[i])->loop();
 		}
@@ -60,8 +61,8 @@ public:
 	}
 	
 	virtual void render(){
-		Widget::render();
-
+		TextureRenderer::render();
+		
 		for (int i = 0; i < entities.size(); i++) {
 			((Entity*)entities[i])->render();
 		}

@@ -44,6 +44,9 @@
 		07E606081C2EC85500F3EB4B /* EventHandlerObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07E606061C2EC85500F3EB4B /* EventHandlerObject.cpp */; };
 		07E6060B1C2EC9B900F3EB4B /* EventHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07E606091C2EC9B900F3EB4B /* EventHandler.cpp */; };
 		07E6060E1C2ED4C000F3EB4B /* Thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07E6060C1C2ED4C000F3EB4B /* Thread.cpp */; };
+		07FEE5301C2F686900CED6E3 /* XMLMainWindowLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07FEE52E1C2F686900CED6E3 /* XMLMainWindowLoader.cpp */; };
+		07FEE5331C2FAD2500CED6E3 /* XMLWidgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07FEE5311C2FAD2500CED6E3 /* XMLWidgets.cpp */; };
+		07FEE5361C2FAD7800CED6E3 /* TextTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07FEE5341C2FAD7800CED6E3 /* TextTexture.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -162,6 +165,12 @@
 		07E6060A1C2EC9B900F3EB4B /* EventHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EventHandler.hpp; sourceTree = "<group>"; };
 		07E6060C1C2ED4C000F3EB4B /* Thread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Thread.cpp; path = ../Thread.cpp; sourceTree = "<group>"; };
 		07E6060D1C2ED4C000F3EB4B /* Thread.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Thread.hpp; sourceTree = "<group>"; };
+		07FEE52E1C2F686900CED6E3 /* XMLMainWindowLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XMLMainWindowLoader.cpp; sourceTree = "<group>"; };
+		07FEE52F1C2F686900CED6E3 /* XMLMainWindowLoader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = XMLMainWindowLoader.hpp; sourceTree = "<group>"; };
+		07FEE5311C2FAD2500CED6E3 /* XMLWidgets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XMLWidgets.cpp; sourceTree = "<group>"; };
+		07FEE5321C2FAD2500CED6E3 /* XMLWidgets.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = XMLWidgets.hpp; sourceTree = "<group>"; };
+		07FEE5341C2FAD7800CED6E3 /* TextTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextTexture.cpp; sourceTree = "<group>"; };
+		07FEE5351C2FAD7800CED6E3 /* TextTexture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextTexture.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +232,9 @@
 				07A0D11F1C1DE20D008EBF83 /* XMLLoader.hpp */,
 				07A0D1211C1DE20D008EBF83 /* XMLPlayerLoader.hpp */,
 				07A0D1231C1DE20D008EBF83 /* XMLSceneLoader.hpp */,
+				07FEE52F1C2F686900CED6E3 /* XMLMainWindowLoader.hpp */,
+				07FEE5311C2FAD2500CED6E3 /* XMLWidgets.cpp */,
+				07FEE5321C2FAD2500CED6E3 /* XMLWidgets.hpp */,
 				07A0D1251C1DE20D008EBF83 /* XMLTextureLoader.hpp */,
 			);
 			path = xml;
@@ -241,6 +253,7 @@
 		07A0D1281C1DE24D008EBF83 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				07FEE52E1C2F686900CED6E3 /* XMLMainWindowLoader.cpp */,
 				07A0D11C1C1DE20D008EBF83 /* XMLEntityLoader.cpp */,
 				07A0D11E1C1DE20D008EBF83 /* XMLLoader.cpp */,
 				07A0D1201C1DE20D008EBF83 /* XMLPlayerLoader.cpp */,
@@ -282,6 +295,8 @@
 				07E27A021C1E8AF30004CBE7 /* Scene.hpp */,
 				071AE6491C1F6466004751FA /* Sprite.hpp */,
 				07E27A0F1C1E8AF30004CBE7 /* Texture.hpp */,
+				07FEE5341C2FAD7800CED6E3 /* TextTexture.cpp */,
+				07FEE5351C2FAD7800CED6E3 /* TextTexture.hpp */,
 			);
 			path = "Game Engine";
 			sourceTree = "<group>";
@@ -476,11 +491,13 @@
 				07E606011C2EADFE00F3EB4B /* Color.cpp in Sources */,
 				07E606021C2EADFE00F3EB4B /* Containers.cpp in Sources */,
 				07E606031C2EADFE00F3EB4B /* Geometry.cpp in Sources */,
+				07FEE5331C2FAD2500CED6E3 /* XMLWidgets.cpp in Sources */,
 				07E606041C2EADFE00F3EB4B /* Math.cpp in Sources */,
 				07E27A1B1C1E8AF30004CBE7 /* TextureRenderer.cpp in Sources */,
 				07A0D1321C1DE2E0008EBF83 /* XMLEntityLoader.cpp in Sources */,
 				07A0D1331C1DE2E0008EBF83 /* XMLLoader.cpp in Sources */,
 				071AE64A1C1F6466004751FA /* Sprite.cpp in Sources */,
+				07FEE5301C2F686900CED6E3 /* XMLMainWindowLoader.cpp in Sources */,
 				07A0D1341C1DE2E0008EBF83 /* XMLPlayerLoader.cpp in Sources */,
 				07A0D1351C1DE2E0008EBF83 /* XMLSceneLoader.cpp in Sources */,
 				07E606081C2EC85500F3EB4B /* EventHandlerObject.cpp in Sources */,
@@ -501,6 +518,7 @@
 				07E27A271C1E8AF30004CBE7 /* ButtonWidget.cpp in Sources */,
 				07E27A291C1E8AF30004CBE7 /* Widget.cpp in Sources */,
 				07E27A231C1E8AF30004CBE7 /* Polygon.cpp in Sources */,
+				07FEE5361C2FAD7800CED6E3 /* TextTexture.cpp in Sources */,
 				07E27A1C1C1E8AF30004CBE7 /* Camera.cpp in Sources */,
 				07E27A211C1E8AF30004CBE7 /* MainWindow.cpp in Sources */,
 				07E27A1A1C1E8AF30004CBE7 /* PhysicObject.cpp in Sources */,

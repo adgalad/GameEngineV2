@@ -46,12 +46,12 @@ protected:
 	SDL_Surface *surface = NULL; /**< SDL_Surface used to create a SDL_Texture*/
 	Rect srcRect;			 /**< Part of the texture that will be rendered*/
 	
+	Texture();
+	
 public:
 	static List textures;
-
-
 	
-	Texture();
+	static Texture createTexture();
 	
 	virtual ~Texture();
 	
@@ -84,9 +84,10 @@ public:
 		SDL_SetTextureBlendMode(t->texture, SDL_BLENDMODE_BLEND);
 		if (!t->texture){
 			fprintf(stderr
-					,"ERROR creating Target Texture texture\ntexture: %p\nid: %d\n%s\n"
+					,"ERROR creating Target Texture texture\ntexture: %p\nid: %d\nname: %s\n%s\n"
 					,t->texture
 					,t->_id
+					,t->name.c_str()
 					,SDL_GetError()
 					);
 			exit(EXIT_FAILURE);

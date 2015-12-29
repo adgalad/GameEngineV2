@@ -64,8 +64,7 @@ public:
 	}
 	
 	virtual void loop(){
-		frameRect.x = frameRect.w*currentFrame.x;
-		frameRect.y = frameRect.h*currentFrame.y;
+
 	}
 	
 	virtual void render(){
@@ -75,6 +74,8 @@ public:
 			texture = (Texture*)Texture::textures[0];
 		}
 #endif
+		frameRect.x = frameRect.w*currentFrame.x;
+		frameRect.y = frameRect.h*currentFrame.y;
 		if (animated) {
 			currentFrame.y = (currentFrame.y + 1) % texture->rows();
 		}

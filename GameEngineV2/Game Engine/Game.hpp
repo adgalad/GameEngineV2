@@ -20,6 +20,7 @@
 #include "ButtonWidget.hpp"
 #include "ContainerWidget.hpp"
 #include "Thread.hpp"
+#include "TextTexture.hpp"
 using namespace std;
 
 static bool running = true;
@@ -52,16 +53,18 @@ public:
 		SDL_DestroyRenderer(Renderer::renderer);
 		Renderer::camera   = NULL;
 		Renderer::renderer = NULL;
+		TTF_Quit();
 		IMG_Quit();
 		SDL_Quit();
 	}
 	void init(){
 		Texture::null();
+		TTF_Init();
 		
 	}
 	
 	void start(){
-		
+
 		XMLTextureLoader loader;
 		loader.openXMLFile("/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV2/GameEngineV2/textures.xml");
 		loader.load();
@@ -82,29 +85,33 @@ public:
 		ButtonWidget *b = new ButtonWidget();
 		b->loadTextureByName("boton");
 		b->setPosition(Point<float>(0,0));
+		b->setFont("/Library/Fonts/Arial Black.ttf", 30);
+		b->setTextPressedColor(Color(255,255,255));
+		b->setMessage("hola amigos");
 		
 		ContainerWidget *c = new ContainerWidget(Color(0,0,0,150), 300,700);
 		
 		c->addSubwidget(b);		
 		c->setPosition(Point<float>(180,100));
-
+		
 		mainWindow.addSubwidget(currentScene);
 		mainWindow.addSubwidget(c);
 		c->name = "container";
 
 		Renderer::camera->setCameraTarget(p->getPosition());
 		Renderer::setCanvasSize(currentScene->getTextureSize());
-		
+
 		while(running){
 			
 			Thread loopThread = Thread(loopFn, "loop", (void*)&mainWindow);
 			
 			if (!(running = mainWindow.eventHandler())) break;
 			mainWindow.render();
-			
+			loopThread.waitThread();			
 			Renderer::renderPresent();
-			loopThread.waitThread();
-			
+
+
+
 			SDL_Delay(50);
 
 		}

@@ -10,8 +10,8 @@
 #define Geometry_hpp
 
 #include "Math.hpp"
-
-
+#include "string"
+using namespace std;
 class Rect {
 	
 public:
@@ -32,6 +32,13 @@ public:
 	Tuple<int> size();
 	
 	Tuple<int> position();
+	
+	string toStr(){
+		return	"("  + to_string(x) +
+				", " + to_string(y) +
+				", " + to_string(w) +
+				", " + to_string(h) + ")";
+	}
 };
 
 
@@ -41,7 +48,9 @@ public:
 	int h = 0;
 	int d = 0;
 	
-	inline void setSize(int w, int h, int d = 0){
+	Size(){}
+	
+	Size(int w, int h, int d = 0){
 		this->w = w;
 		this->h = h;
 		this->d = d;

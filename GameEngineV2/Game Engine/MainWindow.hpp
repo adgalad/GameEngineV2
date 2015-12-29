@@ -17,8 +17,9 @@ class MainWindow {
 private:
 	SDL_Window   *window   = NULL;
 	List subwidgets;
+	
 public:
-	MainWindow(){
+	MainWindow(int w = 640, int h = 480, int flag = SDL_WINDOW_RESIZABLE){
 		if (SDL_Init(0) < 0){
 			fprintf(stderr, "ERROR initializing SDL.\n%s",SDL_GetError());
 			exit(EXIT_FAILURE);
@@ -26,9 +27,9 @@ public:
 		window = SDL_CreateWindow("Game Engine V2",			// window title
 								  SDL_WINDOWPOS_UNDEFINED,  // initial x position
 								  SDL_WINDOWPOS_UNDEFINED,  // initial y position
-								  640,                      // width, in pixels
-								  480,                      // height, in pixels
-								  SDL_WINDOW_RESIZABLE		// flags - see below
+								  w,						// width, in pixels
+								  h,						// height, in pixels
+								  flag						// flags - see below
 								  //SDL_WINDOW_MAXIMIZED
 								  );
 		Renderer::createRenderer(window);

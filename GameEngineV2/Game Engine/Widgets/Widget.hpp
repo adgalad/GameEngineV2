@@ -25,7 +25,6 @@ protected:
 	bool _pressed;
 	Widget *father = NULL;
 	List subwidgets;
-	
 
 	void updateVisualRect(){
 		Rect rect = texture->getRect();
@@ -176,8 +175,12 @@ public:
 		}
 	}
 	
-	
+	virtual void widgetRender(){
+		texture->renderTexture(Point(0, 0).to_float(), &frameRect,isStatic,angle,inverted);
+	}
 	virtual void render(){
+		frameRect.x = frameRect.w*currentFrame.x;
+		frameRect.y = frameRect.h*currentFrame.y;
 		if (hide) return;
 		if (!widgetTexture){
 			widgetTexture = Texture::createTargetTexture(texture->getRect());
@@ -187,7 +190,7 @@ public:
 		if (animated) {
 			currentFrame.y = (currentFrame.y + 1) % texture->rows();
 		}
-		texture->renderTexture(Point<float>(0, 0), &frameRect, true,angle,inverted);
+		widgetRender();
 
 		for (int i = 0 ; i < subwidgets.size() ; i++) {
 			((Widget*)subwidgets[i])->render();
@@ -206,7 +209,11 @@ public:
 	void addSubwidget(Widget *w){
 		w->father = this;
 		subwidgets.pushBack(w);
-		_visualRectUpdated = false;
+		updateVisualRect();
+	}
+	
+	inline Rect getVisualRect(){
+		return visualRect;
 	}
 	virtual void pressed(){
 		printf("pressed\n");

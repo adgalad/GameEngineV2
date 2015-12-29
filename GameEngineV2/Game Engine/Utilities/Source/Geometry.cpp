@@ -38,7 +38,6 @@ Tuple<int> Rect::position(){
 /////////////////
 
 Size Size::operator+(Size b){
-	Size r;
-	r.setSize(w+b.w, h+b.h, d+b.d);
+	Size r = Size(w+b.w, h+b.h, d+b.d);
 	return r;
 }

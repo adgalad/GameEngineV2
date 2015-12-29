@@ -54,6 +54,8 @@ Texture *Texture::null(){
 }
 
 void Texture::loadImage(string file, int rows, int columns){
+	SDL_DestroyTexture(texture);
+	SDL_FreeSurface(surface);
 	path = file;
 	surface = IMG_Load(path.c_str());
 
@@ -83,16 +85,19 @@ void Texture::renderTexture(Tuple<float> position,
 		exit(EXIT_FAILURE);
 	}
 
-	
 	Rect destRect;
-	destRect.w = srcRect->w;
-	destRect.h = srcRect->h;
 	destRect.x = (int)position.x;
 	destRect.y = (int)position.y;
-	Renderer::renderCopy(texture, srcRect, &destRect, isStatic, angle, inverted);
-
-
-
+	if (srcRect != NULL){
+		destRect.w = srcRect->w;
+		destRect.h = srcRect->h;
+		Renderer::renderCopy(texture, srcRect, &destRect, isStatic, angle, inverted);
+	}
+	else {
+		destRect.w = this->srcRect.w;
+		destRect.h = this->srcRect.h;
+		Renderer::renderCopy(texture, &this->srcRect, &destRect, isStatic, angle, inverted);
+	}
 
 
 }
