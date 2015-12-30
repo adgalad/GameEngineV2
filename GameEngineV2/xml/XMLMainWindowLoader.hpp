@@ -63,7 +63,7 @@ public:
 				string name = widgetsNode.name();
 				if (name == "scene"){
 					XMLSceneLoader sl;
-					Scene *scene;
+					Scene *scene = NULL;
 					sl.node = widgetsNode;
 					sl.load(scene);
 					if (scene) mainWindow->addSubwidget(scene);

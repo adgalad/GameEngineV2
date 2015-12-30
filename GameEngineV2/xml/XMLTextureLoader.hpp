@@ -26,7 +26,7 @@ public:
 			return;
 		}
 		while (!node.empty()){
-			Sprite *t = new Sprite();
+			Sprite *t = Sprite::createSprite(node.attribute("name").as_string());
 			/* Search for image path */
 			if (!node.attribute("path").empty()){
 				int r,c;
@@ -51,11 +51,9 @@ public:
 			}
 			
 			/* Search for name */
-			if (!node.attribute("name").empty()){
-				t->name = node.attribute("name").as_string();
-			} else {
-				t->name = "";
-			}
+
+
+
 			node = node.next_sibling("texture");
 		}
 	}

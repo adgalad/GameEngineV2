@@ -17,8 +17,8 @@ class ButtonWidget : public Widget{
 	TextTexture *pressedText;
 public:
 	ButtonWidget(){
-		text = new TextTexture();
-		pressedText = new TextTexture();
+		text = TextTexture::createTextTexture();
+		pressedText = TextTexture::createTextTexture();
 		
 	}
 	
@@ -41,7 +41,7 @@ public:
 		va_start(ap, message);
 		vsprintf(buf + strlen(buf), message, ap);
 		va_end(ap);
-		printf("%d\n",frameRect.w);
+		printf("** %d\n",frameRect.w);
 		text->setMessage(frameRect.w, buf);
 		pressedText->setMessage(frameRect.w, buf);
 		

@@ -51,7 +51,7 @@ protected:
 public:
 	static List textures;
 	
-	static Texture createTexture();
+	static Texture *createTextureWithImage(string image, string name = "");
 	
 	virtual ~Texture();
 	

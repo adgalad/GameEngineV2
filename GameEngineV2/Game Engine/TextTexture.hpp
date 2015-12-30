@@ -41,44 +41,25 @@ public:
 class TextTexture : public Texture {
 	Color color;
 	string font;
-	int size;
-public:
-	
+	string text;
+	int wrap;
+	Uint8 size;
+	static List textTextures;
 
 	TextTexture(){
 		setFont("/Library/Fonts/Arial.ttf", 15);
 		setColor(Color(0,0,0));
 		setMessage(0,".");
 	}
-	virtual ~TextTexture(){
-		Texture::~Texture();
-	}
-	void setColor(Color color){
-		this->color = color;
-	}
 	
-	void setFont(string font, int size){
-		this->font = font;
-		this->size = size;
-	}
-	
-	bool setMessage( int wrap, const char *message, ...){
-
-		char buf[1024];
-		sprintf(buf, "");
-		va_list ap;
-		va_start(ap, message);
-		vsprintf(buf + strlen(buf), message, ap);
-		
-		
+	bool createTexture()
+	{
 		SDL_DestroyTexture(texture);
 		SDL_FreeSurface(surface);
-		texture = NULL;
-		surface = NULL;
 		surface = TTF_RenderText_Blended_Wrapped(Font(font,size).getFont(),
-												buf,
-												color.to_SDL_Color(),
-												wrap
+												 text.c_str(),
+												 color.to_SDL_Color(),
+												 wrap
 												 );
 		if(!surface)
 		{
@@ -94,8 +75,43 @@ public:
 		else {
 			srcRect = Rect(0,0,surface->w,surface->h);
 		}
-
+		
 		return true;
 	}
+public:
+	
+	static TextTexture *createTextTexture(string name = ""){
+		TextTexture *texture = new TextTexture();
+		if (name == "") texture->name = "text "+to_string(texture->_id);
+		else texture->name = name;
+		textTextures.pushBack(texture);
+		
+		return texture;
+	}
+
+	virtual ~TextTexture(){
+		Texture::~Texture();
+	}
+	void setColor(Color color){
+		this->color = color;
+	}
+	
+	void setFont(string font, int size){
+		this->font = font;
+		this->size = size;
+	}
+	
+	bool setMessage( int wrap, const char *text, ...){
+
+		char buf[1024];
+		sprintf(buf, "");
+		va_list ap;
+		va_start(ap, text);
+		vsprintf(buf + strlen(buf), text, ap);
+		this->text = text;
+		this->wrap = wrap;
+		return createTexture();
+	}
+	
 };
 #endif /* TextTexture_hpp */

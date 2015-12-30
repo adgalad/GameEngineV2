@@ -31,20 +31,32 @@ public:
 		acceleration = Point<float>(0, 0);
 		int a = 8;
 		if (EventHandler::keyState[SDL_GetScancodeFromKey(key[Up])]){
-			acceleration.y += -a;
-			setAnimated(true);
+			if (EventHandler::keyState[SDL_GetScancodeFromKey(key[Down])]){
+				acceleration.y = 0;
+				setAnimated(false);
+			}
+			else{
+				acceleration.y += -a;
+				setAnimated(true);
+			}
 		}
-		if (EventHandler::keyState[SDL_GetScancodeFromKey(key[Down])]){
+		else if (EventHandler::keyState[SDL_GetScancodeFromKey(key[Down])]){
 			acceleration.y += a;
 			setAnimated(true);
 		}
 		
 		if (EventHandler::keyState[SDL_GetScancodeFromKey(key[Left])]){
-			acceleration.x += -a;
-			inverted = true;
-			setAnimated(true);
+			if (EventHandler::keyState[SDL_GetScancodeFromKey(key[Right])]){
+				acceleration.x = 0;
+				setAnimated(false);
+			}
+			else{
+				acceleration.x += -a;
+				inverted = true;
+				setAnimated(true);
+			}
 		}
-		if (EventHandler::keyState[SDL_GetScancodeFromKey(key[Right])]){
+		else if (EventHandler::keyState[SDL_GetScancodeFromKey(key[Right])]){
 			acceleration.x += a;
 			inverted = false;
 			setAnimated(true);

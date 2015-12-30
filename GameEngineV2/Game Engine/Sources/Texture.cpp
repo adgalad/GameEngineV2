@@ -13,9 +13,17 @@ List Texture::textures;
 Texture::Texture() {
 	_id = __id++;
 	name = "texture "+std::to_string( _id );
-	textures.pushBack(this);
 	srcRect = Rect(0, 0, 0, 0);
 
+}
+
+Texture *Texture::createTextureWithImage(string image, string name){
+	Texture *texture = new Texture();
+	if (name == "") texture->name = "texture "+to_string(texture->_id);
+	else texture->name = name;
+	texture->loadImage(image);
+	textures.pushBack(texture);
+	return texture;
 }
 
 Texture::~Texture(){
@@ -43,12 +51,13 @@ Texture *Texture::createRGBTexture(Color color,
 
 	RGBTexture->srcRect = Rect(0, 0, w, h);
 	RGBTexture->texture = Renderer::createTextureFromSurface(RGBTexture->surface);
-	
+	textures.pushBack(RGBTexture);
 	return RGBTexture;
 }
 
 Texture *Texture::null(){
 	Texture *texture = new Texture;
+	textures.pushBack(texture);
 	texture->loadImage(NULL_TEXTURE, 1, 1);
 	return texture;
 }

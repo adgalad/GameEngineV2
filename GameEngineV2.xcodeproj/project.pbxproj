@@ -168,7 +168,7 @@
 		07FEE52E1C2F686900CED6E3 /* XMLMainWindowLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XMLMainWindowLoader.cpp; sourceTree = "<group>"; };
 		07FEE52F1C2F686900CED6E3 /* XMLMainWindowLoader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = XMLMainWindowLoader.hpp; sourceTree = "<group>"; };
 		07FEE5311C2FAD2500CED6E3 /* XMLWidgets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XMLWidgets.cpp; sourceTree = "<group>"; };
-		07FEE5321C2FAD2500CED6E3 /* XMLWidgets.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = XMLWidgets.hpp; sourceTree = "<group>"; };
+		07FEE5321C2FAD2500CED6E3 /* XMLWidgetLoader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = XMLWidgetLoader.hpp; sourceTree = "<group>"; };
 		07FEE5341C2FAD7800CED6E3 /* TextTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextTexture.cpp; sourceTree = "<group>"; };
 		07FEE5351C2FAD7800CED6E3 /* TextTexture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextTexture.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -233,8 +233,7 @@
 				07A0D1211C1DE20D008EBF83 /* XMLPlayerLoader.hpp */,
 				07A0D1231C1DE20D008EBF83 /* XMLSceneLoader.hpp */,
 				07FEE52F1C2F686900CED6E3 /* XMLMainWindowLoader.hpp */,
-				07FEE5311C2FAD2500CED6E3 /* XMLWidgets.cpp */,
-				07FEE5321C2FAD2500CED6E3 /* XMLWidgets.hpp */,
+				07FEE5321C2FAD2500CED6E3 /* XMLWidgetLoader.hpp */,
 				07A0D1251C1DE20D008EBF83 /* XMLTextureLoader.hpp */,
 			);
 			path = xml;
@@ -253,6 +252,7 @@
 		07A0D1281C1DE24D008EBF83 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				07FEE5311C2FAD2500CED6E3 /* XMLWidgets.cpp */,
 				07FEE52E1C2F686900CED6E3 /* XMLMainWindowLoader.cpp */,
 				07A0D11C1C1DE20D008EBF83 /* XMLEntityLoader.cpp */,
 				07A0D11E1C1DE20D008EBF83 /* XMLLoader.cpp */,

@@ -18,6 +18,8 @@ protected:
 	
 	int r = 1;					 /**< Number of rows. */
 	int c = 1;					 /**< Number of columns. */
+	
+	Sprite(){};
 public:
 	
 	virtual void loadImage(string file, int rows, int columns){
@@ -33,6 +35,14 @@ public:
 		}
 	}
 
+	static Sprite *createSprite(string name)
+	{
+		Sprite *sprite = new Sprite();
+		if (name == "") sprite->name = "text "+to_string(sprite->_id);
+		else sprite->name = name;
+		Texture::textures.pushBack(sprite);
+		return sprite;
+	}
 	/**
 	 Returns the number of rows. if the texture is not a sprite, it's always 1.
 	 */
