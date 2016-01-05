@@ -27,11 +27,12 @@ public:
 					SDLK_LEFT,
 					SDLK_RIGHT};
 	
-	virtual void eventHandler(){
+	virtual bool eventHandler(){
 		acceleration = Point<float>(0, 0);
+		Uint8 *keyState = EventHandler::get()->keyState;
 		int a = 8;
-		if (EventHandler::keyState[SDL_GetScancodeFromKey(key[Up])]){
-			if (EventHandler::keyState[SDL_GetScancodeFromKey(key[Down])]){
+		if (keyState[SDL_GetScancodeFromKey(key[Up])]){
+			if (keyState[SDL_GetScancodeFromKey(key[Down])]){
 				acceleration.y = 0;
 				setAnimated(false);
 			}
@@ -40,13 +41,13 @@ public:
 				setAnimated(true);
 			}
 		}
-		else if (EventHandler::keyState[SDL_GetScancodeFromKey(key[Down])]){
+		else if (keyState[SDL_GetScancodeFromKey(key[Down])]){
 			acceleration.y += a;
 			setAnimated(true);
 		}
 		
-		if (EventHandler::keyState[SDL_GetScancodeFromKey(key[Left])]){
-			if (EventHandler::keyState[SDL_GetScancodeFromKey(key[Right])]){
+		if (keyState[SDL_GetScancodeFromKey(key[Left])]){
+			if (keyState[SDL_GetScancodeFromKey(key[Right])]){
 				acceleration.x = 0;
 				setAnimated(false);
 			}
@@ -56,19 +57,19 @@ public:
 				setAnimated(true);
 			}
 		}
-		else if (EventHandler::keyState[SDL_GetScancodeFromKey(key[Right])]){
+		else if (keyState[SDL_GetScancodeFromKey(key[Right])]){
 			acceleration.x += a;
 			inverted = false;
 			setAnimated(true);
 		}
 	
-		switch (EventHandler::event.type) {
+		switch (EventHandler::get()->event.type) {
 			case SDL_KEYDOWN:
-				if (EventHandler::keyState[SDL_GetScancodeFromKey(SDLK_m)])
+				if (keyState[SDL_GetScancodeFromKey(SDLK_m)])
 				{
 					
 				}
-				switch (EventHandler::event.key.keysym.sym) {
+				switch (EventHandler::get()->event.key.keysym.sym) {
 					case SDLK_n:
 						break;
 						
@@ -78,10 +79,10 @@ public:
 				break;
 			
 			case SDL_KEYUP:
-				bool moveOnY =	EventHandler::keyState[SDL_GetScancodeFromKey(key[Up])] ||
-								EventHandler::keyState[SDL_GetScancodeFromKey(key[Down])],
-					 moveOnX =	EventHandler::keyState[SDL_GetScancodeFromKey(key[Left])] ||
-								EventHandler::keyState[SDL_GetScancodeFromKey(key[Right])];
+				bool moveOnY =	keyState[SDL_GetScancodeFromKey(key[Up])] ||
+								keyState[SDL_GetScancodeFromKey(key[Down])],
+					 moveOnX =	keyState[SDL_GetScancodeFromKey(key[Left])] ||
+								keyState[SDL_GetScancodeFromKey(key[Right])];
 
 				if ( !moveOnX && !moveOnY ){
 					setAnimated(false);
@@ -96,7 +97,9 @@ public:
 					stopX();
 				}
 		}
+		return true;
 	}
+	
 };
 
 class PlayerPoligonito : public Player {
@@ -125,20 +128,22 @@ public:
 		angle+= 3;
 		Player::loop();
 	}
-	void eventHandler(){
+	virtual bool eventHandler(){
 		Player::eventHandler();
-		switch (EventHandler::event.type) {
+		Uint8 *keyState = EventHandler::get()->keyState;
+		switch (EventHandler::get()->event.type) {
 			case SDL_KEYDOWN:
-				if (EventHandler::keyState[SDL_GetScancodeFromKey(SDLK_COMMA)]){
+				if (keyState[SDL_GetScancodeFromKey(SDLK_COMMA)]){
 					removeVertex();
 				}
-				else if (EventHandler::keyState[SDL_GetScancodeFromKey(SDLK_PERIOD)]){
+				else if (keyState[SDL_GetScancodeFromKey(SDLK_PERIOD)]){
 					addVertex();
 				}
 				break;
 			default:
 				break;
 		}
+		return true;
 	}
 	
 };

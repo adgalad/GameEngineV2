@@ -60,14 +60,15 @@ public:
 		currentFrame.y = 1;
 	}
 	
-	virtual void eventHandler(){
-		
+	virtual bool eventHandler(){
+		return true;
 	}
 	
 	virtual void released(bool inside){
-		printf("Button Released -- \n");
+		
 		currentFrame.y = 0;
 		if (inside){
+			printf("Button Released -- \n");
 			father->setHide(true);
 		}
 	}

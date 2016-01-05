@@ -16,6 +16,7 @@ class MainWindow {
 	
 private:
 	SDL_Window   *window   = NULL;
+	Rect rect;
 	List subwidgets;
 	
 public:
@@ -32,7 +33,8 @@ public:
 								  flag						// flags - see below
 								  //SDL_WINDOW_MAXIMIZED
 								  );
-		Renderer::createRenderer(window);
+		rect = Rect(0,0,w,h);
+		Renderer::get()->setWindow(window);
 		printf("SDL was initialized succesfully.\n");
 	}
 	
@@ -41,31 +43,31 @@ public:
 		window = NULL;
 		SDL_QuitSubSystem(SDL_INIT_EVERYTHING);
 	}
-	Size getWindowSize(){
-		Size size;
-		SDL_GetWindowSize(window, &size.w, &size.h);
-		return size;
+	Rect getRect(){
+		return rect;
 	}
 	
 	
 	virtual bool eventHandler(){
-		EventHandler::getKeyState();
-		while(SDL_PollEvent(&EventHandler::event))
+		EventHandler::get()->updateKeyState();
+		Uint8 *keyState = EventHandler::get()->keyState;
+		while(SDL_PollEvent(&EventHandler::get()->event))
 		{
-			switch (EventHandler::event.type) {
+			switch (EventHandler::get()->event.type) {
 				case SDL_QUIT:
 					return false;
 					
 				case SDL_KEYDOWN:
-					if (EventHandler::keyState[SDL_GetScancodeFromKey(SDLK_ESCAPE)])
+					if (keyState[SDL_GetScancodeFromKey(SDLK_ESCAPE)])
 					{
 						return false;
 					}
-					if (EventHandler::keyState[SDL_GetScancodeFromKey(SDLK_m)])
+					if (keyState[SDL_GetScancodeFromKey(SDLK_m)])
 					{
 						
 					}
-					switch (EventHandler::event.key.keysym.sym) {
+
+					switch (EventHandler::get()->event.key.keysym.sym) {
 						case SDLK_n:{
 							Widget *w = (Widget*)subwidgets.getByName("container");
 							w->setHide(false);
@@ -88,6 +90,7 @@ public:
 	
 	
 	virtual void loop(){
+		SDL_GetWindowSize(window, &rect.w, &rect.h);
 		for (int i = 0 ; i < subwidgets.size(); i++){
 			((Widget*)subwidgets[i])->loop();
 		}

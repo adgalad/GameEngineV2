@@ -15,25 +15,16 @@ class XMLEntityLoader : public XMLLoader {
 protected:
 	
 	void loadEntity(Entity *e){
-		if (!node.attribute("name").empty()){
-			e->name = node.attribute("name").as_string();
-		}
-		if (!node.attribute("texture").empty()){
-			string texture = node.attribute("texture").as_string();
-			e->loadTextureByName(texture);
-		}
-		if (!node.attribute("X").empty() &&
-			!node.attribute("Y").empty()){
-			e->setPosition(Point<float>(node.attribute("X").as_float(),
-									   node.attribute("Y").as_float()));
-		}
+
+		e->name = node.attribute("name").as_string(e->name.c_str());
+		e->loadTextureByName(node.attribute("texture").as_string());
+		e->setPosition(Point<float>(node.attribute("X").as_float(),
+									node.attribute("Y").as_float()));
+
 		pugi::xml_node script = node.child("script");
 		while (script.empty() == false){
-			if (!script.attribute("path").empty()){
-				string path = script.attribute("path").as_string();
-				e->script_paths.push_back(path);
-				
-			}
+			string path = script.attribute("path").as_string("No Script Here.");
+			e->script_paths.push_back(path);
 			script = script.next_sibling("script");
 		}
 	}

@@ -88,6 +88,25 @@
 		07A0D14E1C1DE44B008EBF83 /* scene.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = scene.xml; path = GameEngineV2/scene.xml; sourceTree = "<group>"; };
 		07A0D14F1C1DE44B008EBF83 /* Textures.lua */ = {isa = PBXFileReference; lastKnownFileType = text; name = Textures.lua; path = GameEngineV2/Textures.lua; sourceTree = "<group>"; };
 		07A0D1501C1DE44B008EBF83 /* textures.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = textures.xml; path = GameEngineV2/textures.xml; sourceTree = "<group>"; };
+		07D07E2F1C33E348002241FF /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		07D07E301C33E348002241FF /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
+		07D07E311C33E348002241FF /* board.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = board.jpg; sourceTree = "<group>"; };
+		07D07E321C33E348002241FF /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
+		07D07E331C33E348002241FF /* cosa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cosa.png; sourceTree = "<group>"; };
+		07D07E341C33E348002241FF /* coso.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coso.png; sourceTree = "<group>"; };
+		07D07E351C33E348002241FF /* ErrorTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ErrorTexture.jpg; sourceTree = "<group>"; };
+		07D07E361C33E348002241FF /* ground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ground.jpg; sourceTree = "<group>"; };
+		07D07E371C33E348002241FF /* ken.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ken.png; sourceTree = "<group>"; };
+		07D07E381C33E348002241FF /* paisaje.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = paisaje.jpg; sourceTree = "<group>"; };
+		07D07E391C33E348002241FF /* pieces.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pieces.png; sourceTree = "<group>"; };
+		07D07E3A1C33E348002241FF /* sf2-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "sf2-bg.jpg"; sourceTree = "<group>"; };
+		07D07E3B1C33E348002241FF /* sf2-ground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "sf2-ground.jpg"; sourceTree = "<group>"; };
+		07D07E3C1C33E348002241FF /* sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sprite.png; sourceTree = "<group>"; };
+		07D07E3D1C33E348002241FF /* Tree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tree.png; sourceTree = "<group>"; };
+		07D07E3E1C33E348002241FF /* wall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wall.jpg; sourceTree = "<group>"; };
+		07D07E3F1C33E348002241FF /* yoshi copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yoshi copy.png"; sourceTree = "<group>"; };
+		07D07E401C33E348002241FF /* yoshi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yoshi.png; sourceTree = "<group>"; };
+		07D07E411C33E348002241FF /* yoshi2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yoshi2.png; sourceTree = "<group>"; };
 		07E279F11C1E8AF30004CBE7 /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
 		07E279F21C1E8AF30004CBE7 /* Entity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Entity.hpp; sourceTree = "<group>"; };
 		07E279F31C1E8AF30004CBE7 /* Game.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
@@ -192,6 +211,7 @@
 		0700CC3D1BFE7A75009A4AFA = {
 			isa = PBXGroup;
 			children = (
+				07D07E2E1C33E348002241FF /* Resources */,
 				07A0D1311C1DE2AE008EBF83 /* Frameworks and Libraries */,
 				0700CC481BFE7A75009A4AFA /* GameEngineV2 */,
 				07E27A181C1E8AF30004CBE7 /* main.cpp */,
@@ -273,6 +293,33 @@
 				07A0D12C1C1DE2A0008EBF83 /* SDL2_ttf.framework */,
 			);
 			name = "Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		07D07E2E1C33E348002241FF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				07D07E2F1C33E348002241FF /* background.png */,
+				07D07E301C33E348002241FF /* bg.jpg */,
+				07D07E311C33E348002241FF /* board.jpg */,
+				07D07E321C33E348002241FF /* button.png */,
+				07D07E331C33E348002241FF /* cosa.png */,
+				07D07E341C33E348002241FF /* coso.png */,
+				07D07E351C33E348002241FF /* ErrorTexture.jpg */,
+				07D07E361C33E348002241FF /* ground.jpg */,
+				07D07E371C33E348002241FF /* ken.png */,
+				07D07E381C33E348002241FF /* paisaje.jpg */,
+				07D07E391C33E348002241FF /* pieces.png */,
+				07D07E3A1C33E348002241FF /* sf2-bg.jpg */,
+				07D07E3B1C33E348002241FF /* sf2-ground.jpg */,
+				07D07E3C1C33E348002241FF /* sprite.png */,
+				07D07E3D1C33E348002241FF /* Tree.png */,
+				07D07E3E1C33E348002241FF /* wall.jpg */,
+				07D07E3F1C33E348002241FF /* yoshi copy.png */,
+				07D07E401C33E348002241FF /* yoshi.png */,
+				07D07E411C33E348002241FF /* yoshi2.png */,
+			);
+			name = Resources;
+			path = GameEngineV2/Resources;
 			sourceTree = "<group>";
 		};
 		07E279F01C1E8AF30004CBE7 /* Game Engine */ = {
@@ -554,7 +601,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -596,6 +643,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -611,6 +659,7 @@
 		0700CC4E1BFE7A75009A4AFA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_OPTIMIZATION_LEVEL = 3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GameEngineV2/lua/lua",
@@ -622,6 +671,7 @@
 		0700CC4F1BFE7A75009A4AFA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_OPTIMIZATION_LEVEL = 3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GameEngineV2/lua/lua",

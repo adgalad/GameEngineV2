@@ -14,5 +14,5 @@
 
 class XMLWidgetLoader : public XMLLoader {
 	
-}
+};
 #endif /*  XMLWidgetLoader_hpp */

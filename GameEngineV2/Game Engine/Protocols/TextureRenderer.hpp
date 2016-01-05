@@ -21,6 +21,7 @@ protected:
 	Rect frameRect;
 	bool isStatic = false;
 	
+	
 
 	Tuple<float> position;
 public:
@@ -58,8 +59,11 @@ public:
 		if (!animated) currentFrame.y = 0;
 	}
 	
-	inline Tuple<float> *getPosition()             { return &position; }
-	inline void         setPosition(Tuple<float> p){
+	inline Tuple<float> getPosition() {
+		return position;
+	}
+	
+	inline void setPosition(Tuple<float> p){
 		position = p;
 	}
 	

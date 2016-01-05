@@ -10,17 +10,29 @@
 #define EventHandler_hpp
 
 #include <SDL2/SDL.h>
-
+class Game;
 class EventHandler {
-
+	friend Game;
+	static EventHandler *__eventHandler_instance__;
 	
+	EventHandler(){};
+	
+	virtual ~EventHandler(){
+
+	}
+
 public:
 	
-	static SDL_Event event;
-	static Uint8 *keyState;
-	static bool running;
-	
-	static void getKeyState(){
+	static EventHandler *get(){
+		if (__eventHandler_instance__ == NULL) {
+			__eventHandler_instance__ = new EventHandler();
+		}
+		return __eventHandler_instance__;
+	}
+	SDL_Event event;
+	bool running;
+	Uint8 *keyState = NULL;
+	void updateKeyState(){
 		keyState = (Uint8*)SDL_GetKeyboardState(NULL);
 	}
 };

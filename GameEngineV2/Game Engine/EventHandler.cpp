@@ -8,5 +8,4 @@
 
 #include "EventHandler.hpp"
 
-SDL_Event EventHandler::event;
-Uint8  *EventHandler::keyState;
+EventHandler *EventHandler::__eventHandler_instance__;

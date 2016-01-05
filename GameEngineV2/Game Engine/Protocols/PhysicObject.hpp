@@ -20,6 +20,7 @@ protected:
 
 	
 public:
+	Rect         canvasSize;
 	float gravity = 9.8;
 	float maxSpeed  = 16;
 	
@@ -59,12 +60,12 @@ public:
 		
 		if (position.x < 0)
 			position.x = 0;
-		else if (position.x + texture->getRect().w > Renderer::canvasSize.w)
-			position.x = Renderer::canvasSize.w - texture->getRect().w;
+		else if (position.x + texture->getRect().w > canvasSize.w)
+			position.x = canvasSize.w - texture->getRect().w;
 		if (position.y < 0)
 			position.y = 0;
-		else if (position.y + texture->getRect().h > Renderer::canvasSize.h)
-			position.y = Renderer::canvasSize.h - texture->getRect().h;
+		else if (position.y + texture->getRect().h > canvasSize.h)
+			position.y = canvasSize.h - texture->getRect().h;
 	}
 	
 	static bool collision(PhysicObject *a, PhysicObject *b){

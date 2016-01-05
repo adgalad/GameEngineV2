@@ -20,7 +20,7 @@ protected:
 		
 		srcRect.w = w;
 		srcRect.h = h;
-		texture = Renderer::createTexture(SDL_PIXELFORMAT_ABGR8888,
+		texture = Renderer::get()->createTexture(SDL_PIXELFORMAT_ABGR8888,
 										  SDL_TEXTUREACCESS_TARGET,
 										  srcRect.w,
 										  srcRect.h);
@@ -45,19 +45,19 @@ public:
 	void buildPolygon()
 	{
 		createPolygon(srcRect.w, srcRect.h);
-		Renderer::setRendererTarget(texture);
-		Renderer::clearRender();
-		Renderer::setRenderColor(color);
+		Renderer::get()->setRendererTarget(texture);
+		Renderer::get()->clearRender();
+		Renderer::get()->setRenderColor(color);
 		if(vertexs.size() == 0) return;
 		if(vertexs.size() == 1) {
-			Renderer::drawPoint(vertexs[0]);
+			Renderer::get()->drawPoint(vertexs[0]);
 		}
 		else {
 			
-			Renderer::drawLines(&vertexs[0], (int)vertexs.size());
+			Renderer::get()->drawLines(&vertexs[0], (int)vertexs.size());
 		}
-		Renderer::setRenderColor(Color(0, 0, 0, 0));
-		Renderer::setRendererTarget(NULL);
+		Renderer::get()->setRenderColor(Color(0, 0, 0, 0));
+		Renderer::get()->setRendererTarget(NULL);
 	}
 	virtual inline void addVertex(SDL_Point point){
 		if (point.x < 0) point.x = 0;

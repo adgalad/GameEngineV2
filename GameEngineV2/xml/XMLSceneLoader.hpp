@@ -21,16 +21,17 @@ public:
 		return true;
 	}
 	
+	void loadScene(Scene *scene){
+		scene->loadTextureByName(node.attribute("texture").as_string());
+	}
+	
 	void load(Scene *scene){
 		if (node.empty()) {
 			printf("ERROR: (XMLSceneLoader) load a XML node first\n");
 			return;
 		}
+		loadScene(scene);
 		
-		if (!node.attribute("texture").empty()){
-			scene->loadTextureByName(node.attribute("texture").as_string());
-		}
-
 		XMLEntityLoader entityLoader;
 		XMLPlayerLoader playerLoader;
 		
@@ -45,7 +46,6 @@ public:
 		
 		pugi::xml_node auxiliarNode = node.child("entityXML");
 		while(auxiliarNode.empty() == false){
-		
 			entityLoader.openXMLFile(auxiliarNode.attribute("path").as_string());
 			entityLoader.load(&scene->entities);
 			auxiliarNode = auxiliarNode.next_sibling("entityXML");

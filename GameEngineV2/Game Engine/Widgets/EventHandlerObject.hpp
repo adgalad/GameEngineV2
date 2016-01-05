@@ -20,7 +20,9 @@ public:
 		eventHandler();
 	}
 
-	virtual void eventHandler(){}
+	virtual bool eventHandler(){
+		return true;
+	}
 
 };
 #endif /* EventHandlerObject_hpp */

@@ -14,7 +14,7 @@
 class Sprite : public Texture {
 protected:
 	vector<Rect> collisionRects;
-	vector<int>  collisionMap;
+	vector<int>  spriteMap;
 	
 	int r = 1;					 /**< Number of rows. */
 	int c = 1;					 /**< Number of columns. */

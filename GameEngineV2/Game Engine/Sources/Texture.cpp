@@ -50,7 +50,7 @@ Texture *Texture::createRGBTexture(Color color,
 				 );
 
 	RGBTexture->srcRect = Rect(0, 0, w, h);
-	RGBTexture->texture = Renderer::createTextureFromSurface(RGBTexture->surface);
+	RGBTexture->texture = Renderer::get()->createTextureFromSurface(RGBTexture->surface);
 	textures.pushBack(RGBTexture);
 	return RGBTexture;
 }
@@ -68,7 +68,7 @@ void Texture::loadImage(string file, int rows, int columns){
 	path = file;
 	surface = IMG_Load(path.c_str());
 
-	texture = Renderer::createTextureFromSurface(surface);
+	texture = Renderer::get()->createTextureFromSurface(surface);
 	if (!texture){
 		fprintf(stderr
 				,"ERROR creating texture\ntexture: %p\nid: %d\n%s\n"
@@ -97,17 +97,18 @@ void Texture::renderTexture(Tuple<float> position,
 	Rect destRect;
 	destRect.x = (int)position.x;
 	destRect.y = (int)position.y;
+
 	if (srcRect != NULL){
 		destRect.w = srcRect->w;
 		destRect.h = srcRect->h;
-		Renderer::renderCopy(texture, srcRect, &destRect, isStatic, angle, inverted);
+
+		Renderer::get()->renderCopy(texture, srcRect, &destRect, angle, inverted);
 	}
 	else {
 		destRect.w = this->srcRect.w;
 		destRect.h = this->srcRect.h;
-		Renderer::renderCopy(texture, &this->srcRect, &destRect, isStatic, angle, inverted);
+
+		Renderer::get()->renderCopy(texture, &this->srcRect, &destRect, angle, inverted);
 	}
-
-
 }
 

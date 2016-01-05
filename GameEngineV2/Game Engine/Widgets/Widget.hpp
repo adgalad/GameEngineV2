@@ -13,80 +13,39 @@
 #include "EventHandlerObject.hpp"
 
 class Widget : public TextureRenderer, public EventHandlerObject{
+	friend class MainWindow;
 	static int __id;
-	
 
-	Texture *widgetTexture  = NULL;
 	Tuple<float> absolutePosition;
-	Rect		 visualRect;
-	bool hide = false;
+	bool         hide        = false;
+	
 protected:
-	bool _visualRectUpdated = false;
-	bool _pressed;
-	Widget *father = NULL;
-	List subwidgets;
+	Texture* widgetTexture	= NULL;
+	bool     _updated		= false;
+	bool     _pressed		= false;
+	Widget*  father			= NULL;
+	List     subwidgets;
 
 	void updateVisualRect(){
-		Rect rect = texture->getRect();
-		printf("hola\n");
 		if (father) {
-			Rect frect = father->visualRect;
 			absolutePosition = position + father->absolutePosition;
-			
-			int topA	= absolutePosition.y;
-			int bottomA = absolutePosition.y + rect.h;
-			int leftA   = absolutePosition.x;
-			int rightA  = absolutePosition.x + rect.w;
-			
-			int topB	= frect.y;
-			int bottomB = frect.h;
-			int leftB   = frect.x;
-			int rightB  = frect.w;
-			
-			
-			if (leftA < leftB)
-				visualRect.x = leftB;
-			else
-				visualRect.x = leftA;
-			
-			if (topA < topB)
-				visualRect.y = topB;
-			else
-				visualRect.y = topA;
-			
-			if (rightA > rightB)
-				visualRect.w = rightB;
-			else
-				visualRect.w = rightA;
-			
-			if (bottomA > bottomB)
-				visualRect.h = bottomB;
-			else
-				visualRect.h = bottomA;
-			
 		}
 		else {
-			
 			absolutePosition = position ;
-			visualRect = Rect(absolutePosition.x,
-							  absolutePosition.y,
-							  absolutePosition.x + rect.w,
-							  absolutePosition.y + rect.h);
 		}
 		for (int i = 0 ; i < subwidgets.size(); i++){
 			((Widget*)subwidgets[i])->updateVisualRect();
 		}
-		_visualRectUpdated = true;
 	}
 	
 public:
 	virtual void movePosition(Tuple<float> position){
 		this->position = this->position + position;
-		_visualRectUpdated = false;
+		_updated = false;
 	}
 	virtual void setPosition(Tuple<float> position){
 		this->position = position;
-		_visualRectUpdated = false;
+		_updated = false;
 	}
 	
 	Widget(){
@@ -103,40 +62,47 @@ public:
 	inline void setHide(bool b){
 		hide = b;
 	}
-	virtual void eventHandler(){
-
+	virtual bool eventHandler(){
+		return true;
 	}
 	
 	virtual void _eventHandler(){
 		if (hide) return;
 		eventHandler();
-		if (not _visualRectUpdated) updateVisualRect();
-		switch (EventHandler::event.type) {
+		Rect a = texture->getRect();
+		if (not _updated) updateVisualRect();
+		switch (EventHandler::get()->event.type) {
 			case SDL_MOUSEBUTTONDOWN:{
-				Tuple<int> point = Point<int>(EventHandler::event.button.x,EventHandler::event.button.y);
-				if (!isStatic) point = point - Renderer::camera->position.to_int();
+				Tuple<int> point = Point<int>(EventHandler::get()->event.button.x,
+											  EventHandler::get()->event.button.y);
 				
-				if ((visualRect.x < point.x) and
-					(visualRect.w > point.x) and
-					(visualRect.y < point.y) and
-					(visualRect.h > point.y ))
+				if ((absolutePosition.x       < point.x) and
+					(a.w + absolutePosition.x > point.x) and
+					(absolutePosition.y       < point.y) and
+					(a.h + absolutePosition.y > point.y ))
 				{
+					
 					pressed();
 					_pressed = true;
 				}
+				else return;
 				break;
 				
 			}
 			case SDL_MOUSEBUTTONUP:{
-				if (!_pressed) break;
-				Tuple<int> point = Point<int>(EventHandler::event.button.x,EventHandler::event.button.y);
-				if (!isStatic) point = point - Renderer::camera->position.to_int();
-				bool inside =	(visualRect.x < point.x) and
-								(visualRect.w > point.x) and
-								(visualRect.y < point.y) and
-								(visualRect.h > point.y );
+				if (!_pressed) return;
+				Tuple<int> point = Point<int>(EventHandler::get()->event.button.x,
+											  EventHandler::get()->event.button.y);
+				bool inside =	((absolutePosition.x       < point.x) and
+								 (a.w + absolutePosition.x > point.x) and
+								 (absolutePosition.y       < point.y) and
+								 (a.h + absolutePosition.y > point.y ));
+				if (father)	{
+					inside = inside and !father->_pressed;
+				}
+				
 				released(inside);
-				_pressed = false;
+				_pressed = !inside;
 				break;
 			}
 			default:
@@ -153,7 +119,6 @@ public:
 		#ifdef GameEngineDebugger
 			if (!texture) exit(EXIT_FAILURE);
 		#endif
-		visualRect = texture->getRect();
 		widgetTexture = Texture::createTargetTexture(texture->getRect());
 		
 	}
@@ -163,7 +128,6 @@ public:
 		#ifdef GameEngineDebugger
 			if (!texture) exit(EXIT_FAILURE);
 		#endif
-		visualRect = texture->getRect();
 		widgetTexture = Texture::createTargetTexture(texture->getRect());
 	}
 	
@@ -186,7 +150,7 @@ public:
 			widgetTexture = Texture::createTargetTexture(texture->getRect());
 		}
 		widgetTexture->setAsRenderTarget();
-		Renderer::clearRender();
+		Renderer::get()->clearRender();
 		if (animated) {
 			currentFrame.y = (currentFrame.y + 1) % texture->rows();
 		}
@@ -197,7 +161,7 @@ public:
 		}
 		Rect r = texture->getRect();
 		if (!father){
-			Renderer::setRendererTarget(NULL);
+			Renderer::get()->setRendererTarget(NULL);
 			widgetTexture->renderTexture(position,&r,isStatic);
 		}
 		else{
@@ -212,8 +176,8 @@ public:
 		updateVisualRect();
 	}
 	
-	inline Rect getVisualRect(){
-		return visualRect;
+	inline Rect getRect(){
+		return texture->getRect();
 	}
 	virtual void pressed(){
 		printf("pressed\n");

@@ -30,7 +30,6 @@ static int loopFn(void *ptr)
 {
 	MainWindow *mainWindow = (MainWindow*)ptr;
 	mainWindow->loop();
-	Renderer::camera->loop();
 	
 	return 0;
 }
@@ -49,10 +48,8 @@ public:
 	~Game(){
 		printf("Renderer deleted\n");
 
-		delete Renderer::camera;
-		SDL_DestroyRenderer(Renderer::renderer);
-		Renderer::camera   = NULL;
-		Renderer::renderer = NULL;
+		delete Renderer::get();
+		delete EventHandler::get();
 		TTF_Quit();
 		IMG_Quit();
 		SDL_Quit();
@@ -74,7 +71,7 @@ public:
 		Scene *currentScene;
 		currentScene = new Scene();
 		sceneLoader.load(currentScene);
-		
+
 		Player *p = (Player*)currentScene->players[0];
 		p->key[Up]    = SDLK_w;
 		p->key[Down]  = SDLK_s;
@@ -82,6 +79,7 @@ public:
 		p->key[Right] = SDLK_d;
 		p->setPosition(Point<float>(0,0));
 		
+
 		ButtonWidget *b = new ButtonWidget();
 		b->loadTextureByName("boton");
 		b->setPosition(Point<float>(0,0));
@@ -89,7 +87,7 @@ public:
 		b->setTextPressedColor(Color(255,255,255));
 		b->setMessage("hola amigos");
 		
-		ContainerWidget *c = new ContainerWidget(Color(0,0,0,150), 300,700);
+		ContainerWidget *c = new ContainerWidget(Color(0,0,0,150), 300,200);
 		
 		c->addSubwidget(b);		
 		c->setPosition(Point<float>(180,100));
@@ -98,8 +96,9 @@ public:
 		mainWindow.addSubwidget(c);
 		c->name = "container";
 
-		Renderer::camera->setCameraTarget(p->getPosition());
-		Renderer::setCanvasSize(currentScene->getTextureSize());
+		currentScene->setPlayerAsTarget(1);
+		
+
 
 		while(running){
 			
@@ -108,7 +107,7 @@ public:
 			if (!(running = mainWindow.eventHandler())) break;
 			mainWindow.render();
 			loopThread.waitThread();			
-			Renderer::renderPresent();
+			Renderer::get()->renderPresent();
 
 
 

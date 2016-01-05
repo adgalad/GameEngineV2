@@ -8,14 +8,9 @@
 
 #include "Renderer.hpp"
 
-SDL_Renderer *Renderer::renderer = NULL;
-SDL_Window	 *Renderer::mainWindow = NULL;
-Size		 Renderer::displaySize;
-Size		 Renderer::canvasSize;
-Camera		 *Renderer::camera = NULL;
+Renderer *Renderer::__render_singleton_ = NULL;
 
-
-void Renderer::createRenderer(SDL_Window *window){
+void Renderer::setWindow(SDL_Window *window){
 	if (not window){
 		fprintf(stderr,"ERROR creating renderer\nwindow: %p\n",window);
 		exit(EXIT_FAILURE);
@@ -29,8 +24,6 @@ void Renderer::createRenderer(SDL_Window *window){
 	renderer      = SDL_CreateRenderer(window, 0,
 									   SDL_RENDERER_ACCELERATED |
 									   SDL_RENDERER_TARGETTEXTURE);
-	camera = new Camera();
-	camera->displaySize = &displaySize;
 	if (not renderer){
 		fprintf(stderr,
 				"ERROR creating renderer\nrenderer: %p\n%s",
@@ -48,7 +41,6 @@ void Renderer::createRenderer(SDL_Window *window){
 void Renderer::renderCopy(SDL_Texture	*texture,
 						  Rect			*srcRect,
 						  Rect			*destRect,
-						  bool			isStatic,
 						  double		angle,
 						  bool			invert)
 {
@@ -58,11 +50,6 @@ void Renderer::renderCopy(SDL_Texture	*texture,
 		exit(EXIT_FAILURE);
 	}
 #endif
-	if (!isStatic){
-		destRect->x += camera->position.x;
-		destRect->y += camera->position.y;
-	}
-
 	SDL_Rect srect = srcRect->toSDLRect();
 	SDL_Rect drect = destRect->toSDLRect();
 	if (invert){

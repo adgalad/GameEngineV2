@@ -77,7 +77,7 @@ public:
 		Texture *t = new Texture();
 		t->srcRect.w = r.w;
 		t->srcRect.h = r.h;
-		t->texture = Renderer::createTexture(SDL_PIXELFORMAT_ABGR8888,
+		t->texture = Renderer::get()->createTexture(SDL_PIXELFORMAT_ABGR8888,
 										  SDL_TEXTUREACCESS_TARGET,
 										  r.w,
 										  r.h);
@@ -129,7 +129,7 @@ public:
 							   int			angle    = 0,
 							   bool			inverted = false);
 	
-	inline void setAsRenderTarget() { Renderer::setRendererTarget(texture); }
+	inline void setAsRenderTarget() { Renderer::get()->setRendererTarget(texture); }
 	
 	virtual inline Rect getCollisionRect(Tuple<int> frame){
 		return srcRect;

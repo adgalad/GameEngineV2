@@ -58,6 +58,7 @@ public:
 		
 		node = node.child("subwidget");
 		while(not node.empty()) {
+			
 			pugi::xml_node widgetsNode = node.first_child();
 			while (not widgetsNode.empty()) {
 				string name = widgetsNode.name();

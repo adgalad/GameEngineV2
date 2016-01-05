@@ -23,9 +23,12 @@ public:
 		   const char*        name,
 		   void*              data){
 		thread = SDL_CreateThread(fn, name, data);
+		#ifdef GameEngineDebugger
 		if (!thread) {
 			printf("SDL_CreateThread failed: %s\n", SDL_GetError());
+			exit(EXIT_FAILURE);
 		}
+		#endif
 	}
 	
 	void waitThread(){

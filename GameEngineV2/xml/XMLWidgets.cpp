@@ -6,4 +6,4 @@
 //  Copyright © 2015 ARSC. All rights reserved.
 //
 
-#include "XMLWidgets.hpp"
+#include "XMLWidgetLoader.hpp"

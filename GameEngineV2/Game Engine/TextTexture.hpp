@@ -67,7 +67,7 @@ class TextTexture : public Texture {
 			return false;
 		}
 		//Create texture from surface pixels
-		texture = Renderer::createTextureFromSurface(surface);
+		texture = Renderer::get()->createTextureFromSurface(surface);
 		if( texture == NULL )
 		{
 			printf("WARNING Unable to create texture from rendered text.\n SDL Error: %s", SDL_GetError());

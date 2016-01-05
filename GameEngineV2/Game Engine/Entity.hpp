@@ -11,6 +11,7 @@
 
 #include "EventHandlerObject.hpp"
 #include "PhysicObject.hpp"
+#include "Camera.hpp"
 
 class Entity : public PhysicObject, public EventHandlerObject{
 	static int	__id;
@@ -26,17 +27,18 @@ public:
 
 	virtual inline void loop(){
 		PhysicObject::loop();
+		isStatic = true;
 	}
 	
-	virtual void eventHandler(){
-		switch (EventHandler::event.type) {
-				
+	virtual bool eventHandler(){
+		Uint8 *keyState = EventHandler::get()->keyState;
+		switch (EventHandler::get()->event.type) {
 			case SDL_KEYDOWN:
-				if (EventHandler::keyState[SDL_GetScancodeFromKey(SDLK_m)])
+				if (keyState[SDL_GetScancodeFromKey(SDLK_m)])
 				{
 					
 				}
-				switch (EventHandler::event.key.keysym.sym) {
+				switch (EventHandler::get()->event.key.keysym.sym) {
 					case SDLK_n:
 						break;
 						
@@ -44,6 +46,11 @@ public:
 						break;
 				}
 		}
+		return true;
+	}
+	
+	void setAsCameraTarget(Camera *camera){
+		camera->setCameraTarget(&position);
 	}
 	virtual void print(){
 		printf("Entity {\n\tid: %d\n\tname: %s\n\ttexture: %s\n\tx: %f  y: %f\n",_id,name.c_str(),texture->name.c_str(),position.x,position.y);
