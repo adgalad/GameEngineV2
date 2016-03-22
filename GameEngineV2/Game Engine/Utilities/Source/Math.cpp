@@ -8,84 +8,133 @@
 
 #include "Math.hpp"
 
-template <>
-Tuple<int> Point(int x, int y, int z){
-	Tuple<int> p;
-	p.x = x;
-	p.y = y;
-	p.z = z;
-	return p;
+
+
+
+////////////////////
+//    VECTOR2D    //
+////////////////////
+Vector2D::Vector2D(){
+	x = 0;
+	y = 0;
 }
 
-template <>
-Tuple<float> Point(float x, float y, float z){
-	Tuple<float> p;
-	p.x = x;
-	p.y = y;
-	p.z = z;
-	return p;
+Vector2D::Vector2D(double x, double y){
+	this->x = x;
+	this->y = y;
 }
 
-
-/////////////////
-//    TUPLE    //
-/////////////////
-
-
-template <>
-Tuple<int> Tuple<int>::operator+(Tuple<int> b){
-	return Point<int>(x+b.x, y+b.y, z+b.z);
-}
-
-template <>
-Tuple<int> Tuple<int>::operator-(Tuple<int> b){
-	return Point<int>(x-b.x, y-b.y, z-b.z);
-}
-
-template <>
-Tuple<int> Tuple<int>::operator-(){
-	return Point<int>(-x, -y, -z);
+Vector2D::Vector2D(SDL_Point p){
+	this->x = p.x;
+	this->y = p.y;
 }
 
 
-template <>
-Tuple<float> Tuple<float>::operator+(Tuple<float> b){
-	return Point<float>(x+b.x, y+b.y, z+b.z);
+/* Plus */
+Vector2D Vector2D::operator + (Vector2D b){
+	return Vector2D(x+b.x, y+b.y);
 }
 
-template <>
-Tuple<float> Tuple<float>::operator-(Tuple<float> b){
-	return Point<float>(x-b.x, y-b.y, z-b.z);
+/* Minus */
+Vector2D Vector2D::operator - (Vector2D b){
+	return Vector2D(x-b.x, y-b.y);
 }
 
-template <>
-Tuple<float> Tuple<float>::operator-(){
-	return Point<float>(-x, -y, -z);
+Vector2D Vector2D::operator - (){
+	return Vector2D(-x, -y);
 }
 
-/////////////////
-//	  VECTOR   //
-/////////////////
 
-float Vector::operator * (Vector p)
+double Vector2D::operator * (Vector2D p)
 {
 	return x*y + p.x*p.y ;
 }
 
-Vector Vector::operator + (int p)
+Vector2D Vector2D::operator * (int p)
 {
-	return Vector(x+p, y+p, z+p) ;
+	return Vector2D(x*p, y*p) ;
 }
 
-
-Vector Vector::unitaryVector()
+Vector2D Vector2D::operator * (double p)
 {
-	float mag = sqrt(x*x + y*y + z*z);
-	Vector b(x/mag, y/mag, z/mag);    // vector b's length is always 1
+	return Vector2D(x*p, y*p);
+}
+
+double Vector2D::length(){
+	return sqrt(x*x + y*y);
+}
+
+Vector2D Vector2D::unitaryVector()
+{
+	float mag = sqrt(x*x + y*y);
+	Vector2D b(x/mag, y/mag);    // vector b's length is always 1
 	return b;
 }
 
-Vector Vector::normalVector()
+Vector2D Vector2D::normalVector()
 {
-	return Vector(y,-x);
+	return Vector2D(y,-x);
+}
+
+
+////////////////////
+//    VECTOR3D    //
+////////////////////
+
+Vector3D::Vector3D(){
+	x = 0;
+	y = 0;
+	z = 0;
+}
+
+Vector3D::Vector3D(double x, double y, double z){
+	this->x = x;
+	this->y = y;
+	this->z = z;
+}
+
+/* Plus */
+Vector3D Vector3D::operator + (Vector3D b){
+	return Vector3D(x+b.x, y+b.y, z+b.z);
+}
+
+
+/* Minus */
+Vector3D Vector3D::operator - (Vector3D b){
+	return Vector3D(x-b.x, y-b.y, z+b.z);
+}
+
+Vector3D Vector3D::operator - (){
+	return Vector3D(-x, -y, -z);
+}
+
+
+
+double Vector3D::operator * (Vector3D p)
+{
+	return x*y + p.x*p.y ;
+}
+
+Vector3D Vector3D::operator * (int p)
+{
+	return Vector3D(x*p, y*p, z*p) ;
+}
+
+Vector3D Vector3D::operator * (double p)
+{
+	return Vector3D(x*p, y*p, z*p);
+}
+
+
+Vector3D Vector3D::unitaryVector()
+{
+	float mag = sqrt(x*x + y*y + z*z);
+	Vector3D b(x/mag, y/mag, z/mag);    // vector b's length is always 1
+	return b;
+}
+
+Vector3D Vector3D::normalVector()
+{
+	printf("3D Normal vector not revised yet\n");
+	return Vector3D(y,-x,z);
 }

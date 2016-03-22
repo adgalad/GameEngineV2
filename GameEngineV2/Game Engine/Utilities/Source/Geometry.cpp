@@ -8,10 +8,10 @@
 
 #include "Geometry.hpp"
 #include <stdlib.h>
-
+#include <math.h>
 //////
 
-Rect::Rect(int x, int y, int w, int h){
+Rect::Rect(double x, double y, double w, double h){
 	this->x = x;
 	this->y = y;
 	this->w = w;
@@ -19,25 +19,16 @@ Rect::Rect(int x, int y, int w, int h){
 }
 
 SDL_Rect Rect::toSDLRect(){
-	const SDL_Rect r = {x,y,w,h};
+	const SDL_Rect r = {(int)x,(int)y, (int)w, (int)h};
 
 	return r;
 }
 
-Tuple<int> Rect::size(){
-	return Point(w,h);
+Vector2D Rect::size(){
+	return Vector2D(w,h);
 }
 
-Tuple<int> Rect::position(){
-	return Point(x,y);
+Vector2D Rect::position(){
+	return Vector2D(x,y);
 }
 
-
-/////////////////
-//     SIZE    //
-/////////////////
-
-Size Size::operator+(Size b){
-	Size r = Size(w+b.w, h+b.h, d+b.d);
-	return r;
-}

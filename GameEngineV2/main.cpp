@@ -12,7 +12,7 @@ int main(int argc, const char * argv[]) {
 	
 	Game g;
 	g.init();
-	g.start();
+	g.Start();
 	
 	
 	std::cout << "Hello, World!\n";

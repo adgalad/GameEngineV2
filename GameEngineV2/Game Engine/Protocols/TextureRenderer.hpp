@@ -17,41 +17,33 @@ class TextureRenderer : public ListObject{
 protected:
 	bool animated = false;
 	Texture *texture = NULL;
-	Tuple<int> currentFrame;
+	SDL_Point currentFrame;
 	Rect frameRect;
 	bool isStatic = false;
 	
 	
 
-	Tuple<float> position;
+	Vector2D position;
 public:
 	
 	int angle = 0;
 	bool inverted = false;
 	
 	TextureRenderer(){
-		currentFrame = Point<int>  (0, 0);
-		position	 = Point<float>(0, 0);
+		currentFrame = {0,0};
+		position	 = Vector2D (0, 0);
 	}
 	
 	virtual ~TextureRenderer(){
 		texture = NULL;
 	}
 	
-	inline Size getTextureSize(){
+	inline Vector2D getTextureSize(){
 		Rect rect = texture->getRect();
-		Size s;
-		s.w = rect.w;
-		s.h = rect.h;
+		Vector2D s;
+		s.x = rect.w;
+		s.y = rect.h;
 		return s;
-	}
-	virtual inline void loadTextureById(int id){
-		texture = (Texture*)Texture::textures.getById(id);
-		frameRect = texture->getRect();
-	}
-	virtual inline void loadTextureByName(std::string name){
-		texture = (Texture*)Texture::textures.getByName(name);
-		frameRect = texture->getRect();
 	}
 	
 	inline void setAnimated(bool animated){
@@ -59,11 +51,11 @@ public:
 		if (!animated) currentFrame.y = 0;
 	}
 	
-	inline Tuple<float> getPosition() {
+	inline Vector2D getPosition() {
 		return position;
 	}
 	
-	inline void setPosition(Tuple<float> p){
+	inline void setPosition(Vector2D p){
 		position = p;
 	}
 	
@@ -71,20 +63,7 @@ public:
 
 	}
 	
-	virtual void render(){
-#ifdef GameEngineDebug
-		if (!texture){
-			printf("WARNING: trying to render a NULL Texture\ntexture: %p\n",texture);
-			texture = (Texture*)Texture::textures[0];
-		}
-#endif
-		frameRect.x = frameRect.w*currentFrame.x;
-		frameRect.y = frameRect.h*currentFrame.y;
-		if (animated) {
-			currentFrame.y = (currentFrame.y + 1) % texture->rows();
-		}
-		texture->renderTexture(position,&frameRect,isStatic,angle,inverted);
-	}
+
 	
 };
 #endif /* TextureRenderer_hpp */

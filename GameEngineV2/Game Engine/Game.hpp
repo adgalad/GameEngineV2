@@ -13,14 +13,15 @@
 #include <cstdlib>
 #include <string>
 #include <vector>
-#include "MainWindow.hpp"
+#include "Window.hpp"
 //#include "LuaScript.hpp"
 #include "XMLTextureLoader.hpp"
 #include "XMLSceneLoader.hpp"
 #include "ButtonWidget.hpp"
 #include "ContainerWidget.hpp"
 #include "Thread.hpp"
-#include "TextTexture.hpp"
+#include "Renderer.hpp"
+
 using namespace std;
 
 static bool running = true;
@@ -28,17 +29,18 @@ static bool finishMainLoop = true;
 
 static int loopFn(void *ptr)
 {
-	MainWindow *mainWindow = (MainWindow*)ptr;
-	mainWindow->loop();
-	
+//	Window	*Window = (Window*)ptr;
+//	Window->loop();
+//	
 	return 0;
 }
 
 class Game
 {
 private:
-	MainWindow mainWindow;
-	SDL_Event event;
+	Window		*main_window_;
+	Renderer	*renderer_;
+	SDL_Event	event_;
 
 	
 public:
@@ -48,69 +50,31 @@ public:
 	~Game(){
 		printf("Renderer deleted\n");
 
-		delete Renderer::get();
-		delete EventHandler::get();
+
 		TTF_Quit();
 		IMG_Quit();
 		SDL_Quit();
 	}
 	void init(){
-		Texture::null();
 		TTF_Init();
-		
 	}
 	
-	void start(){
-
-		XMLTextureLoader loader;
-		loader.openXMLFile("/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV2/GameEngineV2/textures.xml");
-		loader.load();
-
-		XMLSceneLoader sceneLoader;
-		sceneLoader.openXMLFile("/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV2/GameEngineV2/scene.xml");
-		Scene *currentScene;
-		currentScene = new Scene();
-		sceneLoader.load(currentScene);
-
-		Player *p = (Player*)currentScene->players[0];
-		p->key[Up]    = SDLK_w;
-		p->key[Down]  = SDLK_s;
-		p->key[Left]  = SDLK_a;
-		p->key[Right] = SDLK_d;
-		p->setPosition(Point<float>(0,0));
+	void Start(){
+		main_window_ = new Window(640, 480, SDL_WINDOW_RESIZABLE);
+		renderer_ = new Renderer(main_window_);
 		
-
-		ButtonWidget *b = new ButtonWidget();
-		b->loadTextureByName("boton");
-		b->setPosition(Point<float>(0,0));
-		b->setFont("/Library/Fonts/Arial Black.ttf", 30);
-		b->setTextPressedColor(Color(255,255,255));
-		b->setMessage("hola amigos");
+		Scene current_scene;
+		Texture *tex = new Texture();
+		Object obj;
+		obj.set_texture(tex);
+		obj.texture_->loadImage("/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV2/Resources/yoshi.png");
 		
-		ContainerWidget *c = new ContainerWidget(Color(0,0,0,150), 300,200);
-		
-		c->addSubwidget(b);		
-		c->setPosition(Point<float>(180,100));
-		
-		mainWindow.addSubwidget(currentScene);
-		mainWindow.addSubwidget(c);
-		c->name = "container";
-
-		currentScene->setPlayerAsTarget(1);
 		
 
 
 		while(running){
 			
-			Thread loopThread = Thread(loopFn, "loop", (void*)&mainWindow);
 			
-			if (!(running = mainWindow.eventHandler())) break;
-			mainWindow.render();
-			loopThread.waitThread();			
-			Renderer::get()->renderPresent();
-
-
-
 			SDL_Delay(50);
 
 		}

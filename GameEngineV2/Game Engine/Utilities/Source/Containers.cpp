@@ -57,7 +57,7 @@ ListObject *List::getById(int id){
 ListObject *List::getByName(std::string name){
 	for (int i = 0 ; i < objects.size() ; i++)
 	{
-		if (objects[i]->name == name) {
+		if (objects[i]->name_ == name) {
 			return objects[i];
 		}
 	}
@@ -73,7 +73,7 @@ void List::sort(){
 
 
 void List::print(){
-	printf("Vector {\n");
+	printf("Vector2D {\n");
 	for (int i = 0 ; i < objects.size() ; i++)
 	{
 		printf("\tid: %d\n",objects[i]->id());
@@ -92,7 +92,7 @@ void List::pushBack(ListObject *object){
 		}
 	}
 #ifdef GameEngineDebug
-	printf("Object inserted succesfully id: %d name: '%s'\n",object->id(), object->name.c_str());
+	printf("Object inserted succesfully id: %d name: '%s'\n",object->id(), object->name_.c_str());
 #endif
 	
 	objects.push_back(object);

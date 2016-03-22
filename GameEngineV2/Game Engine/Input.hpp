@@ -1,0 +1,358 @@
+//
+//  Input.hpp
+//  GameEngineV3
+//
+//  Created by Carlos Spaggiari Roa on 3/18/16.
+//  Copyright © 2016 ARSC. All rights reserved.
+//
+
+#ifndef Input_hpp
+#define Input_hpp
+
+
+#include <SDL2/SDL.h>
+#include "Math.hpp"
+
+
+enum MouseInput {
+	LEFT_BUTTON = SDL_BUTTON_LEFT,
+	MIDDLE_BUTTON = SDL_BUTTON_MIDDLE,
+	RITHGT_BUTTON = SDL_BUTTON_RIGHT
+};
+enum KeyCode
+{
+	
+	UNKNOW = SDLK_UNKNOWN,
+	RETURN = SDLK_RETURN,
+	ESCAPE = SDLK_ESCAPE,
+	BACKSPACE = SDLK_BACKSPACE,
+	TAB = SDLK_TAB,
+	SPACE = SDLK_SPACE,
+	EXCLAIN = SDLK_EXCLAIM,
+	QUOTEDBL = SDLK_QUOTEDBL,
+	HASH = SDLK_HASH,
+	PERCENT = SDLK_PERCENT,
+	DOLLAR = SDLK_DOLLAR,
+	AMPERSAND = SDLK_AMPERSAND,
+	QUOTE = SDLK_QUOTE,
+	LEFTPARENTHESIS = SDLK_LEFTPAREN,
+	RIGHTPARENTHESIS = SDLK_RIGHTPAREN,
+	STERISK = SDLK_ASTERISK,
+	PLUS = SDLK_PLUS,
+	COMMA = SDLK_COMMA,
+	MINUS = SDLK_MINUS,
+	PERIOD = SDLK_PERIOD,
+	SPLASH = SDLK_SLASH,
+	_0 = SDLK_0,
+	_1 = SDLK_1,
+	_2 = SDLK_2,
+	_3 = SDLK_3,
+	_4 = SDLK_4,
+	_5 = SDLK_5,
+	_6 = SDLK_6,
+	_7 = SDLK_7,
+	_8 = SDLK_8,
+	_9 = SDLK_9,
+	COLON= SDLK_COLON,
+	SEMICOLON = SDLK_SEMICOLON,
+	LESS = SDLK_LESS,
+	EQUALS = SDLK_EQUALS,
+	GREATER = SDLK_GREATER,
+	QUESTION = SDLK_QUESTION,
+	AT = SDLK_AT,
+	/*
+	 Skip uppercase letters
+	 */
+	LEFTBRACKET = SDLK_LEFTBRACKET,
+	BACKSLASH = SDLK_BACKSLASH,
+	RIGHTBRACKET = SDLK_RIGHTBRACKET,
+	CARET = SDLK_CARET,
+	UNDERSCORE = SDLK_UNDERSCORE,
+	BACKQUOTE = SDLK_BACKQUOTE,
+	A = SDLK_a,
+	B = SDLK_b,
+	C = SDLK_c,
+	D = SDLK_d,
+	E = SDLK_e,
+	F = SDLK_f,
+	G = SDLK_g,
+	H = SDLK_h,
+	I = SDLK_i,
+	J = SDLK_j,
+	K = SDLK_k,
+	L = SDLK_l,
+	M = SDLK_m,
+	N = SDLK_n,
+	O = SDLK_o,
+	P = SDLK_p,
+	Q = SDLK_q,
+	R = SDLK_r,
+	S = SDLK_s,
+	T = SDLK_t,
+	U = SDLK_u,
+	V = SDLK_v,
+	W = SDLK_w,
+	X = SDLK_x,
+	Y = SDLK_y,
+	Z = SDLK_z,
+	
+	CAPSLOCK = SDLK_CAPSLOCK,
+	
+	F1 = SDLK_F1,
+	F2 = SDLK_F2,
+	F3 = SDLK_F3,
+	F4 = SDLK_F4,
+	F5 = SDLK_F5,
+	F6 = SDLK_F6,
+	F7 = SDLK_F7,
+	F8 = SDLK_F8,
+	F9 = SDLK_F9,
+	F10 = SDLK_F10,
+	F11 = SDLK_F11,
+	F12 = SDLK_F12,
+	
+	PRINTSCREEN = SDLK_PRINTSCREEN,
+	SCROLLLOCK = SDLK_SCROLLLOCK,
+	PAUSE = SDLK_PAUSE,
+	INSERT = SDLK_INSERT,
+	HOME = SDLK_HOME,
+	PAGEUP = SDLK_PAGEUP,
+	DELETE = SDLK_DELETE,
+	END = SDLK_END,
+	PAGEDOWN = SDLK_PAGEDOWN,
+	RIGHT_ARROW = SDLK_RIGHT,
+	LEFT_ARROW = SDLK_LEFT,
+	DOWN_ARROW = SDLK_DOWN,
+	UP_ARROW   = SDLK_UP,
+	
+	NUMPAD_NUMLOCKCLEAR = SDLK_NUMLOCKCLEAR,
+	NUMPAD_DIVIDE = SDLK_KP_DIVIDE,
+	NUMPAD_MULTIPLY = SDLK_KP_MULTIPLY,
+	NUMPAD_MINUS = SDLK_KP_MINUS,
+	NUMPAD_PLUS = SDLK_KP_PLUS,
+	NUMPAD_ENTER = SDLK_KP_ENTER,
+	NUMPAD_1 = SDLK_KP_1,
+	NUMPAD_2 = SDLK_KP_2,
+	NUMPAD_3 = SDLK_KP_3,
+	NUMPAD_4 = SDLK_KP_4,
+	NUMPAD_5 = SDLK_KP_5,
+	NUMPAD_6 = SDLK_KP_6,
+	NUMPAD_7 = SDLK_KP_7,
+	NUMPAD_8 = SDLK_KP_8,
+	NUMPAD_9 = SDLK_KP_9,
+	NUMPAD_0 = SDLK_KP_0,
+	NUMPAD_PERIOD = SDLK_KP_PERIOD,
+	
+//	= SDLK_APPLICATION,
+//	= SDLK_POWER,
+//	= SDLK_KP_EQUALS,
+//	= SDLK_F13,
+//	= SDLK_F14,
+//	= SDLK_F15,
+//	= SDLK_F16,
+//	= SDLK_F17,
+//	= SDLK_F18,
+//	= SDLK_F19,
+//	= SDLK_F20,
+//	= SDLK_F21,
+//	= SDLK_F22,
+//	= SDLK_F23,
+//	= SDLK_F24,
+//	= SDLK_EXECUTE,
+//	= SDLK_HELP,
+//	= SDLK_MENU,
+//	= SDLK_SELECT,
+//	= SDLK_STOP,
+//	= SDLK_AGAIN,
+//	= SDLK_UNDO,
+//	= SDLK_CUT,
+//	= SDLK_COPY,
+//	= SDLK_PASTE,
+//	= SDLK_FIND,
+//	= SDLK_MUTE,
+//	= SDLK_VOLUMEUP,
+//	= SDLK_VOLUMEDOWN,
+//	= SDLK_KP_COMMA,
+//	= SDLK_KP_EQUALSAS400,
+//	SDL_SCANCODE_TO_KEYCODE(SDL_SCANCODE_KP_EQUALSAS400),
+//	
+//	= SDLK_ALTERASE,
+//	= SDLK_SYSREQ,
+//	= SDLK_CANCEL,
+//	= SDLK_CLEAR,
+//	= SDLK_PRIOR,
+//	= SDLK_RETURN2,
+//	= SDLK_SEPARATOR,
+//	= SDLK_OUT,
+//	= SDLK_OPER,
+//	= SDLK_CLEARAGAIN,
+//	= SDLK_CRSEL,
+//	= SDLK_EXSEL,
+//	
+//	= SDLK_KP_00,
+//	= SDLK_KP_000,
+//	= SDLK_THOUSANDSSEPARATOR,
+//	SDL_SCANCODE_TO_KEYCODE(SDL_SCANCODE_THOUSANDSSEPARATOR),
+//	= SDLK_DECIMALSEPARATOR,
+//	SDL_SCANCODE_TO_KEYCODE(SDL_SCANCODE_DECIMALSEPARATOR),
+//	= SDLK_CURRENCYUNIT,
+//	= SDLK_CURRENCYSUBUNIT,
+//	SDL_SCANCODE_TO_KEYCODE(SDL_SCANCODE_CURRENCYSUBUNIT),
+//	= SDLK_KP_LEFTPAREN,
+//	= SDLK_KP_RIGHTPAREN,
+//	= SDLK_KP_LEFTBRACE,
+//	= SDLK_KP_RIGHTBRACE,
+//	= SDLK_KP_TAB,
+//	= SDLK_KP_BACKSPACE,
+//	= SDLK_KP_A,
+//	= SDLK_KP_B,
+//	= SDLK_KP_C,
+//	= SDLK_KP_D,
+//	= SDLK_KP_E,
+//	= SDLK_KP_F,
+//	= SDLK_KP_XOR,
+//	= SDLK_KP_POWER,
+//	= SDLK_KP_PERCENT,
+//	= SDLK_KP_LESS,
+//	= SDLK_KP_GREATER,
+//	= SDLK_KP_AMPERSAND,
+//	= SDLK_KP_DBLAMPERSAND,
+//	SDL_SCANCODE_TO_KEYCODE(SDL_SCANCODE_KP_DBLAMPERSAND),
+//	= SDLK_KP_VERTICALBAR,
+//	SDL_SCANCODE_TO_KEYCODE(SDL_SCANCODE_KP_VERTICALBAR),
+//	= SDLK_KP_DBLVERTICALBAR,
+//	SDL_SCANCODE_TO_KEYCODE(SDL_SCANCODE_KP_DBLVERTICALBAR),
+//	= SDLK_KP_COLON,
+//	= SDLK_KP_HASH,
+//	= SDLK_KP_SPACE,
+//	= SDLK_KP_AT,
+//	= SDLK_KP_EXCLAM,
+//	= SDLK_KP_MEMSTORE,
+//	= SDLK_KP_MEMRECALL,
+//	= SDLK_KP_MEMCLEAR,
+//	= SDLK_KP_MEMADD,
+//	= SDLK_KP_MEMSUBTRACT,
+//	SDL_SCANCODE_TO_KEYCODE(SDL_SCANCODE_KP_MEMSUBTRACT),
+//	= SDLK_KP_MEMMULTIPLY,
+//	SDL_SCANCODE_TO_KEYCODE(SDL_SCANCODE_KP_MEMMULTIPLY),
+//	= SDLK_KP_MEMDIVIDE,
+//	= SDLK_KP_PLUSMINUS,
+//	= SDLK_KP_CLEAR,
+//	= SDLK_KP_CLEARENTRY,
+//	= SDLK_KP_BINARY,
+//	= SDLK_KP_OCTAL,
+//	= SDLK_KP_DECIMAL,
+//	= SDLK_KP_HEXADECIMAL,
+//	SDL_SCANCODE_TO_KEYCODE(SDL_SCANCODE_KP_HEXADECIMAL),
+//	
+//	= SDLK_LCTRL,
+//	= SDLK_LSHIFT,
+//	= SDLK_LALT,
+//	= SDLK_LGUI,
+//	= SDLK_RCTRL,
+//	= SDLK_RSHIFT,
+//	= SDLK_RALT,
+//	= SDLK_RGUI,
+//	
+//	= SDLK_MODE,
+//	
+//	= SDLK_AUDIONEXT,
+//	= SDLK_AUDIOPREV,
+//	= SDLK_AUDIOSTOP,
+//	= SDLK_AUDIOPLAY,
+//	= SDLK_AUDIOMUTE,
+//	= SDLK_MEDIASELECT,
+//	= SDLK_WWW,
+//	= SDLK_MAIL,
+//	= SDLK_CALCULATOR,
+//	= SDLK_COMPUTER,
+//	= SDLK_AC_SEARCH,
+//	= SDLK_AC_HOME,
+//	= SDLK_AC_BACK,
+//	= SDLK_AC_FORWARD,
+//	= SDLK_AC_STOP,
+//	= SDLK_AC_REFRESH,
+//	= SDLK_AC_BOOKMARKS,
+//	
+//	= SDLK_BRIGHTNESSDOWN,
+//	SDL_SCANCODE_TO_KEYCODE(SDL_SCANCODE_BRIGHTNESSDOWN),
+//	= SDLK_BRIGHTNESSUP,
+//	= SDLK_DISPLAYSWITCH,
+//	= SDLK_KBDILLUMTOGGLE,
+//	SDL_SCANCODE_TO_KEYCODE(SDL_SCANCODE_KBDILLUMTOGGLE),
+//	= SDLK_KBDILLUMDOWN,
+//	= SDLK_KBDILLUMUP,
+//	= SDLK_EJECT,
+//	= Sleep_Key,
+};
+
+class Input {
+
+public:
+	inline void Update(){
+		SDL_PollEvent(&event_);
+		keyState_ = (Uint8*)SDL_GetKeyboardState(NULL);
+	}
+	
+	inline bool KeyPressed(KeyCode key){
+		if (event_.type == SDL_KEYDOWN &&
+			event_.key.keysym.sym == key){
+			return true;
+		}
+		return false;
+	}
+	inline bool KeyReleased(KeyCode key){
+		if (event_.type == SDL_KEYUP &&
+			event_.key.keysym.sym == key){
+			return true;
+		}
+		return false;
+	}
+	
+	inline bool KeyDown(KeyCode key){
+		if (keyState_[SDL_GetScancodeFromKey(key)]){
+			return true;
+		}
+		return false;
+	}
+	
+	
+	inline bool MouseButtonPressed(MouseInput button){
+		if (event_.type == SDL_MOUSEBUTTONDOWN &&
+			event_.button.button == button) {
+			return true;
+		}
+		return false;
+	}
+	
+	inline bool MouseButtonReleased(MouseInput button){
+		if (event_.type == SDL_MOUSEBUTTONUP &&
+			event_.button.button == button) {
+			return true;
+		}
+		return false;
+	}
+	
+	inline bool MouseButton(MouseInput button){
+		if (event_.type == SDL_MOUSEBUTTONUP &&
+			event_.button.button == button) {
+			return true;
+		}
+		return false;
+	}
+	
+	
+	inline Vector2D GetMouseClickPosition(MouseInput){
+		return Vector2D (event_.button.x, event_.button.y);
+	}
+	
+private:
+	SDL_Event event_;
+	Uint8 *keyState_ = NULL;
+	
+	
+};
+
+
+
+#endif /* Input_hpp */

@@ -38,20 +38,29 @@ using namespace std;
  the SDL Framework.
  */
 class Texture : public ListObject {
+private:
+
 protected:
+
 	static int __id;			 /**< Global id */
 	
-	string path = "";			 /**< Path to the image on disk. */
-	SDL_Texture *texture = NULL; /**< SDL_Texture used to render using the GPU*/
-	SDL_Surface *surface = NULL; /**< SDL_Surface used to create a SDL_Texture*/
-	Rect srcRect;			 /**< Part of the texture that will be rendered*/
+	string path_ = "";			 /**< Path to the image on disk. */
+	SDL_Texture *texture_ = NULL; /**< SDL_Texture used to render using the GPU*/
+	SDL_Surface *surface_ = NULL; /**< SDL_Surface used to create a SDL_Texture*/
+	Rect srcRect_;			 /**< Part of the texture that will be rendered*/
 	
-	Texture();
+	
 	
 public:
-	static List textures;
+	Renderer *renderer_;	
+	Texture();
 	
-	static Texture *createTextureWithImage(string image, string name = "");
+	Texture(string image, string name);
+	
+	/**
+	 Create a rectangle Texture filled with the given color.
+	 */
+	Texture(Color color, unsigned int w, unsigned int h, string name);
 	
 	virtual ~Texture();
 	
@@ -65,39 +74,31 @@ public:
 	 */
 	static Texture *null();
 	
-	/**
-	 Create a rectangle Texture filled with the given color.
-	 */
-	static Texture *createRGBTexture(Color color,
-									 unsigned int w,
-									 unsigned int h
-									 );
+
 	
-	static Texture *createTargetTexture(Rect r){
-		Texture *t = new Texture();
-		t->srcRect.w = r.w;
-		t->srcRect.h = r.h;
-		t->texture = Renderer::get()->createTexture(SDL_PIXELFORMAT_ABGR8888,
+	void createTargetTexture(Rect r){
+		srcRect_.w = r.w;
+		srcRect_.h = r.h;
+		texture_ = renderer_->create_texture(SDL_PIXELFORMAT_ABGR8888,
 										  SDL_TEXTUREACCESS_TARGET,
 										  r.w,
 										  r.h);
-		SDL_SetTextureBlendMode(t->texture, SDL_BLENDMODE_BLEND);
-		if (!t->texture){
+		SDL_SetTextureBlendMode(texture_, SDL_BLENDMODE_BLEND);
+		if (!texture_){
 			fprintf(stderr
 					,"ERROR creating Target Texture texture\ntexture: %p\nid: %d\nname: %s\n%s\n"
-					,t->texture
-					,t->_id
-					,t->name.c_str()
+					,texture_
+					,_id
+					,name_.c_str()
 					,SDL_GetError()
 					);
 			exit(EXIT_FAILURE);
 		}
-		return t;
 	}
 	
 	inline void setBlendMode(bool condition){
-		if (condition)	SDL_SetTextureBlendMode(texture, SDL_BLENDMODE_BLEND);
-		else			SDL_SetTextureBlendMode(texture, SDL_BLENDMODE_NONE );
+		if (condition)	SDL_SetTextureBlendMode(texture_, SDL_BLENDMODE_BLEND);
+		else			SDL_SetTextureBlendMode(texture_, SDL_BLENDMODE_NONE );
 	}
 	/**
 	 Returns the number of rows. if the texture is not a sprite, it's always 1.
@@ -112,7 +113,7 @@ public:
 	/**
 	 Get the texture dimensions or frame's dimension if its a sprite.
 	 */
-	inline Rect getRect(){ return srcRect; }
+	inline Rect getRect(){ return srcRect_; }
 	
 	/**
 	 Fill the texture with an image loaded from disk.
@@ -123,16 +124,16 @@ public:
 	 Given the position and the frame that will be rendered,
 	 the Texture send the information needed to the Renderer.
 	 */
-	virtual void renderTexture(Tuple<float> position,
-							   Rect			*srcRect,
-							   bool			isStatic = false,
-							   int			angle    = 0,
-							   bool			inverted = false);
+	virtual void renderTexture(Vector2D	position,
+							   Rect		*srcRect = NULL,
+							   bool		isStatic = false,
+							   int		angle    = 0,
+							   bool		inverted = false);
 	
-	inline void setAsRenderTarget() { Renderer::get()->setRendererTarget(texture); }
+	inline void setAsRenderTarget() { renderer_->set_renderer_target(texture_); }
 	
-	virtual inline Rect getCollisionRect(Tuple<int> frame){
-		return srcRect;
+	virtual inline Rect getCollisionRect(Vector2D frame){
+		return srcRect_;
 	}
 	
 };

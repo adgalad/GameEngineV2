@@ -11,122 +11,116 @@
 
 #include <cstdio>
 #include "Utilities.hpp"
-
+#include "Window.hpp"
 
 
 class Game;
 class Renderer{
 	friend Game;
 private:
-	static Renderer *__render_singleton_;
-	
-	SDL_Renderer *renderer   = NULL;
-	SDL_Window	 *mainWindow = NULL;
-	Size		 displaySize;
 
-	Renderer(){
-		
-	}
+	SDL_Renderer *renderer_   = NULL;
+	Window		*main_window_ = NULL;
+	Vector2D		 display_size_;
+
+
 	
 public:
 
-	static Renderer *get(){
-		if (__render_singleton_ == NULL) __render_singleton_ = new Renderer();
-		return __render_singleton_;
+	Renderer(Window *window){
+		SetWindow(window);
 	}
 	
 	virtual ~Renderer(){
-		SDL_DestroyRenderer(renderer);
-		renderer = NULL;
-		mainWindow = NULL;
+		SDL_DestroyRenderer(renderer_);
+		renderer_ = NULL;
+		main_window_ = NULL;
 	}
 	
 	/**
 	 Get the size of the MainWidnow.
 	 */
 	
-	inline Rect getWindowSize(){
-		Rect windowSize;
-		SDL_GetWindowSize(mainWindow, &windowSize.w, &windowSize.h);
-		return windowSize;
+	inline Vector2D get_window_size(){
+		return main_window_->get_window_size();
 	}
 
 	/**
 	 Create a texture using a premade SDL_Surface.
 	 */
-	inline SDL_Texture *createTextureFromSurface(SDL_Surface *surface){
+	inline SDL_Texture *create_texture_from_surface(SDL_Surface *surface){
 		if (not surface){
 			fprintf(stderr,"ERROR creating texture\nsurface: %p\n%s\n",surface,SDL_GetError());
 			exit(EXIT_FAILURE);
 		}
-		return SDL_CreateTextureFromSurface(renderer, surface);
+		if (not renderer_) printf("hola\n");
+		return SDL_CreateTextureFromSurface(renderer_, surface);
 	}
 	
 	/**
 	 Create an empty texture.
 	 */
-	inline SDL_Texture *createTexture(Uint32 format,
+	inline SDL_Texture *create_texture(Uint32 format,
 											 int access,
 											 int w,
 											 int h){
-		return SDL_CreateTexture(renderer, format, access, w, h);
+		return SDL_CreateTexture(renderer_, format, access, w, h);
 	}
 	
 	/**
-	 Set a texture as the renderering target. If target is NULL, the MainWindow is 
+	 Set a texture as the renderering target. If target is NULL, the Window is 
 	 set as target.
 	 */
-	inline void setRendererTarget(SDL_Texture *target){
-		SDL_SetRenderTarget(renderer, target);
+	inline void set_renderer_target(SDL_Texture *target){
+		SDL_SetRenderTarget(renderer_, target);
 	}
 	
-	inline bool hasTarget(){
-		return SDL_GetRenderTarget(renderer) != NULL;
+	inline bool has_target(){
+		return SDL_GetRenderTarget(renderer_) != NULL;
 	}
 	
 	/**
 	 Use this function to clear the current rendering target with the drawing color.
 	 */
-	inline void clearRender(){
-		SDL_RenderClear(renderer);
+	inline void clear_render(){
+		SDL_RenderClear(renderer_);
 	}
 	
 	/**
 	 Draw a set of lines on the current rendering target.
 	 */
-	inline void drawLines(SDL_Point *points, int n){
-		SDL_RenderDrawLines(renderer, points, n);
+	inline void draw_lines(SDL_Point *points, int n){
+		SDL_RenderDrawLines(renderer_, points, n);
 	}
 	
 	/**
 	 Draw a point on the current rendering target.
 	 */
-	inline void drawPoint(SDL_Point point){
-		SDL_RenderDrawPoint(renderer, point.x, point.y);
+	inline void draw_point(SDL_Point point){
+		SDL_RenderDrawPoint(renderer_, point.x, point.y);
 	}
 	
 	/**
 	 Use this function to set the color used for drawing operations (Rect, Line, Point and Clear).
 	 */
-	inline void setRenderColor(Color color){
-		SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+	inline void set_render_color(Color color){
+		SDL_SetRenderDrawColor(renderer_, color.r, color.g, color.b, color.a);
 	}
 	/**
 	 Draw a rectangle on the current rendering target.
 	 */
-	inline void drawRect(Rect rect){
+	inline void draw_rect(Rect rect){
 		SDL_Rect r = rect.toSDLRect();
-		SDL_RenderDrawRect(renderer, &r);
+		SDL_RenderDrawRect(renderer_, &r);
 	}
 	
 	/**
 	 Use this function to update the screen with any rendering performed since the previous call.
 	 */
-	inline void renderPresent(){
-		SDL_GetWindowSize(mainWindow, &displaySize.w, &displaySize.h);
-		SDL_RenderPresent(renderer);
-		SDL_RenderClear(renderer);
-		
+	inline void render_present(){
+		display_size_ =  main_window_->get_window_size();
+		SDL_RenderPresent(renderer_);
+		SDL_RenderClear(renderer_);
 	}
 	
 
@@ -134,13 +128,13 @@ public:
 	/** 
 	 Initialize the Renderer.
 	 */
-	void setWindow(SDL_Window *window);
+	void SetWindow(Window *window);
 	
 
 	/**
 	 Use this function to copy a portion of the texture to the current rendering target.
 	 */
-	void renderCopy(SDL_Texture	*texture,
+	void RenderCopy(SDL_Texture	*texture,
 						   Rect		*srcRect,
 						   Rect		*destRect,
 						   double	angle,

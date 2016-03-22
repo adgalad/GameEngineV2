@@ -17,13 +17,14 @@ protected:
 	int _id = -1;
 	
 public:
+	std::string name_ = "";
 	
 	virtual ~ListObject(){
 		#ifdef GameEngineDebug
-			printf("Deleting object: %p id: %d name: '%s'\n",this,id(),name.c_str());
+			printf("Deleting object: %p id: %d name: '%s'\n",this,id(),name_.c_str());
 		#endif
 	}
-	std::string name = "";
+
 
 	inline int id() { return _id; }
 

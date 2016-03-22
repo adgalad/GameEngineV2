@@ -8,23 +8,22 @@
 
 #include "Renderer.hpp"
 
-Renderer *Renderer::__render_singleton_ = NULL;
 
-void Renderer::setWindow(SDL_Window *window){
+void Renderer::SetWindow(Window *window){
 	if (not window){
 		fprintf(stderr,"ERROR creating renderer\nwindow: %p\n",window);
 		exit(EXIT_FAILURE);
 	}
 	
-	SDL_DisplayMode displayMode;
-	SDL_GetCurrentDisplayMode(0, &displayMode);
-	displaySize.w = displayMode.w;
-	displaySize.h = displayMode.h;
-	mainWindow    = window;
-	renderer      = SDL_CreateRenderer(window, 0,
+	SDL_DisplayMode display_mode;
+	SDL_GetCurrentDisplayMode(0, &display_mode);
+	display_size_.x = display_mode.w;
+	display_size_.y = display_mode.h;
+	main_window_    = window;
+	renderer_       = SDL_CreateRenderer(window->window, 0,
 									   SDL_RENDERER_ACCELERATED |
 									   SDL_RENDERER_TARGETTEXTURE);
-	if (not renderer){
+	if (not renderer_){
 		fprintf(stderr,
 				"ERROR creating renderer\nrenderer: %p\n%s",
 				window,
@@ -32,17 +31,15 @@ void Renderer::setWindow(SDL_Window *window){
 				);
 		exit(EXIT_FAILURE);
 	}
-	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
-	SDL_RenderClear(renderer);
+	SDL_SetRenderDrawBlendMode(renderer_, SDL_BLENDMODE_BLEND);
+	SDL_RenderClear(renderer_);
 	printf("Renderer created succesfully\n");
 }
 
 
-void Renderer::renderCopy(SDL_Texture	*texture,
+void Renderer::RenderCopy(SDL_Texture	*texture,
 						  Rect			*srcRect,
-						  Rect			*destRect,
-						  double		angle,
-						  bool			invert)
+						  Rect			*destRect)
 {
 #ifdef GameEngineDebug
 	if (not texture){
@@ -52,22 +49,13 @@ void Renderer::renderCopy(SDL_Texture	*texture,
 #endif
 	SDL_Rect srect = srcRect->toSDLRect();
 	SDL_Rect drect = destRect->toSDLRect();
-	if (invert){
-		SDL_RenderCopyEx(renderer,
+
+		SDL_RenderCopyEx(renderer_,
 						 texture,
 						 &srect,
 						 &drect,
-						 angle,
-						 NULL,
-						 SDL_FLIP_HORIZONTAL);
-	}
-	else {
-		SDL_RenderCopyEx(renderer,
-						 texture,
-						 &srect,
-						 &drect,
-						 angle,
+						 0,
 						 NULL,
 						 SDL_FLIP_NONE);
-	}
+
 }

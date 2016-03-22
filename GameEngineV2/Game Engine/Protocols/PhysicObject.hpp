@@ -14,9 +14,9 @@
 class PhysicObject : public TextureRenderer{
 	
 protected:
-	Tuple<int> tick;
-	Tuple<float> velocity;
-	Tuple<float> acceleration;
+	Vector2D tick;
+	Vector2D velocity;
+	Vector2D acceleration;
 
 	
 public:
@@ -74,11 +74,11 @@ public:
 		Rect A = a->texture->getCollisionRect(a->currentFrame);
 		Rect B = b->texture->getCollisionRect(b->currentFrame);
 		// Positions
-		Tuple<float> positionA = a->position;
-		Tuple<float> positionB = b->position;
+		Vector2D positionA = a->position;
+		Vector2D positionB = b->position;
 		// Velocities
-		Tuple<float> velocityA = a->velocity;
-		Tuple<float> velocityB = b->velocity;
+		Vector2D velocityA = a->velocity;
+		Vector2D velocityB = b->velocity;
 		
 		int leftA   = positionA.x + velocityA.x;
 		int topA    = positionA.y + velocityA.y;
@@ -99,7 +99,7 @@ public:
 		   )
 		{
 			//printf("Dentro de B\n");
-			a->velocity = Point<float>(0, 0);
+			a->velocity = Vector2D(0, 0);
 			a->position.y = topB - A.w;
 			
 		}
@@ -228,7 +228,7 @@ public:
 						{
 //							printf("H.2 (%f,%f) (%f, %f) \n",timeUntilCollisionX, timeUntilCollisionY, velocityA.x, velocityA.y);
 //							printf(" %d %d\n", X, Y);
-							a->position = positionA + Point<float>(timeUntilCollisionY * velocityA.x,
+							a->position = positionA + Vector2D(timeUntilCollisionY * velocityA.x,
 																   timeUntilCollisionY * velocityA.y);
 //							printf(" %d %d\n", X, Y);
 							a->velocity.y = 1;
@@ -237,7 +237,7 @@ public:
 					else if (timeUntilCollisionX < 0 && timeUntilCollisionY >= 0)
 					{
 						printf("H.3\n");
-						a->position = positionA + Point<float>(velocityA.x,timeUntilCollisionY * velocityA.y);
+						a->position = positionA + Vector2D(velocityA.x,timeUntilCollisionY * velocityA.y);
 						a->velocity.y = 1;
 					}
 					else if (timeUntilCollisionY < 0 && timeUntilCollisionX >= 0)
@@ -282,7 +282,7 @@ public:
 
 		if (not collision)
 		{
-			a->position = positionA + Point<float>(velocityA.x, velocityA.y);
+			a->position = positionA + Vector2D(velocityA.x, velocityA.y);
 		}
 		//	printf("%d %d")
 		return collision;

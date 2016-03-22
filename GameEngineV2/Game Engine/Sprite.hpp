@@ -27,20 +27,19 @@ public:
 		collisionRects.reserve(sizeof(Rect)*c*r);
 		c = columns;
 		r = rows;
-		srcRect.w = srcRect.w / columns;
-		srcRect.h = srcRect.h / rows;
+		srcRect_.w /= columns;
+		srcRect_.h /= rows;
 		
 		for(int i = 0 ; i < r*c ; i++){
-			collisionRects.push_back(srcRect);
+			collisionRects.push_back(srcRect_);
 		}
 	}
 
 	static Sprite *createSprite(string name)
 	{
 		Sprite *sprite = new Sprite();
-		if (name == "") sprite->name = "text "+to_string(sprite->_id);
-		else sprite->name = name;
-		Texture::textures.pushBack(sprite);
+		if (name == "") sprite->name_ = "text "+to_string(sprite->_id);
+		else sprite->name_ = name;
 		return sprite;
 	}
 	/**
@@ -53,7 +52,7 @@ public:
 	 */
 	inline int columns() {return c;}
 	
-	virtual Rect getCollisionRect(Tuple<int> frame){
+	virtual Rect getCollisionRect(Vector2D frame){
 		return collisionRects[frame.y*columns()+frame.x];
 	}
 };

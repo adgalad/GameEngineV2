@@ -20,7 +20,7 @@ public:
 
 		if (!font)
 		{
-			printf("WARNING TextEntity::setFont(char*, int) Unable to open TTF\n\t%s\n",
+			printf("WARNING TextObject::setFont(char*, int) Unable to open TTF\n\t%s\n",
 				   SDL_GetError()
 				   );
 			exit(EXIT_FAILURE);
@@ -54,36 +54,36 @@ class TextTexture : public Texture {
 	
 	bool createTexture()
 	{
-		SDL_DestroyTexture(texture);
-		SDL_FreeSurface(surface);
-		surface = TTF_RenderText_Blended_Wrapped(Font(font,size).getFont(),
-												 text.c_str(),
-												 color.to_SDL_Color(),
-												 wrap
-												 );
-		if(!surface)
-		{
-			printf("WARNING Unable to create a surface with the text\n\t%s\n", SDL_GetError());
-			return false;
-		}
-		//Create texture from surface pixels
-		texture = Renderer::get()->createTextureFromSurface(surface);
-		if( texture == NULL )
-		{
-			printf("WARNING Unable to create texture from rendered text.\n SDL Error: %s", SDL_GetError());
-		}
-		else {
-			srcRect = Rect(0,0,surface->w,surface->h);
-		}
-		
+//		SDL_DestroyTexture(texture_);
+//		SDL_FreeSurface(surface_);
+//		surface_ = TTF_RenderText_Blended_Wrapped(Font(font,size).getFont(),
+//												 text.c_str(),
+//												 color.to_SDL_Color(),
+//												 wrap
+//												 );
+//		if(!surface_)
+//		{
+//			printf("WARNING Unable to create a surface with the text\n\t%s\n", SDL_GetError());
+//			return false;
+//		}
+//		//Create texture from surface pixels
+//		texture_ = renderer_->create_texture_from_surface(surface_);
+//		if( texture_ == NULL )
+//		{
+//			printf("WARNING Unable to create texture from rendered text.\n SDL Error: %s", SDL_GetError());
+//		}
+//		else {
+//			srcRect_ = Rect(0,0,surface_->w,surface_->h);
+//		}
+//		
 		return true;
 	}
 public:
 	
 	static TextTexture *createTextTexture(string name = ""){
 		TextTexture *texture = new TextTexture();
-		if (name == "") texture->name = "text "+to_string(texture->_id);
-		else texture->name = name;
+		if (name == "") texture->name_ = "text "+to_string(texture->_id);
+		else texture->name_ = name;
 		textTextures.pushBack(texture);
 		
 		return texture;
