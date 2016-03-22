@@ -21,7 +21,7 @@ public:
 			fprintf(stderr, "ERROR initializing SDL.\n%s",SDL_GetError());
 			exit(EXIT_FAILURE);
 		}
-		sdl_window = SDL_CreateWindow("Game Engine V2",			// window title
+		sdl_window = SDL_CreateWindow(name.c_str(),			// window title
 								  SDL_WINDOWPOS_UNDEFINED,  // initial x position
 								  SDL_WINDOWPOS_UNDEFINED,  // initial y position
 								  w,						// width, in pixels

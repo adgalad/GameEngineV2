@@ -299,7 +299,6 @@ public:
 	inline bool KeyPressed(KeyCode key){
 		if (event.type == SDL_KEYDOWN &&
 			event.key.keysym.sym == key){
-			printf("hola");
 			return true;
 		}
 		return false;
@@ -343,7 +342,6 @@ public:
 		}
 		return false;
 	}
-	
 	
 	inline Vector2D GetMouseClickPosition(MouseInput){
 		return Vector2D (event.button.x, event.button.y);

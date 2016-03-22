@@ -37,6 +37,14 @@ Texture::Texture(string name, string image,Uint32 rows, Uint32 columns){
 	loadImage(image,rows,columns);
 }
 
+Texture::Texture(string name, SDL_Surface *surface){
+	this->name  = name;
+	sdl_surface = surface;
+	sdl_texture = SDL_CreateTextureFromSurface(_renderer->sdl_renderer, surface);
+	source_rect.w = sdl_surface->w;
+	source_rect.h = sdl_surface->h;
+}
+
 Texture::~Texture(){
 	SDL_FreeSurface(sdl_surface);
 	SDL_DestroyTexture(sdl_texture);

@@ -30,9 +30,26 @@ public:
 		return target_texture->getSize();
 	}
 	
+	void Init(){
+		Start();
+		for (int i  = 0 ; i < objs.size(); i ++){
+			objs[i]->Init();
+		}
+	}
+	
+	void reset(){
+		for (int i  = 0 ; i < objs.size(); i ++){
+			objs[i]->reset();
+		}
+	}
+	
+	virtual void Start(){
+		
+	}
+	
 	inline void Update(){
 		for (int i  = 0 ; i < objs.size(); i ++){
-			objs[i]->Update();
+			objs[i]->InternalUpdate();
 		}
 	}
 	

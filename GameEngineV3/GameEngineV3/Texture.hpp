@@ -60,6 +60,7 @@ public:
 	
 	Texture( string name, string image, Uint32 rows = 1, Uint32 columns = 1);
 	
+	Texture(string name, SDL_Surface *surface);
 	/**
 	 Create a rectangle Texture filled with the given color.
 	 */
