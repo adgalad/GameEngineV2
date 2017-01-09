@@ -7,3 +7,7 @@
 //
 
 #include "Input.hpp"
+
+using namespace engine;
+
+Input Input::_input;

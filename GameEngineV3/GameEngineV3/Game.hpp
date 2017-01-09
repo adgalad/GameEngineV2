@@ -9,79 +9,95 @@
 #ifndef Game_hpp
 #define Game_hpp
 
+#ifdef __cplusplus
+
+
 #include "Window.hpp"
 #include "Renderer.hpp"
+#include "Framerate.hpp"
+#include "Object.hpp"
+#include "ObjectModule.hpp"
 #include "Scene.hpp"
 #include "Input.hpp"
-#include "O1.hpp"
+
+
+
+
+namespace engine {
 
 class Game {
-	Window *main_window;
-	Renderer *renderer;
-	Input *input;
-	
-	Uint32 max_fps;
+  
+  SERIALIZE
+  
+	Window *main_window = NULL;
+	Renderer *renderer  = NULL;
+  Framerate framerate = Framerate();
 	bool running;
 	
+  
+  Game(){
+    
+  }
+  
+  template<class Archive>
+  void save(Archive & ar, const unsigned int version) const
+  {
+    // note, version is always the latest when saving
+    int fps = this->framerate.getFPS();
+    TAG(ar, name);
+    TAG(ar, fps);
+    Scene *scene = (Scene*)currentScene.get();
+    TAG(ar,scene);
+  }
+  
+  template<class Archive>
+  void load(Archive & ar, const unsigned int version)
+  {
+    int fps;
+    TAG(ar, name);
+    TAG(ar, fps);
+    framerate.setFPS(fps);
+    if (main_window == NULL && renderer == NULL){
+      Window   * window   = new Window(this->name, 500, 500);
+      Renderer * renderer = new Renderer(window);
+      this->main_window = window;
+      this->renderer		= renderer;
+      Texture::renderer = renderer;
+      Sound::Init();
+    }
+    running = true;
+    Scene *scene;
+    TAG(ar,scene);
+    currentScene = shared_ptr<Scene>(scene);
+  }
+  SPLIT_SERIALIZATION
+  
+  
 public:
-	
-	Scene *current_scene;
-	
-	Game(Window *window, Renderer *renderer){
-		this->main_window = window;
-		this->renderer = renderer;
-		input = new Input();
-		Object::_input = input;
-		Texture::_renderer = renderer;
-		max_fps = 1000/30;
-		running = true;
-	}
-	
-	~Game(){
-		delete main_window;
-		delete renderer;
-	}
-	void setMaxFramesPerSecond(Uint32 n){
-		max_fps = 1000/n;
-	}
-	void QuitGame(){
-		running = false;
-	}
-	void Run() {
-		
-		current_scene->Init();
-		Uint32 oldTicks = SDL_GetTicks();
-		Uint32 newTicks = 0;
-		while (running) {
-			
-			// Get new Input events every loop
-			input->Update();
-			
-			// Exit events
-			if (input->KeyDown(KEY_ESCAPE) || input->Quit()){
-				QuitGame();
-			}
-			else if (input->KeyPressed(KEY_N)){
-				current_scene->reset();
-			}
 
-			// Update and Render the Scene and its objects
-			current_scene->Update();
-			current_scene->Render();
-			
-			// Present the render in the window and then clear its cache
-			renderer->render_present();
-			renderer->clear_render();
-			
-			newTicks = SDL_GetTicks();
-			if (newTicks - oldTicks < max_fps){
-				SDL_Delay(max_fps - newTicks + oldTicks);
-			}
-			oldTicks = newTicks;
-		}
-	}
+  
+  shared_ptr<Scene> currentScene = NULL;
+  string name = "";
 	
+	Game(Window *window, Renderer *renderer);
+	
+	~Game();
+		
+	void setMaxFramesPerSecond(Uint32 n);
+	
+	void QuitGame();
+	
+	void Run();
+
 	
 };
+  
+}
+
+void saveGame(std::string filename, const engine::Game &obj);
+void loadGame(std::string filename, engine::Game &obj);
+
+
+#endif
 
 #endif /* Game_hpp */

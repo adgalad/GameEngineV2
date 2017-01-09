@@ -8,64 +8,145 @@
 
 #ifndef Scene_hpp
 #define Scene_hpp
+#ifdef __cplusplus
+#include "ObjectModule.hpp"
+#include "ObjectModule.cpp"
 
-#include "Object.hpp"
+namespace engine {
 
-class Scene {
 
+
+template<class Object>
+class Camera {
+  friend class Scene;  
+  SERIALIZE
+  
+	friend class SceneT;
+	Rect rect;
+	Rect sceneRect;
+	Object *target = NULL;
+  
+  template<class Archive>
+  void serialize(Archive & ar, const unsigned int version)
+  {
+    TAG(ar, rect);
+    TAG(ar, sceneRect);
+//    TAG(ar, target);
+  }
+	
 public:
-	string name;
-	vector<Object *> objs;
-	Texture *background = NULL;
-	
-	Scene(){};
-	Scene (string name, Rect size){
-		this->name = name;
-		target_texture = new Texture();
-		target_texture->createTargetTexture("Target Texture Scene "+name, size);
-	}
 
-
-	inline Vector2D getTargetTextureSize(){
-		return target_texture->getSize();
-	}
+	Camera(){};
 	
-	void Init(){
-		Start();
-		for (int i  = 0 ; i < objs.size(); i ++){
-			objs[i]->Init();
-		}
-	}
+	/** 
+		Returns the Rect's dimensions that the Renderer's target
+	  Texture will renders.
+	 */
+	Rect getCameraRect();
 	
-	void reset(){
-		for (int i  = 0 ; i < objs.size(); i ++){
-			objs[i]->reset();
-		}
-	}
+	/** 
+		Tells to Camera the size of the current Scene
+	 */
+	inline void setSceneSize(Rect rect)  { sceneRect = rect; }
 	
-	virtual void Start(){
-		
-	}
+	/**
+		Set the Camera's size
+	 */
+	inline void setCameraRect(Rect rect) { this->rect = rect; }
 	
-	inline void Update(){
-		for (int i  = 0 ; i < objs.size(); i ++){
-			objs[i]->InternalUpdate();
-		}
-	}
+	/**
+		Set Camera's target
+	 */
+	inline void setTarget(Object *obj) {
+    if (target) target->isTarget(false);
+    target = obj;
+    target->isTarget(true);
+  }
+  
+  inline Rect getSceneRect() { return sceneRect; }
 	
-	inline void Render(){
-		target_texture->setAsRenderTarget();
-		if (background){
-			background->Render(Vector2D(0,0));
-		}
-		for (int i  = 0 ; i < objs.size(); i ++){
-			objs[i]->Render();
-		}
-		Texture::_renderer->set_renderer_target(NULL);
-		target_texture->Render(Vector2D(0,0));
-	}
-private:
-	Texture *target_texture;
+	
 };
 
+
+class Scene {
+  friend class Game;
+  SERIALIZE
+  
+  template<class Archive>
+  void serialize(Archive & ar, const unsigned int version)
+  {
+    TAG(ar, name);
+    TAG(ar, background);
+    TAG(ar, camera);
+    TAG(ar, objs);
+    TAG(ar, _target_texture);
+    TAG(ar, _hasObjectToRemove);
+    TAG(ar, _clearRender);
+  }
+  
+  
+  
+  
+public:
+	string name;
+	Texture *background = NULL;
+	Camera<ObjectT<Scene, ObjectModuleT<Scene>>> camera;
+	
+	virtual ~Scene();
+	
+	void addObject(ObjectT<Scene, ObjectModuleT<Scene>> *object);
+	
+//	void deleteObjectById(int id);
+	
+//	void deleteObjectByName(int id);
+  Scene();
+	
+	Scene (string name, Rect size);
+	
+	virtual void Init();
+	
+	void reset();
+	
+	virtual void Start();
+	
+	virtual void Update();
+  
+	virtual void Render();
+	
+  void clearTargetAfterRender(bool);
+  
+	inline Vector2D getTargetTextureSize(){
+		return _target_texture->getSize();
+	}
+  
+  
+  inline void setSceneAsRenderTarget(){
+    _target_texture->setAsRenderTarget();
+  }
+  
+	
+private:
+	
+  
+  void InternalRender();
+  
+  void InternalUpdate();
+  
+	vector<ObjectT<Scene, ObjectModuleT<Scene>> *> objs;
+	Texture *_target_texture = NULL;
+	bool _hasObjectToRemove = false;
+  bool _clearRender       = true;
+};
+
+//  typedef ObjectT<Scene,ObjectModuleT<Scene>> Object;
+//  typedef ObjectModuleT<Scene> ObjectModule;
+}
+
+
+using namespace engine;
+EXPORT_ABSTRACT_KEY(Scene);
+
+
+#endif
 #endif /* Scene_hpp */

@@ -9,129 +9,196 @@
 #ifndef Animator_hpp
 #define Animator_hpp
 
-#include "Object.hpp"
+#ifdef __cplusplus
+
+#include <map>
+#define Sprites map<string,Sprite*>
+
+/**
+ *  @file Animator
+ *
+ *  Handle the animation of an object manipulating its sprites.
+ */
+#include "Scene.hpp"
+
+namespace engine {
+
+  
+
+/*! \class Sprite Animator.hpp ""
+ *
+ *  Docs for Sprite class
+ */
 
 class Sprite{
-	int current_texture = 0;
+  SERIALIZE
+  
+  template <class Archive>
+  void save(Archive & ar, const unsigned int version)  const{
+    TAG(ar, name);
+//    TAG(ar, sheet); init() load the sheet
+    TAG(ar, loop);
+    TAG(ar, _image);
+    TAG(ar, _rows);
+    TAG(ar, _columns);
+    TAG(ar, _pos);
+    TAG(ar, _interSpace);
+  }
+  
+  template <class Archive>
+  void load(Archive & ar, const unsigned int version) {
+    TAG(ar, name);
+//    TAG(ar, sheet); init() load the sheet
+    TAG(ar, loop);
+    TAG(ar, _image);
+    TAG(ar, _rows);
+    TAG(ar, _columns);
+    TAG(ar, _pos);
+    TAG(ar, _interSpace);
+    init();
+  }
+  SPLIT_SERIALIZATION
+  
+  int _rows, _columns;
+  Vector2D _pos, _interSpace;
+  string _image;
+  
+  void init();
+  
 public:
-	string name;
-	vector<Texture *> sheet;
 
-	Sprite(){};
+	string name;                       /// Sprite's name
+	vector<shared_ptr<Texture>> sheet; /// Std vector with all the textures of the sprite
+	bool loop = true;                  /// TODO
 	
-	Sprite(string name, string image, int rows, int columns){
-		this->name = name;
-		SDL_Surface *surface = IMG_Load(image.c_str());
-		SDL_Rect rect = {0,0,surface->w/rows, surface->h/columns};
-		
-		for (int j = 0 ; j < columns ; j ++)
-		{
-			for (int i = 0 ; i < rows ; i ++)
-			{
-				rect.x = i * rect.w;
-				rect.y = j * rect.h;
-				SDL_Surface *sprite_surface = SDL_CreateRGBSurface(surface->flags,
-													 rect.w, rect.h,
-													 surface->format->BitsPerPixel,
-													 surface->format->Rmask,
-													 surface->format->Gmask,
-													 surface->format->Bmask,
-													 surface->format->Amask);
-				SDL_BlitSurface(surface, &rect, sprite_surface, 0);
-				Texture *texture = new Texture(name+" Tex "+to_string(j*rows+1),
-											   sprite_surface);
-				sheet.push_back(texture);
-				
-				/* Save to bmp */
-				//				SDL_SaveBMP(sprite_surface,("/Users/carlosspaggiari/ge_images_test/"+name+" Tex "+to_string(j*rows+1)+".png").c_str());
-			}
-		}
-		SDL_FreeSurface(surface);
-	}
+	/**
+	 *  Default Constructor
+	 */
+	Sprite();
 	
-	~Sprite(){
-		for (int i = 0 ; i < sheet.size(); i++)
-		{
-			delete sheet[i];
-			sheet[i] = NULL;
-		}
-	}
+	/**
+	 *  Sprite Constructor
+	 *
+	 *  @param name    Sprite's name
+	 *  @param image   Path to the source image
+	 *  @param rows    Number of rows
+	 *  @param columns Number of columns
+	 *  @param pos     Initial position in the source image. by default it (0,0)
+	 *
+	 *  @return Sprite
+	 */
+	Sprite(string name,
+         string image,
+         int rows,
+         int columns,
+         Vector2D pos = Vector2D(0,0),
+         Vector2D interSpace = Vector2D(0,0));
+  
+
 	
-	inline Texture *getNextTexture(){
-		current_texture = (current_texture + 1) % sheet.size();
-		
-		return sheet[current_texture];
-	}
-	inline void reset(){
-		current_texture = 0;
-	}
+	/**
+	 *  Default Destructor
+	 */
+	~Sprite();
+
+
+
 };
 
-
+/*! \class Animator Animator.hpp ""
+ *
+ *  Docs for Aniamtor class
+ */
 class Animator : public ObjectModule{
-	Sprite *current_sprite;
-	int current_sprite_id;
-	
-	
+  SERIALIZE
+  template <class Archive>
+  void serialize(Archive & ar, const unsigned int version){
+    TAG_BASE(ar, ObjectModule);
+    TAG(ar, sprites);
+    TAG(ar, _currentSprite);
+    TAG(ar, _currentSprite_id);
+    TAG(ar, _current_texture);
+    TAG(ar, _renderDelay);
+    TAG(ar, _crs);
+  }
 public:
-	vector<Sprite *> sprites;
+	Sprites sprites; /**< Std vector with all the Animator's sprites. */
 	
+	/**
+	 *  Defult Constructor
+	 */
+	Animator();
+	
+	/**
+	 *  Default Destructor
+	 */
+	~Animator();
+	
+	/**
+	 *  Initialize all private components and modules inside the class just
+	 *  before entering the Game's main loop. This method calls Start().
+	 */
+	void Init();
+	
+	/**
+	 *  Initialize user defined components. It is empty by default and should 
+	 *  be override when inherit from this class
+	 */
+	virtual void Start();
+	
+	/**
+	 *  Updates the class state on every cycle of the Game's main loop
+	 */
+	virtual void Update();
+	
+  
+  /**
+   *  Insert a Sprite in the Animator. Returns false if the Sprite is already
+   *  in the Animator.
+   *
+   *  @param spr Sprite being inserted
+   */
+  inline bool insertSprite(Sprite* spr){
+    return sprites.insert(pair<string, Sprite*>(spr->name,spr)).second;
+  }
+  
+	/**
+	 *  Set the name of the Animator
+	 *
+	 *  @param name Animator's name
+	 */
+	void setName(string name);
 
-	
-	Animator(){
-		setName("");
-	}
-	
-	~Animator(){
-		for (int i = 0 ; i < sprites.size(); i++)
-		{
-			delete sprites[i];
-			sprites[i] = NULL;
-		}
-	}
-	
-	
-	void Start(){
-		if (current_sprite == NULL){
-			if (sprites[0] == NULL){
-				printf("Error: No sprite in the animator\n");
-				return;
-			}
-			current_sprite = sprites[0];
-		}
-	}
-	
-	void Update(){
-		object->texture = current_sprite->getNextTexture();
-	}
-	
-	inline void setName(string name){
-		ObjectModule::setName("Animator");
-	}
-	
-	inline void setSprite(string name){
-		if (current_sprite->name == name) return;
-		for (int i = 0 ; i < sprites.size(); i++)
-		{
-			if (sprites[i]->name == name ){
-				current_sprite = sprites[i];
-				current_sprite_id = i;
-				current_sprite->reset();
-				return;
-			}
-		}
-		printf("Couldn't find such sprite in the Animator.\n\tname = %s\n", name.c_str());
-	}
-	
-	void setCurrentSpriteId(int id){
-		if (current_sprite_id != id && id >= 0 && id < sprites.size()){
-			current_sprite_id = id;
-			current_sprite = sprites[id];
-			current_sprite->reset();
-		}
-	}
+  
+  /**
+   *  Set a delay between each frame of the animation.
+   *  The delay is relative to the FPS and mean how many 
+   *  loops before change the current texture
+   *
+   *  @param delay
+   */
+  void setRenderDelay(int delay);
+  
+	/**
+	 *  Take the sprite named as the given string and set it 
+   *  as the current sprite.
+	 *
+	 *  @param name Name of the desired sprite
+	 */
+	void setSprite(string name);
 
-	
+private:
+  Sprite *_currentSprite = NULL;
+  
+  int _currentSprite_id  = 0;
+  int _current_texture   = 0;
+  int _renderDelay       = 1;
+  int _crs               = 1;
 };
-
+  
+}
+using namespace engine;
+EXPORT_ABSTRACT_KEY(Animator)
+EXPORT_KEY(Sprite);
+#endif
 #endif /* Animator_hpp */
