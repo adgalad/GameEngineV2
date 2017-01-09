@@ -67,6 +67,7 @@ void Sprite::init(){
         sheet.push_back(texture);
       } else {
         --i;
+        Debug::Log("What?");
       }
       rect.x += rect.w + _interSpace.x;
     }
@@ -102,7 +103,9 @@ void Animator::Init(){
 		}
 		_currentSprite = sprites.begin()->second;
 	}
-  object->texture = shared_ptr<Texture>(_currentSprite->sheet[0].get());
+  if (_currentSprite->sheet[0]){
+    object->texture = _currentSprite->sheet[0];
+  }
 	Start();
 }
 

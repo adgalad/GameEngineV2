@@ -11,10 +11,10 @@
 #define Background "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/sf2-bg.jpg"
 #define GroundTexture "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/sf2-ground.jpg"
 
-#define SPRight      "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/sc_right.png"
-#define SPStandRight "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/sc_stand_right.png"
-#define SPLeft       "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/sc_left.png"
-#define SPStandLeft  "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/sc_stand_left.png"
+#define SPRight      "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/sp_right.png"
+#define SPStandRight "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/sp_stand_right.png"
+#define SPLeft       "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/sp_left.png"
+#define SPStandLeft  "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/sp_stand_left.png"
 #define TargetTex    "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/target_dummy.gif"
 
 #define pokemon "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/pokemon/pokemon sprites 1111112222233333444445555566666677777888889999900000 copy.bmp"
@@ -24,8 +24,8 @@
 void LoadSP(Game *game){
 	Sprite *walk_right  = new Sprite("walk_right" , SPRight     , 8, 1);
 	Sprite *walk_left   = new Sprite("walk_left"  , SPLeft      , 8, 1);
-	Sprite *stand_right = new Sprite("stand_right", SPStandRight, 1, 1);
-	Sprite *stand_left  = new Sprite("stand_left" , SPStandLeft , 1, 1);
+	Sprite *stand_right = new Sprite("stand_right", SPStandRight, 8, 1);
+	Sprite *stand_left  = new Sprite("stand_left" , SPStandLeft , 8, 1);
 
 	/*** ANIMATOR ***/
 	Animator *anim = new Animator();

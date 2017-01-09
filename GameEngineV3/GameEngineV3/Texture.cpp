@@ -12,7 +12,9 @@ using namespace engine;
 
 Renderer *Texture::renderer = NULL;
 
-Texture::Texture() {}
+Texture::Texture() {
+
+}
 
 Texture::Texture(string name, Color color, Uint32 w, Uint32 h):
   name(name), type(SOLID_COLOR), source_rect(Rect(0, 0, w, h))

@@ -26,23 +26,23 @@ int main(int argc, const char * argv[]) {
 	
 //  loadTest(&game);
 //  loadPokemon(&game);
-//  LoadSP(game);
+  LoadSP(game);
 //	loadGol(&game);
 //  loadGridTest(&game);
 //  loadChess(&game);
-//	game->setMaxFramesPerSecond(30);
+	game->setMaxFramesPerSecond(30);
   
 //  delete game;
 //  
 //  Window   *tmain_window = new Window("Game Engine V3", 800,600);
 //  Renderer *trenderer    = new Renderer(tmain_window);
 //  Game     *tgame        = new Game(tmain_window, trenderer);
-  loadGame("/Users/carlosspaggiari/Game.bit", *game);
+//  loadGame("/Users/carlosspaggiari/Game.bit", *game);
   
 	game->Run();
   saveGame("/Users/carlosspaggiari/Game.bit", *game);
 	GameEngineQuit();
   
-  
+  delete game;
 	return 0;
 }
