@@ -10,6 +10,7 @@ Doxyfile
 */html/*
 */latex/*
 */Resources/*
+*/XcodeCoverage/*
 
 # Compiled source #
 ###################
@@ -50,4 +51,3 @@ ehthumbs.db
 Thumbs.db
 
 build/*
-
