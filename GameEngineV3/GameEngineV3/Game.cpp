@@ -81,24 +81,21 @@ void saveGame(std::string filename, const engine::Game &obj){
   std::ofstream ofs(filename);
   assert(ofs.good());
   
-  #ifndef ENABLE_BOOST_XML_SERIALIZATION
-    boost::archive::binary_oarchive oa(ofs);
-  #else
-    boost::archive::xml_oarchive oa(ofs);
-  #endif
+  boost::archive::xml_oarchive oa(ofs);
   
-  TAG(oa, obj);
+  
+  TAG_OA(oa, obj);
+  ofs.close();
 }
 
 void loadGame(std::string filename, engine::Game &obj){
   std::ifstream ifs(filename);
   assert(ifs.good());
 
-  #ifndef ENABLE_BOOST_XML_SERIALIZATION
-    boost::archive::binary_iarchive ia(ifs);
-  #else
-    boost::archive::xml_iarchive ia(ifs);
-  #endif
 
-  TAG(ia,obj);
+    boost::archive::xml_iarchive ia(ifs);
+
+  
+  TAG_IA(ia,obj);
+  ifs.close();
 }

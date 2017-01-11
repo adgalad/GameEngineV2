@@ -140,3 +140,4 @@ void Texture::Render(Vector2D position, Vector2D scale, Rect *srcRect, int angle
 }
 
 
+EXPORT_IMPLEMENT(Texture)

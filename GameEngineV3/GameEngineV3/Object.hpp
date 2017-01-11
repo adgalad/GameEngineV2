@@ -35,7 +35,7 @@ class ObjectT {
     TAG(ar, tag);
     if (texture and texture->type != SPRITE) TAG(ar, texture);
     else {
-      Texture *texture = NULL;
+      shared_ptr<Texture> texture = shared_ptr<Texture>(NULL);
       TAG(ar,texture);
     }
     TAG(ar, scene);
@@ -249,7 +249,7 @@ namespace engine {
 }
 
 using namespace engine;
-EXPORT_ABSTRACT_KEY(Object);
+EXPORT_KEY(Object);
 
 #endif
 #endif /* Object_hpp */

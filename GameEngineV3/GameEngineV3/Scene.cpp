@@ -202,6 +202,8 @@ void Scene::Render(){}
 //    }
 //  }
 //}
+
+EXPORT_IMPLEMENT(Scene);
 EXPORT_IMPLEMENT(Object);
 EXPORT_IMPLEMENT(ObjectModule);
-EXPORT_IMPLEMENT(Scene);
+

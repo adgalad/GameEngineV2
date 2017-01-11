@@ -22,28 +22,28 @@ int main(int argc, const char * argv[]) {
 
 	Window   *main_window = new Window("Game Engine V3", 800,600);
 	Renderer *renderer    = new Renderer(main_window);
-	Game     *game       =  new Game(main_window, renderer);
+	Game     game       =  Game(main_window, renderer);
 	
 //  loadTest(&game);
 //  loadPokemon(&game);
-  LoadSP(game);
+//  LoadSP(&game);
 //	loadGol(&game);
-//  loadGridTest(&game);
+  loadGridTest(&game);
 //  loadChess(&game);
-	game->setMaxFramesPerSecond(30);
+	game.setMaxFramesPerSecond(30);
   
 //  delete game;
 //  
 //  Window   *tmain_window = new Window("Game Engine V3", 800,600);
 //  Renderer *trenderer    = new Renderer(tmain_window);
 //  Game     *tgame        = new Game(tmain_window, trenderer);
-//  loadGame("/Users/carlosspaggiari/Game.bit", *game);
+//  loadGame("/Users/carlosspaggiari/Game.xml", game);
   
-	game->Run();
-  saveGame("/Users/carlosspaggiari/Game.bit", *game);
-  loadGame("/Users/carlosspaggiari/Game.bit", *game);
+	game.Run();
+  saveGame("/Users/carlosspaggiari/Game.xml", game);
+  loadGame("/Users/carlosspaggiari/Game.xml", game);
 	GameEngineQuit();
   
-  delete game;
+//  delete game;
 	return 0;
 }

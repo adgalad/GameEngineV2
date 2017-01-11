@@ -144,8 +144,8 @@ private:
 }
 
 
-
-EXPORT_ABSTRACT_KEY(engine::Scene);
+using namespace engine;
+EXPORT_KEY(Scene);
 
 
 #endif

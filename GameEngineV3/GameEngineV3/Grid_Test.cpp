@@ -18,14 +18,14 @@ void loadGridTest(Game *game){
   
   Sprite* down  = new Sprite("Jugador_up"   , JUGADOR_UP    , 3, 1);
   Sprite* up    = new Sprite("Jugador_down" , JUGADOR_DOWN  , 3, 1);
-  Sprite* right = new Sprite("Jugador_right", JUGADOR_RIGHT , 3, 1);
-  Sprite* left  = new Sprite("Jugador_left" , JUGADOR_LEFT  , 3, 1);
+//  Sprite* right = new Sprite("Jugador_right", JUGADOR_RIGHT , 3, 1);
+//  Sprite* left  = new Sprite("Jugador_left" , JUGADOR_LEFT  , 3, 1);
   
   Animator *anim = new Animator();
   anim->insertSprite(down);
   anim->insertSprite(up);
-  anim->insertSprite(right);
-  anim->insertSprite(left);
+//  anim->insertSprite(right);
+//  anim->insertSprite(left);
   anim->setSprite("Jugador_down");
   
   Jugador* jugador = new Jugador();

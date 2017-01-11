@@ -220,7 +220,8 @@ private:
 };
 }
 
-
+using namespace engine;
+EXPORT_KEY(Texture)
 
 #endif
 #endif /* sdl_texturehpp */

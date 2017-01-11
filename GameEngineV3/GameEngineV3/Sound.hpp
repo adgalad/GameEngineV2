@@ -66,9 +66,6 @@ public:
 	}
 	
 	inline static void Init() {
-    if (_current_music){
-      Mix_FreeMusic(_current_music);
-    }
 		_current_music = NULL;
 		Mix_AllocateChannels(16);
 	}

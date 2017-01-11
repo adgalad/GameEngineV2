@@ -26,11 +26,11 @@ public:
   
   void Start(){
     anim = (Animator*)getModule("Animator");
-    anim->setRenderDelay(-1);
+    anim->setRenderDelay(5);
   }
   
   void Update(){
-    int n = 5;
+    int n = 1;
     if (Input::KeyDown(KEY_W)){
         move(Vector2D(0,-n));
         anim->setSprite("Jugador_up");
@@ -60,8 +60,8 @@ void serialize(Archive & ar, Jugador & g, const unsigned int version){
 
 class Mapa : public Grid2D{
   
-#define w 100
-#define h 100
+  static const int w = 50;
+  static const int h = 50;
 
 public:
   

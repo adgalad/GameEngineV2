@@ -26,38 +26,38 @@ void LoadSP(Game *game){
 	Sprite *walk_left   = new Sprite("walk_left"  , SPLeft      , 8, 1);
 	Sprite *stand_right = new Sprite("stand_right", SPStandRight, 8, 1);
 	Sprite *stand_left  = new Sprite("stand_left" , SPStandLeft , 8, 1);
-
-	/*** ANIMATOR ***/
+//
+//	/*** ANIMATOR ***/
 	Animator *anim = new Animator();
 	anim->insertSprite(walk_right);
 	anim->insertSprite(walk_left);
 	anim->insertSprite(stand_right);
 	anim->insertSprite(stand_left);
-  
+//
   Texture *background = new Texture("bg"       , Background);;
-
+//
 	Texture *groundtex  = new Texture("groundTex", GroundTexture);
-
-	/**** Collider and Physic Controller ****/
+//
+//	/**** Collider and Physic Controller ****/
 	RectangleCollider *rc = new RectangleCollider();
 	rc->rect = Rect(15,10,73,120);
-	
+//
 	PhysicController *pc = new PhysicController();
 	pc->maxVelocity = Vector2D(15,30);
-	
-
-	
+//
+//
+//	
 	GroundCollision *gc = new GroundCollision();
-	
-	/**** SP ****/
+//
+//	/**** SP ****/
   SP1 *sp = new SP1();
 	sp->name = "sp";
 	sp->addModule(anim);
 	sp->addModule(pc);
 	sp->addModule(rc);
 	sp->addModule(gc);
-
-	
+//
+//	
 	Object *groundobj = new Object();
   PhysicController *pcGround = new PhysicController();
   pcGround->maxVelocity = Vector2D(0,0);
@@ -66,22 +66,22 @@ void LoadSP(Game *game){
   RectangleCollider *groundrc = new RectangleCollider();
   groundrc->rect = groundtex->getRect();
   groundrc->setName("groundRC");
-  
+//
 	groundobj->name = "ground";
 	groundobj->tag  = "ground";
   groundobj->addModule(pcGround);
 	groundobj->texture = shared_ptr<Texture>(groundtex);
 	groundobj->setPosition(Vector2D(0,750));
 	groundobj->addModule(groundrc);
-	
-
-//	/* Target Dummy */
+//
+//
+////	/* Target Dummy */
 	Target *t1 = new Target(),
 			   *t2 = new Target(),
 			   *t3 = new Target();
-	
+//
 	shared_ptr<Texture> target = shared_ptr<Texture>(new Texture("target", TargetTex));
-	
+//
 	t1->addModule(new RectangleCollider());
 	t2->addModule(new RectangleCollider());
 	t3->addModule(new RectangleCollider());
