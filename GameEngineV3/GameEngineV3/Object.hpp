@@ -33,7 +33,7 @@ class ObjectT {
     TAG(ar, id);
     TAG(ar, name);
     TAG(ar, tag);
-    if (texture->type != SPRITE) TAG(ar, texture);
+    if (texture and texture->type != SPRITE) TAG(ar, texture);
     else {
       Texture *texture = NULL;
       TAG(ar,texture);

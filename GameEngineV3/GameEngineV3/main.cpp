@@ -41,6 +41,7 @@ int main(int argc, const char * argv[]) {
   
 	game->Run();
   saveGame("/Users/carlosspaggiari/Game.bit", *game);
+  loadGame("/Users/carlosspaggiari/Game.bit", *game);
 	GameEngineQuit();
   
   delete game;
