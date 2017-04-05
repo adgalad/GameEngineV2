@@ -7,7 +7,7 @@
 //
 
 #include "ObjectModule.hpp"
-
+#include "Object.cpp"
 using namespace engine;
 
 template <class Scene>

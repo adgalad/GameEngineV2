@@ -116,8 +116,7 @@ public:
 									 SDL_TEXTUREACCESS_TARGET,
 									 r.w,
 									 r.h);
-
-		SDL_SetTextureBlendMode(sdl_texture, SDL_BLENDMODE_BLEND);
+		
 		if (sdl_texture == NULL){
       SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,
                                "Error",
@@ -126,6 +125,7 @@ public:
 			error("ERROR: Could not create Target Texture\nname: "+name+"\n "+SDL_GetError());
 			exit(EXIT_FAILURE);
 		}
+    SDL_SetTextureBlendMode(sdl_texture, SDL_BLENDMODE_BLEND);
 	}
 	
 	inline void setBlendMode(bool condition){
@@ -152,9 +152,7 @@ public:
 	/**
 	 Draw a line on the current rendering target.
 	 */
-	static inline void drawLine(Vector2D point1, Vector2D point2){
-		SDL_Point p1 = point1.to_SDL_Point();
-		SDL_Point p2 = point2.to_SDL_Point();
+	static inline void drawLine(Vector2D p1, Vector2D p2){
 		SDL_RenderDrawLine(renderer->sdl_renderer, p1.x, p1.y, p2.x, p2.y);
 	}
 	
@@ -191,7 +189,12 @@ public:
 	 Draws a Circle on the current rendering target.
 	 */
 	static void drawCircle(Circle circle);
-
+  
+  /**
+   Draws a Filled Circle on the current rendering target.
+   */
+  static void drawFilledCircle(Circle circle, Color outline, Color filler);
+  
 	/**
 	 Fills the texture with an image loaded from disk.
 	 */

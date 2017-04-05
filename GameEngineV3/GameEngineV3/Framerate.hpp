@@ -19,6 +19,7 @@ public:
 	Framerate (){}
 	
 	void Init(){
+    
 //		_currentfps = 1;
     _start = Time::getTicks();
 

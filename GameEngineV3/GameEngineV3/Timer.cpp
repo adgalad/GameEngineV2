@@ -10,7 +10,7 @@
 
 using namespace engine;
 
-void Timer::Update() {
+void TimerOld::Update() {
   if ( _active and _firstTick + _timeTrigger <= SDL_GetTicks() ){
     _active    = false;
     _triggered = true;
@@ -19,4 +19,4 @@ void Timer::Update() {
     printf("%d:%d\n", timeLeft()/1000, (timeLeft()%1000)/10);
   }
 }
-EXPORT_IMPLEMENT(Timer);
+EXPORT_IMPLEMENT(TimerOld);

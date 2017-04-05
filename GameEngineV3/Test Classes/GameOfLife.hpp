@@ -58,7 +58,7 @@ private:
 	int dead, alive;
 };
 
-void loadGol(Game *game);
+void loadGol();
 
 
 

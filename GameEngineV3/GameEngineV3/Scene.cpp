@@ -66,7 +66,11 @@ Scene::Scene (string name, Rect size){
 	Rect cameraSize;
 	Vector2D v = Texture::renderer->getWindowSize();
 	camera.setSceneSize(size);
-	camera.setCameraRect(Rect(0,0,min((int)v.x,size.w),min((int)v.y,size.h)));
+  if (size == Rect(0,0,0,0)){
+      camera.setCameraRect(Rect(0,0,v.x,v.y));
+  } else {
+    camera.setCameraRect(size);
+  }
 	
 }
 
@@ -142,13 +146,16 @@ void Scene::clearTargetAfterRender(bool b){
 }
 
 void Scene::InternalRender(){
-  Render();
+  
   if (background){
     background->Render(Vector2D(0,0));
   }
+  Render();
   for (int i  = 0 ; i < objs.size(); i ++){
     objs[i]->Render();
   }
+  
+  AfterRender();
   for (int i  = 0 ; i < objs.size(); i ++){
     objs[i]->AfterRender();
   }
@@ -164,6 +171,8 @@ void Scene::InternalRender(){
 
 }
 void Scene::Render(){}
+
+void Scene::AfterRender(){}
 
 //#define EXPORT_IMPLEMENT(T)
 //namespace boost {

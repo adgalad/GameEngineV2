@@ -44,6 +44,13 @@ public:
 		}
 	}
 	
+  inline bool isPlaying(){
+    if (_channel < 0){
+      error("Warning: Can not check the status of a sound that has not a specific channel.\nUse setChannel().");
+    }
+    return Mix_Playing(_channel);
+  }
+  
 	inline void resume() {
 		if (_channel < 0){
 			error("Warning: Can not resume a sound that has not a specific channel.\nUse setChannel().");

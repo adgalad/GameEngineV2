@@ -67,6 +67,8 @@ public:
 	inline bool hasTarget(){
 		return SDL_GetRenderTarget(sdl_renderer) != NULL;
 	}
+  
+  inline SDL_Texture *getTargetTexture(){ return SDL_GetRenderTarget(sdl_renderer); }
 	
   /**
    *  Use this function to set the color used by drawing
@@ -89,9 +91,11 @@ public:
 		SDL_SetRenderTarget(sdl_renderer, NULL);
 
     // Clear the main window
+    
 		SDL_RenderPresent(sdl_renderer);
 		
 		SDL_SetRenderTarget(sdl_renderer, t);
+    clearRender();
 	}
 	
 	/**

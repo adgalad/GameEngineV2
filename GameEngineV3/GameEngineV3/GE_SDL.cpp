@@ -9,8 +9,11 @@
 #include "GE_SDL.hpp"
 
 
+
 using namespace engine;
 
+
+const float PI = 3.1416;
 
 
 void engine::error (string err){
@@ -56,6 +59,8 @@ void engine::GameEngineInit(){
 	Debug::Log("SDL2 Image loaded succesfully.");
 	Debug::Log("SDL2 TTF loaded succesfully.");
 	Debug::Log("SDL2 Mixer loaded succesfully.");
+  
+  srand((unsigned int)time(NULL));
 }
 
 void engine::GameEngineQuit(){

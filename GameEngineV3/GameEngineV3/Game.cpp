@@ -8,9 +8,14 @@
 
 #include "Game.hpp"
 
+
+
 using namespace engine;
 
+Game * const Game::Application = new Game(NULL,NULL);
+
 Game::Game(Window *window, Renderer *renderer){
+  
 	this->main_window = window;
 	this->renderer		  = renderer;
 	Texture::renderer = renderer;
@@ -35,16 +40,15 @@ void Game::QuitGame(){
 	
 }
 void Game::Run() {
-	
+  printf("-> %p\n",this->currentScene.get());
 	currentScene->Init();
 
 	framerate.Init();
   Uint32 init = SDL_GetTicks();
   int fps = 0;
-
+  printf("-> %p\n",this->currentScene.get());
 	while (running) {
     if (init + 1000 <= SDL_GetTicks()){
-      Debug::Log("fps: " + to_string(fps));
       fps = 0;
       init = SDL_GetTicks();
     }
@@ -76,6 +80,14 @@ void Game::Run() {
 
 }
 
+void Game::SetWindow(Window *window, Renderer *renderer){
+  this->main_window = window;
+  this->renderer		  = renderer;
+  Texture::renderer = renderer;
+  Sound::Init();
+  framerate.setFPS(60);
+  running = true;
+}
 
 void saveGame(std::string filename, const engine::Game &obj){
   std::ofstream ofs(filename);

@@ -70,6 +70,8 @@ public:
   Vector2D round();
   
 	double length() const;
+  
+  double squareLength() const;
 	
 	Vector2D unitary() const;
 	
@@ -79,6 +81,13 @@ public:
 		return	"(" + to_string(x) + ", " + to_string(y) + ")";
 	}
 	
+  Vector2D round_ceil() const{
+    return Vector2D(ceil(x), ceil(y));
+  }
+  
+  Vector2D round_floor() const{
+    return Vector2D(floor(x), floor(y));
+  }
 };
 
 

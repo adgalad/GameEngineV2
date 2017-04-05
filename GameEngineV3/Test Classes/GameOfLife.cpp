@@ -142,9 +142,9 @@ void GameOfLife::genRandomGrid(int in_x, int in_y) {
 	}
 }
 
-void loadGol(Game *game){
+void loadGol(){
 	GameOfLife *object = new GameOfLife();
 	Scene *scene = new Scene("Game of Life",Rect(0,0,800,600));
 	scene->addObject(object);
-	game->currentScene = shared_ptr<Scene>(scene);
+  Game::Application->currentScene = shared_ptr<Scene>(scene);
 }

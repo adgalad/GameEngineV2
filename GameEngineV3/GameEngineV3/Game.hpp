@@ -35,9 +35,7 @@ class Game {
 	bool running;
 	
   
-  Game(){
-    
-  }
+  Game(){};
   
   template<class Archive>
   void save(Archive & ar, const unsigned int version) const
@@ -75,6 +73,7 @@ class Game {
   
 public:
 
+  static Game * const Application;
   
   shared_ptr<Scene> currentScene = NULL;
   string name = "";
@@ -82,20 +81,28 @@ public:
 	Game(Window *window, Renderer *renderer);
 	
 	~Game();
-		
+	
+  void SetWindow(Window *window, Renderer *renderer);
+  
 	void setMaxFramesPerSecond(Uint32 n);
 	
 	void QuitGame();
 	
 	void Run();
 
+  void resizeWindow(int w, int h){
+    SDL_SetWindowSize(main_window->sdl_window, w, h);
+  }
 	
+  
 };
   
 }
 
 void saveGame(std::string filename, const engine::Game &obj);
 void loadGame(std::string filename, engine::Game &obj);
+
+
 
 
 #endif

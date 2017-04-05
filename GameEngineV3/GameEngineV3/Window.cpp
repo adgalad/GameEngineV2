@@ -28,6 +28,7 @@ Window::Window(string name, Uint32 w, Uint32 h, Uint32 flags){
 								  //SDL_WINDOW_MAXIMIZED
 								  );
 	Debug::Log("Window was initialized succesfully.");
+  
 }
 
 Window::~Window(){

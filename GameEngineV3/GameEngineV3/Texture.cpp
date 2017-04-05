@@ -69,18 +69,50 @@ void Texture::createColorTexture(){
 void Texture::drawCircle(Circle circle){
 	float x1, y1, x2, y2;
 	float PI = 3.1416;
-	int n = PI*circle.radio.x*circle.radio.y/10;
-	float theta = 2*PI/n;
-	x1 = circle.radio.x*cosf(theta) + circle.center.x;
-	y1 = circle.radio.y*sinf(theta) + circle.center.y;
-	for (int i = 1 ; i <= n+1; ++i){
-		x2 = circle.radio.x*cosf(theta*(i)) + circle.center.x;
-		y2 = circle.radio.y*sinf(theta*(i)) + circle.center.y;
+	int n = PI*circle.radius.x*circle.radius.y/10;
+	
+  float theta = 2*PI/n;
+	
+  x1 = circle.radius.x*cosf(theta) + circle.center.x;
+	y1 = circle.radius.y*sinf(theta) + circle.center.y;
+	
+  for (int i = 1 ; i <= n+1; ++i){
+		x2 = circle.radius.x*cosf(theta*(i)) + circle.center.x;
+		y2 = circle.radius.y*sinf(theta*(i)) + circle.center.y;
 		SDL_RenderDrawLine(renderer->sdl_renderer, x1, y1, x2, y2);
 		x1 = x2;
 		y1 = y2;
 	}
 	
+}
+
+void Texture::drawFilledCircle(Circle circle, Color outline, Color filler){
+  Color oldColor = renderer->getDrawColor();
+  
+  renderer->setRenderColor(filler);
+  for (int x = circle.center.x - circle.radius.x ; x <= circle.center.x ; x++)
+  {
+    for (int y = circle.center.y - circle.radius.y ; y <= circle.center.y; y++)
+    {
+      // we don't have to take the square root, it's slow
+      if (pow(x - circle.center.x,2) + pow(y - circle.center.y,2) <= circle.radius.x * circle.radius.y)
+      {
+        int xSym = circle.center.x - (x - circle.center.x);
+        int ySym = circle.center.y - (y - circle.center.y);
+        SDL_RenderDrawPoint(renderer->sdl_renderer, x, y);
+        SDL_RenderDrawPoint(renderer->sdl_renderer, x, ySym);
+        SDL_RenderDrawPoint(renderer->sdl_renderer, xSym, y);
+        SDL_RenderDrawPoint(renderer->sdl_renderer, xSym, ySym);
+      }
+    }
+  }
+  if (not (outline == filler)) {
+    renderer->setRenderColor(outline);
+    drawCircle(circle);
+  }
+  
+  renderer->setRenderColor(oldColor);
+  
 }
 
 void Texture::loadImage(string file, int rows, int columns){

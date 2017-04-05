@@ -12,7 +12,6 @@
 
 #ifdef __cplusplus
 #include "Object.hpp"
-#include "Object.cpp"
 
 
 namespace engine {
@@ -50,7 +49,7 @@ public:
 	
 	string getName();
   
-	virtual void Init() = 0;
+  virtual void Init() { Start(); }
 	
 	virtual void setName(string name);
 	

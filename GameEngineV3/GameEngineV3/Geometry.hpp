@@ -37,6 +37,9 @@ public:
 	
 	void operator = (Rect other);
 	
+  bool operator == (Rect other){
+    return x == other.x && y == other.y && w == other.w && h == other.h;
+  }
 	inline SDL_Rect to_sdl_rect(){
 		return {x,y,w,h};
 	}
@@ -52,20 +55,20 @@ class Circle {
   void serialize(Archive & ar, const unsigned int version)
   {
     TAG(ar,center);
-    TAG(ar,radio);
+    TAG(ar,radius);
   }
   
 public:
 	Vector2D center;
-	Vector2D radio;
+	Vector2D radius;
 	
-	Circle(Vector2D center, double radio);
+	Circle(Vector2D center, double radius);
 	
-	Circle(Vector2D center, Vector2D radio);
+	Circle(Vector2D center, Vector2D radius);
 	
 	inline string toStr(){
 		return "Center: ("+to_string(center.x)+", "+to_string(center.y)+
-					 "),\nRadio: ("+to_string(radio.x)+", "+to_string(radio.y)+")";
+					 "),\nRadius: ("+to_string(radius.x)+", "+to_string(radius.y)+")";
 	}
 
 };

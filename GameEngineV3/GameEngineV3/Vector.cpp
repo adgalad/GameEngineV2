@@ -103,6 +103,11 @@ double Vector2D::length() const
 	return sqrt(x*x + y*y);
 }
 
+double Vector2D::squareLength() const
+{
+  return x*x + y*y;
+}
+
 Vector2D Vector2D::unitary() const
 {
 	float mag = length();

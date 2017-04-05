@@ -27,7 +27,6 @@
 #include <vector>
 
 
-
 #define ENABLE_BOOST_SERIALIZATION
 #define ENABLE_BOOST_XML_SERIALIZATION
 #ifdef ENABLE_BOOST_SERIALIZATION
@@ -85,7 +84,7 @@
 
 #endif
 
-
+extern const float PI;
 
 namespace engine {
   using namespace std;

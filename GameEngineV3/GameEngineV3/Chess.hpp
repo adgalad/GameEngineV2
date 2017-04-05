@@ -146,6 +146,6 @@ private:
   Sprite *pieces;
 };
 
-void loadChess(Game *game);
+void loadChess();
 
 #endif /* Chess_hpp */

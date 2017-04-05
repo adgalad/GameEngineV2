@@ -17,6 +17,10 @@ namespace engine {
 
 using namespace std;
 
+class Debug;
+
+extern Debug * const _debug;
+  
 class Debug {
 
 public:

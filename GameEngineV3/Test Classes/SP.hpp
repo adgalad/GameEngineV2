@@ -43,11 +43,11 @@ class Target : public Object {
   void AfterRender();
 };
 
-class TimerJumpAfterBullet : public Timer {
+class TimerJumpAfterBullet : public TimerOld {
   SERIALIZE
   template <class Archive>
   void serialize(Archive & ar, const unsigned int version){
-    TAG_BASE(ar, Timer);
+    TAG_BASE(ar, TimerOld);
     TAG(ar,pc);
   }
   

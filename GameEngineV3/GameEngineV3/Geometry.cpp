@@ -33,13 +33,13 @@ void Rect::operator = (Rect other)
 }
 
 
-Circle::Circle(Vector2D center, double radio){
+Circle::Circle(Vector2D center, double radius){
 	this->center = center;
-	this->radio = Vector2D(radio,radio);
+	this->radius = Vector2D(radius,radius);
 }
 
-Circle::Circle(Vector2D center, Vector2D radio){
+Circle::Circle(Vector2D center, Vector2D radius){
 	this->center = center;
-	this->radio = radio;
+	this->radius = radius;
 }
 

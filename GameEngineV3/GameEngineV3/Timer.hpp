@@ -9,10 +9,80 @@
 #ifndef Timer_hpp
 #define Timer_hpp
 
-#include "ObjectModule.hpp"
+#include "Time.hpp"
 
 namespace engine {
+  
   class Timer : public ObjectModule {
+    
+  private:
+    Uint32  _tick;
+    int  _resetTimer = 0;
+    int  _timer;
+    bool _started = false;
+    bool _pause   = false;
+    
+  public:
+    Timer(int ms){
+      _resetTimer = ms;
+      _timer = ms;
+    }
+    
+    virtual void Start(){};
+    
+    void StartTimer(){
+      _started = true;
+      _tick = Time::getTicks();
+    }
+    
+    void StopTimer(){
+      _started = false;
+    }
+    
+    void PauseTimer(){
+      _pause = true;
+    }
+    
+    void ResumeTimer(){
+      _pause = false;
+      _tick = Time::getTicks();
+    }
+    
+    void ResetTimer(int ms = -1){
+      if (ms == -1) {
+        _timer = _resetTimer;
+      } else {
+        _timer = ms;
+      }
+      _tick = Time::getTicks();
+    }
+    
+    void Update(){
+      
+      if (_started){
+        if (_timer < 0){
+          Finish();
+        }
+        else if (_timer > 0 and !_pause) {
+          Uint32 newTick = Time::getTicks();
+          _timer -= (newTick - _tick);
+          _tick = newTick;
+        }
+      }
+    }
+    
+    inline Uint32 getTimeLeft() { return _timer; }
+    
+    inline bool finished() {
+      return _timer < 0 && _started;
+    }
+    
+    virtual void Finish(){ };
+    
+  };
+  
+  
+  class TimerOld : public ObjectModule {
     SERIALIZE
     template <class Archive>
     void serialize(Archive & ar, const unsigned int version){
@@ -24,9 +94,9 @@ namespace engine {
     }
     
   public:
-    Timer(){}
+    TimerOld(){}
     
-    ~Timer(){}
+    ~TimerOld(){}
     
     inline void activeWithSeconds(Uint32 seconds){
       _timeTrigger = seconds * 1000;
@@ -77,5 +147,5 @@ namespace engine {
   };
 }
 using namespace engine;
-EXPORT_ABSTRACT_KEY(Timer)
+EXPORT_ABSTRACT_KEY(TimerOld)
 #endif /* Timer_hpp */

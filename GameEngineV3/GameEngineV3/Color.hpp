@@ -86,6 +86,10 @@ public:
 	 *  @return The SDL_Color equivalent.
 	 */
 	SDL_Color to_SDL_Color();
+  
+  inline bool operator == (Color other) {
+    return r == other.r and b == other.b and g == other.g;
+  }
 	
 };
 }

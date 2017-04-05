@@ -13,10 +13,10 @@ Vector2D Piece::_size      = Vector2D(68,68);
 
 Piece*   Board::piecesBoard[8][8];
 
-void loadChess(Game *game){
+void loadChess(){
   shared_ptr<Board> board = shared_ptr<Board>(new Board());
   
-  game->currentScene = board;
+  Game::Application->currentScene = board;
   
 }
 
