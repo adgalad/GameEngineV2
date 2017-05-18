@@ -64,10 +64,11 @@ Scene::Scene (string name, Rect size){
 
 	this->name = name;
 	Rect cameraSize;
-	Vector2 v = Application.renderer()->getWindowSize();
+//	Vector2 v = Application.renderer()->getWindowSize();
 	camera.setSceneSize(size);
   if (size == Rect(0,0,0,0)){
-      camera.setCameraRect(Rect(0,0,v.x,v.y));
+//      camera.setCameraRect(Rect(0,0,v.x,v.y));
+    camera.setCameraRect(Rect(0,0,0,0));
   } else {
     camera.setCameraRect(size);
   }
@@ -121,8 +122,8 @@ void Scene::Start(){
       error("Could not initialize Scene Target Texture");
     }
   } else {
-    _target_texture->setAsRenderTarget();
-    Application.renderer()->clearRender();
+//    _target_texture->setAsRenderTarget();
+//    Application.renderer()->clearRender();
   }
 }
 
