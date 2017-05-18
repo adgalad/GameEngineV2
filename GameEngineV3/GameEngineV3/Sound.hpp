@@ -32,7 +32,7 @@ public:
 	}
 	
 	inline void play(int loop){
-		Mix_PlayChannel(_channel, _chunk, loop);
+//		Mix_PlayChannel(_channel, _chunk, loop);
 	}
 	
 	inline void pause(){

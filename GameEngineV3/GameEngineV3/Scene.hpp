@@ -106,7 +106,7 @@ public:
 	
 	virtual void Init();
 	
-	void reset();
+	virtual void Reset();
 	
 	virtual void Start();
 	
@@ -118,14 +118,12 @@ public:
 	
   void clearTargetAfterRender(bool);
   
-	inline Vector2D getTargetTextureSize(){
+	inline Vector2 getTargetTextureSize(){
 		return _target_texture->getSize();
 	}
   
   
-  inline void setSceneAsRenderTarget(){
-    _target_texture->setAsRenderTarget();
-  }
+
   
 	
 private:

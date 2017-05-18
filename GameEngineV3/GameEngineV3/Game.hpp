@@ -30,9 +30,10 @@ class Game {
   SERIALIZE
   
 	Window *main_window = NULL;
-	Renderer *renderer  = NULL;
+	Renderer *_renderer  = NULL;
   Framerate framerate = Framerate();
 	bool running;
+  SDL_GLContext _glContext;
 	
   
   Game(){};
@@ -55,12 +56,11 @@ class Game {
     TAG(ar, name);
     TAG(ar, fps);
     framerate.setFPS(fps);
-    if (main_window == NULL && renderer == NULL){
+    if (main_window == NULL && _renderer == NULL){
       Window   * window   = new Window(this->name, 500, 500);
       Renderer * renderer = new Renderer(window);
       this->main_window = window;
-      this->renderer		= renderer;
-      Texture::renderer = renderer;
+      this->_renderer		= renderer;
       Sound::Init();
     }
     running = true;
@@ -71,14 +71,17 @@ class Game {
   SPLIT_SERIALIZATION
   
   
+  
 public:
 
-  static Game * const Application;
+  Renderer * renderer(){ return _renderer; }
+  
+  Window *window() { return main_window; }
   
   shared_ptr<Scene> currentScene = NULL;
   string name = "";
 	
-	Game(Window *window, Renderer *renderer);
+	Game(Window *window, Renderer *_renderer);
 	
 	~Game();
 	
@@ -94,6 +97,14 @@ public:
     SDL_SetWindowSize(main_window->sdl_window, w, h);
   }
 	
+  inline void setSceneAsRenderTarget(){
+    
+    if (currentScene && currentScene->_target_texture){
+      currentScene->_target_texture->setAsRenderTarget();
+    } else {
+      _renderer->setRendererTarget(NULL);
+    }
+  }
   
 };
   
@@ -102,7 +113,7 @@ public:
 void saveGame(std::string filename, const engine::Game &obj);
 void loadGame(std::string filename, engine::Game &obj);
 
-
+extern Game Application;
 
 
 #endif

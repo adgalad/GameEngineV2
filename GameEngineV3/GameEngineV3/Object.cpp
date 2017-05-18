@@ -21,7 +21,7 @@ ObjectT<Scene,ObjectModule>::ObjectT() : transform(_transform)
 {
 	id = _id;
 	++_id;
-	_transform = { Vector2D(0,0), Vector2D(1,1)};
+	_transform = { Vector2(0,0), Vector2(1,1)};
 }
 
 
@@ -34,7 +34,7 @@ ObjectT<Scene,ObjectModule>::ObjectT(string name) : transform(_transform)
 	this->name = name;
 	id = _id;
 	++_id;
-	_transform = { Vector2D(0,0), Vector2D(1,1)};
+	_transform = { Vector2(0,0), Vector2(1,1)};
 }
 
 
@@ -78,13 +78,13 @@ void ObjectT<Scene,ObjectModule>::addModule(ObjectModule *module)
 }
 
 template<class Scene, class ObjectModule>
-void ObjectT<Scene,ObjectModule>::setPosition(Vector2D new_position)
+void ObjectT<Scene,ObjectModule>::setPosition(Vector2 new_position)
 {
 	_transform.position = new_position;
 }
 
 template<class Scene, class ObjectModule>
-void ObjectT<Scene,ObjectModule>::setScale(Vector2D new_scale)
+void ObjectT<Scene,ObjectModule>::setScale(Vector2 new_scale)
 {
 	_transform.scale = new_scale;
 	if (_transform.scale.x < 0) _transform.scale.x = 0;
@@ -92,7 +92,7 @@ void ObjectT<Scene,ObjectModule>::setScale(Vector2D new_scale)
 }
 
 template<class Scene, class ObjectModule>
-void ObjectT<Scene,ObjectModule>::move(Vector2D move)
+void ObjectT<Scene,ObjectModule>::move(Vector2 move)
 {
 	_movement += move.round();
 
@@ -114,7 +114,7 @@ void ObjectT<Scene,ObjectModule>::InternalUpdate(){
 		modules[i]->Update();
 	}
 	_transform.position += movement;
-	_movement = Vector2D(0,0);
+	_movement = Vector2(0,0);
 
 }
 
@@ -142,4 +142,14 @@ template<class Scene, class ObjectModule>
 void ObjectT<Scene,ObjectModule>::AfterRender(){
 	
 }
+
+template<class Scene, class ObjectModule>
+void ObjectT<Scene,ObjectModule>::reset(){
+  _transform = _initial_transform;
+  _movement = Vector2(0,0);
+  for (int i = 0 ; i < modules.size() ; ++i){
+    modules[i]->Reset();
+  }
+}
+
 

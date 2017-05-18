@@ -48,9 +48,9 @@ void loadTest(Game *game){
 	obj->addModule(anim);
 	obj->addModule(rc1);
 	obj->addModule(pc);
-	obj->setPosition(Vector2D(200,200));
+	obj->setPosition(Vector2(200,200));
 	//	obj2->texture = new Texture("2", "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV2/GameEngineV2/Resources/yoshi crop.png");
-	obj2->setPosition(Vector2D(200,100));
+	obj2->setPosition(Vector2(200,100));
 	obj2->addModule(rc2);
 	
 	obj3->texture = NULL;
@@ -83,7 +83,7 @@ void loadPokemon(Game *game)
 		{
 			Object *obj =  new Object();
 			obj->texture = grass;
-			obj->setPosition(Vector2D(i*16,j*16));
+			obj->setPosition(Vector2(i*16,j*16));
 			s1->addObject(obj);
 		}
 	}
@@ -124,7 +124,7 @@ void loadPokemon(Game *game)
 	obj->addModule(anim);
 	obj->addModule(pc);
 	obj->addModule(rc1);
-	obj->setPosition(Vector2D(50,50));
+	obj->setPosition(Vector2(50,50));
 	
 	O3 *obj2 = new O3;
 	obj2->addModule(anim2);
@@ -137,23 +137,23 @@ void loadPokemon(Game *game)
     RectangleCollider *brc4 = new RectangleCollider();
 	
 	Bush *bush1 = new Bush();
-	bush1->setPosition(Vector2D(0,0));
+	bush1->setPosition(Vector2(0,0));
     bush1->addModule(brc1);
     brc1->rect = Rect(0,0,20*16,5);
     
     Bush *bush2 = new Bush();
-	bush2->setPosition(Vector2D(0,0));
+	bush2->setPosition(Vector2(0,0));
     bush2->addModule(brc2);
     brc2->rect = Rect(0,0,5,20*16);
     
     Bush *bush3 = new Bush();
-	bush3->setPosition(Vector2D(20*16,0));
+	bush3->setPosition(Vector2(20*16,0));
     bush3->addModule(brc3);
     brc3->rect = Rect(0,0,5,20*16);
     brc3->setTrigger(true);
 
     Bush *bush4 = new Bush();
-	bush4->setPosition(Vector2D(0,20*16));
+	bush4->setPosition(Vector2(0,20*16));
 	bush4->addModule(brc4);
 	brc4->rect = Rect(0,0,20*16,5);
 	

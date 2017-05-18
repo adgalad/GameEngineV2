@@ -43,7 +43,7 @@ void LoadSP(Game *game){
 	rc->rect = Rect(15,10,73,120);
 //
 	PhysicController *pc = new PhysicController();
-	pc->maxVelocity = Vector2D(15,30);
+	pc->maxVelocity = Vector2(15,30);
 //
 //
 //	
@@ -60,7 +60,7 @@ void LoadSP(Game *game){
 //	
 	Object *groundobj = new Object();
   PhysicController *pcGround = new PhysicController();
-  pcGround->maxVelocity = Vector2D(0,0);
+  pcGround->maxVelocity = Vector2(0,0);
   pcGround->setFriction(50);
   pcGround->affectedByGravity = false;
   RectangleCollider *groundrc = new RectangleCollider();
@@ -71,7 +71,7 @@ void LoadSP(Game *game){
 	groundobj->tag  = "ground";
   groundobj->addModule(pcGround);
 	groundobj->texture = shared_ptr<Texture>(groundtex);
-	groundobj->setPosition(Vector2D(0,750));
+	groundobj->setPosition(Vector2(0,750));
 	groundobj->addModule(groundrc);
 //
 //
@@ -88,9 +88,9 @@ void LoadSP(Game *game){
 	t1->texture = target;
 	t2->texture = target;
 	t3->texture = target;
-	t1->setPosition(Vector2D(500,500));
-	t2->setPosition(Vector2D(600,500));
-	t3->setPosition(Vector2D(700,500));
+	t1->setPosition(Vector2(500,500));
+	t2->setPosition(Vector2(600,500));
+	t3->setPosition(Vector2(700,500));
 	
 	
 	

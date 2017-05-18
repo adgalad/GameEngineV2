@@ -18,14 +18,14 @@ class Window {
 public:
 	SDL_Window *sdl_window;
 	
-	Window(string name, Uint32 w, Uint32 h, Uint32 flags = SDL_WINDOW_RESIZABLE);
+	Window(string name, Uint32 w, Uint32 h, Uint32 flags = SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
 	
 	~Window();
 	
-	inline Vector2D get_size(){
+	Vector2 get_size(){
 		int x,y;
 		SDL_GetWindowSize(sdl_window, &x, &y);
-		return Vector2D(x,y);
+		return Vector2(x,y);
 	}
 	
 };

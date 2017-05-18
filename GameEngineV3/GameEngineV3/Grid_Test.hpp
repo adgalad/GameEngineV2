@@ -32,16 +32,16 @@ public:
   void Update(){
     int n = 1;
     if (Input::KeyDown(KEY_W)){
-        move(Vector2D(0,-n));
+        move(Vector2(0,-n));
         anim->setSprite("Jugador_up");
     } else if (Input::KeyDown(KEY_S)){
-        move(Vector2D(0,n));
+        move(Vector2(0,n));
         anim->setSprite("Jugador_down");
     } else if (Input::KeyDown(KEY_A)){
-        move(Vector2D(-n,0));
+        move(Vector2(-n,0));
         anim->setSprite("Jugador_left");
     } else if (Input::KeyDown(KEY_D)){
-        move(Vector2D(n,0));
+        move(Vector2(n,0));
         anim->setSprite("Jugador_right");
     }
     
@@ -65,7 +65,7 @@ class Mapa : public Grid2D{
 
 public:
   
-  Mapa() : Grid2D("Scenita", Rect(0, 0, w, h), Vector2D(64,64)) {
+  Mapa() : Grid2D("Scenita", Rect(0, 0, w, h), Vector2(64,64)) {
     Texture *grama = new Texture("grama", tile);
     addTexture(grama);
     for (int i = 0 ; i < w ; i++) {

@@ -21,15 +21,15 @@ double circlef(double x){
 	return sqrt(5*5-x*x);
 }
 
-void plot(double (*f)(double), Vector2D range, int n, Vector2D scale)
+void plot(double (*f)(double), Vector2 range, int n, Vector2 scale)
 {
 	
-	Vector2D p2;
+	Vector2 p2;
     double r    = (range.y - range.x)/n;
-    Vector2D p1 = Vector2D(range.x*scale.x, -f(range.x)*scale.y)+Vector2D(150,150);
+    Vector2 p1 = Vector2(range.x*scale.x, -f(range.x)*scale.y)+Vector2(150,150);
 	for (double i = range.x+r ; i <= range.y; i += r){
 		
-		p2 = Vector2D(i*scale.x, -f(i)*scale.y)+Vector2D(50,150);
+		p2 = Vector2(i*scale.x, -f(i)*scale.y)+Vector2(50,150);
 		Texture::drawLine(p1, p2);
 		p1 = p2;
 	}
@@ -51,9 +51,9 @@ void Target::EnterTrigger(Object *other) {
 }
 
 void Target::AfterRender(){
-  Texture::renderer->setRenderColor(Color::red);
+  Application.renderer()->setRenderColor(Color::red);
   Texture::drawRect(rc->absolute_rect);
-  Texture::renderer->setRenderColor(Color::black);
+  Application.renderer()->setRenderColor(Color::black);
 }
 
 
@@ -81,9 +81,9 @@ void Bullet::Start(){
 
 void Bullet::Update(){
   if (direction)
-    move(Vector2D(5, 0));
+    move(Vector2(5, 0));
   else
-    move(Vector2D(-5,0));
+    move(Vector2(-5,0));
   
 }
 
@@ -94,9 +94,9 @@ void Bullet::EnterTrigger(Object *other){
 }
 
 void Bullet::AfterRender(){
-  Texture::renderer->setRenderColor(Color::red);
+  Application.renderer()->setRenderColor(Color::red);
   Texture::drawRect(rc->absolute_rect);
-  Texture::renderer->setRenderColor(Color::black);
+  Application.renderer()->setRenderColor(Color::black);
 }
 
 
@@ -119,13 +119,13 @@ void SP::Update() {
     if (Input::KeyDown(KEY_LEFT_ARROW)){
       direction = false;
       steps = 20/n;
-      moveVector = Vector2D(-5*n,0);
+      moveVector = Vector2(-5*n,0);
     }
     
     if (Input::KeyDown(KEY_RIGHT_ARROW)){
       direction = true;
       steps = 20/n;
-      moveVector = Vector2D(5*n,0);
+      moveVector = Vector2(5*n,0);
     }
 
     
@@ -160,8 +160,8 @@ void SP1::Start(){
   
   direction = true;
   moving = false;
-  pc->setGravity(Vector2D(0, 3));
-  pc->maxVelocity = Vector2D(speed,speed*2);
+  pc->setGravity(Vector2(0, 3));
+  pc->maxVelocity = Vector2(speed,speed*2);
   sword.setChannel(0);
   sword.loadSound(SwordSound);
   timer->setTimer(3000);
@@ -171,31 +171,31 @@ void SP1::Update() {
   moving = false;
   
   if (Input::KeyDown(KEY_LEFT_ARROW)){
-    pc->addForce(Vector2D(-speed,0));
+    pc->addForce(Vector2(-speed,0));
     direction = false;
     moving = true;
   }
   
   
   if (Input::KeyDown(KEY_RIGHT_ARROW)){
-    pc->addForce(Vector2D(speed,0));
+    pc->addForce(Vector2(speed,0));
     direction = true;
     moving = true;
   }
   //		if (Input::KeyDown(KEY_DOWN_ARROW)){
-  //			move(Vector2D(0,n));
+  //			move(Vector2(0,n));
   //			moving = true;
   //		}
   if (Input::KeyDown(KEY_UP_ARROW)){
-    if (onGround) pc->addForce(Vector2D(0,-speed*2));
+    if (onGround) pc->addForce(Vector2(0,-speed*2));
   }
   if (Input::KeyPressed(KEY_M)){
     if (not timer->isActive()) timer->active();
     Bullet *b = new Bullet(direction);
     b->name = "bullet";
     b->setPosition(direction
-                   ? transform.position + Vector2D(texture->getSize().x,0)
-                   : transform.position - Vector2D(b->texture->getSize().x,0));
+                   ? transform.position + Vector2(texture->getSize().x,0)
+                   : transform.position - Vector2(b->texture->getSize().x,0));
     b->Init();
     scene->addObject(b);
     sword.play(0);

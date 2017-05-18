@@ -43,7 +43,7 @@ public:
 	 * Get the size of the MainWidnow.
 	 */
 	
-	inline Vector2D getWindowSize(){
+	inline Vector2 getWindowSize(){
 		return window->get_size();
 	}
 	

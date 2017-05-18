@@ -25,7 +25,17 @@ void engine::GameEngineInit(){
 	Debug::Init();
 	Debug::WriteLog(true);
 	Debug::ShowLog(true);
+  
+  // OpenGL Version 3.2
+  SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+  SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
+  // Enable Double Buffer
+  SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+  // This means that the old, deprecated code are disabled, only the newer versions can be used.
+  SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 	
+
+  
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0){
     SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,
                              "Error",

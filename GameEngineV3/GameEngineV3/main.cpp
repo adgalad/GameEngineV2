@@ -9,21 +9,21 @@
 #include <iostream>
 #include "GE_SDL.hpp"
 #include "Game.hpp"
-#include "Pokemon.hpp"
-#include "Chess.hpp"
-#include "SP_Scene.hpp"
-#include "Grid_Test.hpp"
-#include "GameOfLife.hpp"
+//#include "Pokemon.hpp"
+//#include "Chess.hpp"
+//#include "SP_Scene.hpp"
+//#include "Grid_Test.hpp"
+//#include "GameOfLife.hpp"
 #include "Pacman.hpp"
+#include "DrawPrimitives.hpp"
 
 int main(int argc, const char * argv[]) {
   
   
 	GameEngineInit();
-
 	Window   *main_window = new Window("Game Engine V3", 800,600);
 	Renderer *renderer    = new Renderer(main_window);
-  Game::Application->SetWindow(main_window, renderer);
+  Application.SetWindow(main_window, renderer);
 
 //  loadTest(&Application);
 //  loadPokemon(&game);
@@ -31,9 +31,13 @@ int main(int argc, const char * argv[]) {
 //  loadGol();
 //  loadGridTest(&game);
 //  loadChess(&game);
-  loadPacman();
+//  loadPacman();
+//  loadDraw();
   
-	Game::Application->setMaxFramesPerSecond(40);
+  Application.currentScene = shared_ptr<Scene>(new Scene);
+  
+  
+	Application.setMaxFramesPerSecond(60);
   
 //  delete game;
 //  
@@ -42,7 +46,7 @@ int main(int argc, const char * argv[]) {
 //  Game     *tgame        = new Game(tmain_window, trenderer);
 //  loadGame("/Users/carlosspaggiari/Game.xml", game);
   
-	Game::Application->Run();
+	Application.Run();
 //  saveGame("/Users/carlosspaggiari/Game.xml", game);
 //  loadGame("/Users/carlosspaggiari/Game.xml", game);
 	GameEngineQuit();

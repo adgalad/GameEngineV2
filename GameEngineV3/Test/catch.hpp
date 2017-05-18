@@ -5824,7 +5824,7 @@ namespace Catch {
             { SIGINT,  "SIGINT - Terminal interrupt signal" },
             { SIGILL,  "SIGILL - Illegal instruction signal" },
             { SIGFPE,  "SIGFPE - Floating point error signal" },
-            { SIGSEGV, "SIGSEGV - Segmentation violation signal" },
+            { SIGSEGV, "SIGSEGV - Edgeation violation signal" },
             { SIGTERM, "SIGTERM - Termination request signal" },
             { SIGABRT, "SIGABRT - Abort (abnormal termination) signal" }
         };

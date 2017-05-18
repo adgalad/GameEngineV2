@@ -15,11 +15,11 @@
 
 #define Epsilon 0.00001
 
-#define Point SDL_Point
+
 
 namespace engine {
 
-class Vector2D {
+class Vector2 {
   SERIALIZE
   template<class Archive>
   void serialize(Archive & ar, const unsigned int version)
@@ -33,98 +33,99 @@ public:
 	double x = 0;
 	double y = 0;
 	
-	Vector2D();
+	Vector2();
 	
-	Vector2D(double, double);
+	Vector2(double, double);
 	
-	Vector2D(SDL_Point);
+	Vector2(SDL_Point);
 	
-	inline SDL_Point to_SDL_Point() const { return {(int)x, (int)y}; }
-#define to_Point to_SDL_Point
-	inline Vector2D operator = (SDL_Point p) const { return Vector2D(p.x,p.y); }
+  inline SDL_Point toSDLPoint() const { return {(int)std::round(x), (int)std::round(y)}; }
+#define to_Point toSDLPoint
+	inline Vector2 operator = (SDL_Point p) const { return Vector2(p.x,p.y); }
 	
-	Vector2D operator +(Vector2D) const;
+	Vector2 operator +(Vector2) const;
 	
-	Vector2D operator -(Vector2D) const;
+	Vector2 operator -(Vector2) const;
 	
-	Vector2D operator -() const;
+	Vector2 operator -() const;
 	
-	Vector2D operator *(double) const;
+	Vector2 operator *(double) const;
 		
-	double operator *(Vector2D) const;
+	double operator *(Vector2) const;
 
-	Vector2D operator /(double) const;
+	Vector2 operator /(double) const;
 	
-	void operator += (Vector2D);
+	void operator += (Vector2);
 	
-	void operator -= (Vector2D);
+	void operator -= (Vector2);
 	
 	void operator *= (double);
 	
-	void operator *= (Vector2D);
+	void operator *= (Vector2);
 	
 	void operator /= (double);
 	
-	bool operator == (Vector2D);
+	bool operator == (Vector2);
 	
-  Vector2D round();
+  Vector2 round();
   
 	double length() const;
   
   double squareLength() const;
 	
-	Vector2D unitary() const;
+	Vector2 unitary() const;
 	
-	Vector2D normal() const;
+	Vector2 normal() const;
 	
 	inline string toStr() const{
 		return	"(" + to_string(x) + ", " + to_string(y) + ")";
 	}
 	
-  Vector2D round_ceil() const{
-    return Vector2D(ceil(x), ceil(y));
+  Vector2 round_ceil() const{
+    return Vector2(ceil(x), ceil(y));
   }
   
-  Vector2D round_floor() const{
-    return Vector2D(floor(x), floor(y));
+  Vector2 round_floor() const{
+    return Vector2(floor(x), floor(y));
   }
 };
 
+typedef Vector2 Point;
+typedef Vector2 Vertex;
 
 
-
-class Vector3D {
+class Vector3 {
 public:
 	
 	double x = 0;
 	double y = 0;
 	double z = 0;
 	
-	Vector3D();
+	Vector3();
 	
-	Vector3D(double x, double y, double z = 0);
+	Vector3(double x, double y, double z = 0);
 	
-	inline SDL_Point to_SDL_Point() { return {(int)x, (int)y}; }
+	inline SDL_Point toSDLPoint() { return {(int)x, (int)y}; }
 	
-	Vector3D operator +(Vector3D);
+	Vector3 operator +(Vector3);
 	
-	Vector3D operator -(Vector3D);
+	Vector3 operator -(Vector3);
 	
-	Vector3D operator -();
+	Vector3 operator -();
 	
-	Vector3D operator *(int);
+	Vector3 operator *(int);
 	
-	Vector3D operator *(double);
+	Vector3 operator *(double);
 	
-	double operator * (Vector3D);
+	double operator * (Vector3);
 	
-	bool operator == (Vector3D);
+	bool operator == (Vector3);
 	
 	double length();
 	
-	Vector3D unitary();
+	Vector3 unitary();
 	
-	Vector3D normal();
+	Vector3 normal();
 	
 	string toStr(){
 		return	"(" + to_string(x) + ", " + to_string(y) + ", " + to_string(z) + ")" ;

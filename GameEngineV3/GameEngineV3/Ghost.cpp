@@ -10,6 +10,7 @@
 
 
 void Ghost::setFrightened (){
+  if ( mode == Dead) return;
   scaryFace = true;
   scary = true;
   TimerGhost *t = (TimerGhost*)timer;

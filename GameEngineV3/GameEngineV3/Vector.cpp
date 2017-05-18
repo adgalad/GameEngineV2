@@ -13,111 +13,111 @@ using namespace engine;
 //-//-//-//-//-//-//
 //    VECTOR2D    //
 //-//-//-//-//-//-//
-Vector2D::Vector2D(){
+Vector2::Vector2(){
 	x = 0;
 	y = 0;
 }
 
-Vector2D::Vector2D(double x, double y){
+Vector2::Vector2(double x, double y){
 	this->x = x;
 	this->y = y;
 }
 
-Vector2D::Vector2D(SDL_Point p){
+Vector2::Vector2(SDL_Point p){
 	this->x = p.x;
 	this->y = p.y;
 }
 
 
 /* Plus */
-Vector2D Vector2D::operator + (Vector2D b) const
+Vector2 Vector2::operator + (Vector2 b) const
 {
-	return Vector2D(x+b.x, y+b.y);
+	return Vector2(x+b.x, y+b.y);
 }
 
 /* Minus */
-Vector2D Vector2D::operator - (Vector2D b) const
+Vector2 Vector2::operator - (Vector2 b) const
 {
-	return Vector2D(x-b.x, y-b.y);
+	return Vector2(x-b.x, y-b.y);
 }
 
-Vector2D Vector2D::operator - () const
+Vector2 Vector2::operator - () const
 {
-	return Vector2D(-x, -y);
+	return Vector2(-x, -y);
 }
 
 
-double Vector2D::operator * (Vector2D p) const
+double Vector2::operator * (Vector2 p) const
 {
 	return x*y + p.x*p.y ;
 }
 
 
-Vector2D Vector2D::operator * (double p) const
+Vector2 Vector2::operator * (double p) const
 {
-	return Vector2D(x*p, y*p);
+	return Vector2(x*p, y*p);
 }
 
-void Vector2D::operator += (Vector2D p)
+void Vector2::operator += (Vector2 p)
 {
 	this->x += p.x;
 	this->y += p.y;
 }
 
-Vector2D Vector2D::operator / (double p) const
+Vector2 Vector2::operator / (double p) const
 {
-	return Vector2D(x/p, y/p);
+	return Vector2(x/p, y/p);
 }
 
 
-void Vector2D::operator -= (Vector2D p)
+void Vector2::operator -= (Vector2 p)
 {
 	this->x -= p.x;
 	this->y -= p.y;
 }
 
-void Vector2D::operator *= (double p)
+void Vector2::operator *= (double p)
 {
 	this->x *= p;
 	this->y *= p;
 }
 
-void Vector2D::operator /= (double p)
+void Vector2::operator /= (double p)
 {
 	this->x /= p;
 	this->y /= p;
 }
 
-bool Vector2D::operator == (Vector2D v)
+bool Vector2::operator == (Vector2 v)
 {
 	return (fabs(x-v.x) <= Epsilon and
 					fabs(y-v.y) <= Epsilon);
 }
 
-Vector2D Vector2D::round(){
-  return Vector2D(roundf(x), roundf(y));
+Vector2 Vector2::round(){
+  return Vector2(roundf(x), roundf(y));
 }
 
-double Vector2D::length() const
+double Vector2::length() const
 {
 	return sqrt(x*x + y*y);
 }
 
-double Vector2D::squareLength() const
+double Vector2::squareLength() const
 {
   return x*x + y*y;
 }
 
-Vector2D Vector2D::unitary() const
+Vector2 Vector2::unitary() const
 {
 	float mag = length();
-	Vector2D b(x/mag, y/mag);    // vector b's length is always ~ 1
+	Vector2 b(x/mag, y/mag);    // vector b's length is always ~ 1
 	return b;
 }
 
-Vector2D Vector2D::normal() const
+Vector2 Vector2::normal() const
 {
-	return Vector2D(y,-x);
+	return Vector2(y,-x);
 }
 
 
@@ -125,70 +125,70 @@ Vector2D Vector2D::normal() const
 //    VECTOR3D    //
 //-//-//-//-//-//-//
 
-Vector3D::Vector3D(){
+Vector3::Vector3(){
 	x = 0;
 	y = 0;
 	z = 0;
 }
 
-Vector3D::Vector3D(double x, double y, double z){
+Vector3::Vector3(double x, double y, double z){
 	this->x = x;
 	this->y = y;
 	this->z = z;
 }
 
 /* Plus */
-Vector3D Vector3D::operator + (Vector3D b){
-	return Vector3D(x+b.x, y+b.y, z+b.z);
+Vector3 Vector3::operator + (Vector3 b){
+	return Vector3(x+b.x, y+b.y, z+b.z);
 }
 
 
 /* Minus */
-Vector3D Vector3D::operator - (Vector3D b){
-	return Vector3D(x-b.x, y-b.y, z-b.z);
+Vector3 Vector3::operator - (Vector3 b){
+	return Vector3(x-b.x, y-b.y, z-b.z);
 }
 
-Vector3D Vector3D::operator - (){
-	return Vector3D(-x, -y, -z);
+Vector3 Vector3::operator - (){
+	return Vector3(-x, -y, -z);
 }
 
 
 
-double Vector3D::operator * (Vector3D p)
+double Vector3::operator * (Vector3 p)
 {
 	return x*y + p.x*p.y ;
 }
 
-Vector3D Vector3D::operator * (int p)
+Vector3 Vector3::operator * (int p)
 {
-	return Vector3D(x*p, y*p, z*p) ;
+	return Vector3(x*p, y*p, z*p) ;
 }
 
 
-bool Vector3D::operator == (Vector3D v)
+bool Vector3::operator == (Vector3 v)
 {
 	return (x == v.x and y == v.y and z == v.z);
 }
 
-Vector3D Vector3D::operator * (double p)
+Vector3 Vector3::operator * (double p)
 {
-	return Vector3D(x*p, y*p, z*p);
+	return Vector3(x*p, y*p, z*p);
 }
 
-double Vector3D::length()
+double Vector3::length()
 {
 	return sqrt(x*x + y*y + z*z);
 }
 
-Vector3D Vector3D::unitary()
+Vector3 Vector3::unitary()
 {
 	double mag = length();
-	Vector3D b(x/mag, y/mag, z/mag);    // vector b's length is always 1
+	Vector3 b(x/mag, y/mag, z/mag);    // vector b's length is always 1
 	return b;
 }
 
-Vector3D Vector3D::normal()
+Vector3 Vector3::normal()
 {
 
-	return Vector3D(y,-x,z);
+	return Vector3(y,-x,z);
 }

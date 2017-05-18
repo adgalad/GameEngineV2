@@ -12,12 +12,12 @@
 
 using namespace engine;
 
-Game * const Game::Application = new Game(NULL,NULL);
+Game Application = Game(NULL,NULL);
 
 Game::Game(Window *window, Renderer *renderer){
   
-	this->main_window = window;
-	this->renderer		  = renderer;
+	main_window = window;
+	_renderer	  = renderer;
 	Texture::renderer = renderer;
 	Sound::Init();
 	framerate.setFPS(60);
@@ -26,7 +26,7 @@ Game::Game(Window *window, Renderer *renderer){
 
 Game::~Game(){
 	delete main_window;
-	delete renderer;
+	delete _renderer;
 	Sound::Quit();
 }
 
@@ -40,13 +40,11 @@ void Game::QuitGame(){
 	
 }
 void Game::Run() {
-  printf("-> %p\n",this->currentScene.get());
 	currentScene->Init();
 
 	framerate.Init();
   Uint32 init = SDL_GetTicks();
   int fps = 0;
-  printf("-> %p\n",this->currentScene.get());
 	while (running) {
     if (init + 1000 <= SDL_GetTicks()){
       fps = 0;
@@ -65,15 +63,29 @@ void Game::Run() {
 			QuitGame();
 		}
 		else if (Input::KeyPressed(KEY_N)){
-			currentScene->reset();
+			currentScene->Reset();
     }
 
+
+    // Set color
+    if (Input::KeyPressed(KEY_Z)){
+      glClearColor ( 0.0, 1.0, 0.5, 1.0 );
+    } else if (Input::KeyPressed(KEY_X)){
+      glClearColor ( 1.0, 0.0, 0.0, 1.0 );
+    }
+    
+    
+    // Clear back buffer
+    glClear ( GL_COLOR_BUFFER_BIT );
+    
+    SDL_GL_SwapWindow(main_window->sdl_window);
+    
 		/// Updates and Renders the Scene and its objects
-		currentScene->InternalUpdate();
-		currentScene->InternalRender();
-		
-		/// Presents the render to the window
-		renderer->renderPresent();
+//		currentScene->InternalUpdate();
+//		currentScene->InternalRender();
+//		
+//		/// Presents the render to the window
+//		_renderer->renderPresent();
     ++fps;
 		framerate.Update();
 	}
@@ -81,19 +93,26 @@ void Game::Run() {
 }
 
 void Game::SetWindow(Window *window, Renderer *renderer){
-  this->main_window = window;
-  this->renderer		  = renderer;
+  main_window = window;
+  _renderer		= renderer;
   Texture::renderer = renderer;
   Sound::Init();
   framerate.setFPS(60);
   running = true;
+  _glContext = SDL_GL_CreateContext(window->sdl_window);
+  if (_glContext == NULL)
+  {
+    printf( "OpenGL context could not be created!\nSDL Error: %s\n", SDL_GetError() );
+    exit(EXIT_FAILURE);
+  }
+  
 }
 
 void saveGame(std::string filename, const engine::Game &obj){
   std::ofstream ofs(filename);
   assert(ofs.good());
   
-  boost::archive::xml_oarchive oa(ofs);
+  OUT_ARCHIVE oa(ofs);
   
   
   TAG_OA(oa, obj);
@@ -105,7 +124,7 @@ void loadGame(std::string filename, engine::Game &obj){
   assert(ifs.good());
 
 
-    boost::archive::xml_iarchive ia(ifs);
+  IN_ARCHIVE ia(ifs);
 
   
   TAG_IA(ia,obj);

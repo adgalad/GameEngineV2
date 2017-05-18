@@ -31,6 +31,7 @@ using namespace std;
  the SDL Framework.
  */
 class Texture {
+  friend class Game;
   SERIALIZE
   template<class Archive>
   void save(Archive & ar, const unsigned int version) const
@@ -71,6 +72,8 @@ class Texture {
   
   SPLIT_SERIALIZATION
   
+  static Renderer *renderer;
+  
 protected:
   Color color = Color(0, 0, 0);
 	SDL_Texture *sdl_texture = NULL; /**< SDL_Texture used to render using the GPU*/
@@ -83,7 +86,7 @@ public:
 	string path = "";			 /**< Path to the image on disk. */
 	string name = "";
   TextureType type;
-	static Renderer *renderer;
+	
 	
 	Texture();
 	
@@ -111,21 +114,25 @@ public:
 	
 	void createTargetTexture(string name, Rect r){
 		source_rect = r;
-		sdl_texture = SDL_CreateTexture(renderer->sdl_renderer,
-									 SDL_PIXELFORMAT_ABGR8888,
-									 SDL_TEXTUREACCESS_TARGET,
-									 r.w,
-									 r.h);
+    if (sdl_texture != NULL){
+      SDL_DestroyTexture(sdl_texture);
+      sdl_texture = NULL;
+    }
+//		sdl_texture = SDL_CreateTexture(renderer->sdl_renderer,
+//									 SDL_PIXELFORMAT_ABGR8888,
+//									 SDL_TEXTUREACCESS_TARGET,
+//									 r.w,
+//									 r.h);
 		
-		if (sdl_texture == NULL){
-      SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,
-                               "Error",
-                               ("ERROR: Could not create Target Texture\nname: "+name+"\n "+SDL_GetError()).c_str(),
-                               NULL);
-			error("ERROR: Could not create Target Texture\nname: "+name+"\n "+SDL_GetError());
-			exit(EXIT_FAILURE);
-		}
-    SDL_SetTextureBlendMode(sdl_texture, SDL_BLENDMODE_BLEND);
+//		if (sdl_texture == NULL){
+//      SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,
+//                               "Error",
+//                               ("ERROR: Could not create Target Texture\nname: "+name+"\n "+SDL_GetError()).c_str(),
+//                               NULL);
+//			error("ERROR: Could not create Target Texture\nname: "+name+"\n "+SDL_GetError());
+//			exit(EXIT_FAILURE);
+//		}
+//    SDL_SetTextureBlendMode(sdl_texture, SDL_BLENDMODE_BLEND);
 	}
 	
 	inline void setBlendMode(bool condition){
@@ -135,24 +142,24 @@ public:
 	/**
 	 Returns the number of rows. if the texture is not a sprite, it's always 1.
 	 */
-	virtual inline int rows() {return 1;}
+  virtual inline int rows() {return 1;} // Deprecated
 	
 	/**
-	 Returns the number of columns. if the texture is not a sprite, it's always 1.
+   Returns the number of columns. if the texture is not a sprite, it's always 1.
 	 */
-	virtual inline int columns() {return 1;}
+	virtual inline int columns() {return 1;} // Deprecated
 	
 	/**
 	 Get the texture dimensions or frame's dimension if its a sprite.
 	 */
 	inline Rect getRect(){ return source_rect; }
 	
-	inline Vector2D getSize(){ return Vector2D(source_rect.w, source_rect.h); }
+	inline Vector2 getSize(){ return Vector2(source_rect.w, source_rect.h); }
 	
 	/**
 	 Draw a line on the current rendering target.
 	 */
-	static inline void drawLine(Vector2D p1, Vector2D p2){
+	static inline void drawLine(Vector2 p1, Vector2 p2){
 		SDL_RenderDrawLine(renderer->sdl_renderer, p1.x, p1.y, p2.x, p2.y);
 	}
 	
@@ -166,8 +173,8 @@ public:
 	/**
 	 Draw a point on the current rendering target.
 	 */
-	static inline void drawPoint(Vector2D point){
-		SDL_Point p = point.to_SDL_Point();
+	static inline void drawPoint(Vector2 point){
+		SDL_Point p = point.toSDLPoint();
 		SDL_RenderDrawPoint(renderer->sdl_renderer, p.x, p.y);
 	}
 	/**
@@ -204,15 +211,15 @@ public:
 	 Given the position and the frame that will be rendered,
 	 the Texture send the information needed to the Renderer.
 	 */
-	virtual void Render(Vector2D	position,
-											Vector2D	scale    = Vector2D(1,1),
+	virtual void Render(Vector2	position,
+											Vector2	scale    = Vector2(1,1),
 											Rect		 *srcRect  = NULL,
 											int 		  angle    = 0,
 											bool		  inverted = false);
 	
 	inline void setAsRenderTarget() { renderer->setRendererTarget(sdl_texture); }
 	
-	virtual inline Rect getCollisionRect(Vector2D frame){
+	virtual inline Rect getCollisionRect(Vector2 frame){
 		return source_rect;
 	}
 

@@ -95,10 +95,16 @@
 		07577A0C1E1C8D3F000EDFFA /* libboost_serialization.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07577A0A1E1C686F000EDFFA /* libboost_serialization.a */; };
 		07577A891E1C973B000EDFFA /* libboost_serialization.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07577A0A1E1C686F000EDFFA /* libboost_serialization.a */; };
 		07577A8E1E1CAA28000EDFFA /* liblua.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07577A8D1E1CAA28000EDFFA /* liblua.a */; };
+		0759F0821ECCED240086CFA0 /* libGLEW.2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0759F0811ECCED240086CFA0 /* libGLEW.2.0.0.dylib */; };
+		0759F0831ECCED240086CFA0 /* libGLEW.2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0759F0811ECCED240086CFA0 /* libGLEW.2.0.0.dylib */; };
+		0759F0841ECCED240086CFA0 /* libGLEW.2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0759F0811ECCED240086CFA0 /* libGLEW.2.0.0.dylib */; };
+		07A38FEB1EAEDEB9007BF5A5 /* NEAT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07A38FE91EAEDEB9007BF5A5 /* NEAT.cpp */; };
 		07A5C2F41DD66E3900100C5E /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A5C2F01DD66E3900100C5E /* SDL2_image.framework */; };
 		07A5C2F51DD66E3900100C5E /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A5C2F11DD66E3900100C5E /* SDL2_mixer.framework */; };
 		07A5C2F61DD66E3900100C5E /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A5C2F21DD66E3900100C5E /* SDL2_ttf.framework */; };
 		07A5C2F71DD66E3900100C5E /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A5C2F31DD66E3900100C5E /* SDL2.framework */; };
+		07E28D071EBD474700A67C8F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E28D061EBD474700A67C8F /* OpenGL.framework */; };
+		07E28D0B1EBD48FC00A67C8F /* DrawPrimitives.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07E28D091EBD48FC00A67C8F /* DrawPrimitives.cpp */; };
 		07FCBD971E8DFBAA000972E7 /* Pacman.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07FCBD951E8DFBAA000972E7 /* Pacman.cpp */; };
 		07FCBD991E8DFCEA000972E7 /* Pacman.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07FCBD951E8DFBAA000972E7 /* Pacman.cpp */; };
 /* End PBXBuildFile section */
@@ -135,8 +141,9 @@
 		0732D7981E9426F2008C18FC /* Ghost.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Ghost.hpp; sourceTree = "<group>"; };
 		075515801E1C493600276871 /* cJSON.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cJSON.c; path = ExternalLibs/JSON/cJSON.c; sourceTree = "<group>"; };
 		075515811E1C493600276871 /* cJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cJSON.h; path = ExternalLibs/JSON/cJSON.h; sourceTree = "<group>"; };
-		07577A0A1E1C686F000EDFFA /* libboost_serialization.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_serialization.a; path = ../../../../../../../usr/local/Cellar/boost/1.63.0/lib/libboost_serialization.a; sourceTree = "<group>"; };
-		07577A8D1E1CAA28000EDFFA /* liblua.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liblua.a; path = ../../../../../../../usr/local/lib/lua/liblua.a; sourceTree = "<group>"; };
+		07577A0A1E1C686F000EDFFA /* libboost_serialization.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_serialization.a; path = /usr/local/Cellar/boost/1.63.0/lib/libboost_serialization.a; sourceTree = "<absolute>"; };
+		07577A8D1E1CAA28000EDFFA /* liblua.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liblua.a; path = /usr/local/lib/lua/liblua.a; sourceTree = "<absolute>"; };
+		0759F0811ECCED240086CFA0 /* libGLEW.2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.2.0.0.dylib; path = ../../../../../../../usr/local/Cellar/glew/2.0.0/lib/libGLEW.2.0.0.dylib; sourceTree = "<group>"; };
 		076610EC1D02363C00531253 /* XcodeCoverage.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = XcodeCoverage.xcconfig; path = XcodeCoverage/XcodeCoverage.xcconfig; sourceTree = "<group>"; };
 		07818F621CD4448A00042026 /* libBox2D.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBox2D.a; sourceTree = "<group>"; };
 		078482E11CE2B3FF0030B829 /* Debug.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Debug.cpp; sourceTree = "<group>"; };
@@ -187,6 +194,8 @@
 		0793F7AF1CF68B01007E30CC /* Test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Test; sourceTree = BUILT_PRODUCTS_DIR; };
 		0793F7B11CF68B01007E30CC /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		0793F9101CF68C44007E30CC /* catch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = catch.hpp; sourceTree = "<group>"; };
+		07A38FE91EAEDEB9007BF5A5 /* NEAT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NEAT.cpp; path = ../../../../../../../../Users/carlosspaggiari/Desktop/NEAT/NEAT.cpp; sourceTree = "<group>"; };
+		07A38FEA1EAEDEB9007BF5A5 /* NEAT.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = NEAT.hpp; path = ../../../../../../../../Users/carlosspaggiari/Desktop/NEAT/NEAT.hpp; sourceTree = "<group>"; };
 		07A5C2F01DD66E3900100C5E /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/SDL2_image.framework; sourceTree = DEVELOPER_DIR; };
 		07A5C2F11DD66E3900100C5E /* SDL2_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_mixer.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/SDL2_mixer.framework; sourceTree = DEVELOPER_DIR; };
 		07A5C2F21DD66E3900100C5E /* SDL2_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_ttf.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/SDL2_ttf.framework; sourceTree = DEVELOPER_DIR; };
@@ -202,13 +211,15 @@
 		07B41F251E22CFE600DA1B3E /* GroundCollision.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GroundCollision.cpp; sourceTree = "<group>"; };
 		07B6D9B81D9610FA00F88032 /* Script.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Script.cpp; sourceTree = "<group>"; };
 		07B6D9B91D9610FA00F88032 /* Script.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Script.hpp; sourceTree = "<group>"; };
-		07BD5D991E88C08F00DEE969 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		07CD5A311CA4A97D00C78DD9 /* Time.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; path = Time.cpp; sourceTree = "<group>"; tabWidth = 2; };
 		07CD5A321CA4A97D00C78DD9 /* Time.hpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.h; path = Time.hpp; sourceTree = "<group>"; tabWidth = 2; };
 		07CD5A3A1CA4F48B00C78DD9 /* PhysicController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicController.cpp; sourceTree = "<group>"; tabWidth = 2; };
 		07CD5A3B1CA4F48B00C78DD9 /* PhysicController.hpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.h; path = PhysicController.hpp; sourceTree = "<group>"; tabWidth = 2; };
 		07D455CF1DE7667F00673E3A /* Chess.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Chess.cpp; sourceTree = "<group>"; };
 		07D455D01DE7667F00673E3A /* Chess.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Chess.hpp; sourceTree = "<group>"; };
+		07E28D061EBD474700A67C8F /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		07E28D091EBD48FC00A67C8F /* DrawPrimitives.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DrawPrimitives.cpp; sourceTree = "<group>"; };
+		07E28D0A1EBD48FC00A67C8F /* DrawPrimitives.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DrawPrimitives.hpp; sourceTree = "<group>"; };
 		07E3D9311DD03A610022EF1E /* Grid_Test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Grid_Test.cpp; sourceTree = "<group>"; };
 		07E3D9321DD03A610022EF1E /* Grid_Test.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Grid_Test.hpp; sourceTree = "<group>"; };
 		07F4C2FB1D970256005E3AC0 /* GameOfLife.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameOfLife.cpp; path = "Test Classes/GameOfLife.cpp"; sourceTree = SOURCE_ROOT; };
@@ -241,6 +252,7 @@
 				0712043D1E18994F009C86D3 /* SDL2_mixer.framework in Frameworks */,
 				0712043E1E18994F009C86D3 /* SDL2_ttf.framework in Frameworks */,
 				0712043F1E18994F009C86D3 /* SDL2.framework in Frameworks */,
+				0759F0841ECCED240086CFA0 /* libGLEW.2.0.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,12 +260,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07E28D071EBD474700A67C8F /* OpenGL.framework in Frameworks */,
 				07577A8E1E1CAA28000EDFFA /* liblua.a in Frameworks */,
 				07577A0C1E1C8D3F000EDFFA /* libboost_serialization.a in Frameworks */,
 				07A5C2F41DD66E3900100C5E /* SDL2_image.framework in Frameworks */,
 				07A5C2F51DD66E3900100C5E /* SDL2_mixer.framework in Frameworks */,
 				07A5C2F61DD66E3900100C5E /* SDL2_ttf.framework in Frameworks */,
 				07A5C2F71DD66E3900100C5E /* SDL2.framework in Frameworks */,
+				0759F0821ECCED240086CFA0 /* libGLEW.2.0.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07577A891E1C973B000EDFFA /* libboost_serialization.a in Frameworks */,
+				0759F0831ECCED240086CFA0 /* libGLEW.2.0.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,7 +288,6 @@
 			children = (
 				076610EC1D02363C00531253 /* XcodeCoverage.xcconfig */,
 				072BB6A31D29FE6700A8F85B /* Resources */,
-				0755157C1E1C484E00276871 /* ExternalLibs */,
 				07ACC6701CA10FEE00ED1DFB /* TestClasses */,
 				072EB08D1C9CF72400E87910 /* GameEngineV3 */,
 				0793F7B01CF68B01007E30CC /* Test */,
@@ -303,13 +317,12 @@
 			path = GameEngineV3;
 			sourceTree = "<group>";
 		};
-		0755157C1E1C484E00276871 /* ExternalLibs */ = {
+		0759F06B1ECCD5740086CFA0 /* Renderer */ = {
 			isa = PBXGroup;
 			children = (
-				0793F7B61CF68BF4007E30CC /* Frameworks_Libs */,
-				078AF78B1E1B627B00A26538 /* JSON */,
+				078763421CA09F4A00A8A59E /* Renderer.hpp */,
 			);
-			name = ExternalLibs;
+			name = Renderer;
 			sourceTree = "<group>";
 		};
 		0787634A1CA0A35000A8A59E /* Source */ = {
@@ -411,24 +424,10 @@
 			path = Test;
 			sourceTree = "<group>";
 		};
-		0793F7B61CF68BF4007E30CC /* Frameworks_Libs */ = {
-			isa = PBXGroup;
-			children = (
-				07577A0A1E1C686F000EDFFA /* libboost_serialization.a */,
-				07818F621CD4448A00042026 /* libBox2D.a */,
-				07577A8D1E1CAA28000EDFFA /* liblua.a */,
-				07A5C2F01DD66E3900100C5E /* SDL2_image.framework */,
-				07A5C2F11DD66E3900100C5E /* SDL2_mixer.framework */,
-				07A5C2F21DD66E3900100C5E /* SDL2_ttf.framework */,
-				07A5C2F31DD66E3900100C5E /* SDL2.framework */,
-				0793F75F1CF688BB007E30CC /* XcodeCoverage */,
-			);
-			name = Frameworks_Libs;
-			sourceTree = "<group>";
-		};
 		07ACC6701CA10FEE00ED1DFB /* TestClasses */ = {
 			isa = PBXGroup;
 			children = (
+				07E28D081EBD48EA00A67C8F /* Draw */,
 				07D455CE1DE7666A00673E3A /* Chess */,
 				07F4C2FB1D970256005E3AC0 /* GameOfLife.cpp */,
 				07F4C2FC1D970256005E3AC0 /* GameOfLife.hpp */,
@@ -471,7 +470,17 @@
 		07BD5D981E88C08E00DEE969 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				07BD5D991E88C08F00DEE969 /* Accelerate.framework */,
+				07577A0A1E1C686F000EDFFA /* libboost_serialization.a */,
+				07818F621CD4448A00042026 /* libBox2D.a */,
+				07577A8D1E1CAA28000EDFFA /* liblua.a */,
+				0759F0811ECCED240086CFA0 /* libGLEW.2.0.0.dylib */,
+				07E28D061EBD474700A67C8F /* OpenGL.framework */,
+				07A5C2F01DD66E3900100C5E /* SDL2_image.framework */,
+				07A5C2F11DD66E3900100C5E /* SDL2_mixer.framework */,
+				07A5C2F21DD66E3900100C5E /* SDL2_ttf.framework */,
+				07A5C2F31DD66E3900100C5E /* SDL2.framework */,
+				0793F75F1CF688BB007E30CC /* XcodeCoverage */,
+				078AF78B1E1B627B00A26538 /* JSON */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -485,9 +494,19 @@
 			name = Chess;
 			sourceTree = "<group>";
 		};
+		07E28D081EBD48EA00A67C8F /* Draw */ = {
+			isa = PBXGroup;
+			children = (
+				07E28D091EBD48FC00A67C8F /* DrawPrimitives.cpp */,
+				07E28D0A1EBD48FC00A67C8F /* DrawPrimitives.hpp */,
+			);
+			name = Draw;
+			sourceTree = "<group>";
+		};
 		07F4C3101D97388A005E3AC0 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				0759F06B1ECCD5740086CFA0 /* Renderer */,
 				0787634A1CA0A35000A8A59E /* Source */,
 				078763451CA0A13300A8A59E /* Color.hpp */,
 				078482E21CE2B3FF0030B829 /* Debug.hpp */,
@@ -498,7 +517,6 @@
 				078763551CA0BC6D00A8A59E /* Input.hpp */,
 				0787634F1CA0B1BB00A8A59E /* Object.hpp */,
 				07ACC66E1CA10EB500ED1DFB /* ObjectModule.hpp */,
-				078763421CA09F4A00A8A59E /* Renderer.hpp */,
 				078763521CA0B52900A8A59E /* Scene.hpp */,
 				07B6D9B91D9610FA00F88032 /* Script.hpp */,
 				0729B6C41CF109D3007235EA /* Sound.hpp */,
@@ -526,6 +544,8 @@
 				07FCBD961E8DFBAA000972E7 /* Pacman.hpp */,
 				0732D7971E9426F2008C18FC /* Ghost.cpp */,
 				0732D7981E9426F2008C18FC /* Ghost.hpp */,
+				07A38FE91EAEDEB9007BF5A5 /* NEAT.cpp */,
+				07A38FEA1EAEDEB9007BF5A5 /* NEAT.hpp */,
 			);
 			name = Pacman;
 			sourceTree = "<group>";
@@ -731,6 +751,7 @@
 				074E4A6C1E263FC30014572A /* GroundCollision.cpp in Sources */,
 				074E4A6D1E263FC30014572A /* O1.cpp in Sources */,
 				074E4A6E1E263FC30014572A /* SP.cpp in Sources */,
+				07E28D0B1EBD48FC00A67C8F /* DrawPrimitives.cpp in Sources */,
 				0732D7991E9426F2008C18FC /* Ghost.cpp in Sources */,
 				074E4A6F1E263FC30014572A /* Pokemon.cpp in Sources */,
 				074E4A701E263FC30014572A /* SP_Scene.cpp in Sources */,
@@ -750,6 +771,7 @@
 				074E4A5E1E263FA80014572A /* Geometry.cpp in Sources */,
 				074E4A5F1E263FA80014572A /* Input.cpp in Sources */,
 				074E4A601E263FA80014572A /* Object.cpp in Sources */,
+				07A38FEB1EAEDEB9007BF5A5 /* NEAT.cpp in Sources */,
 				074E4A611E263FA80014572A /* ObjectModule.cpp in Sources */,
 				074E4A621E263FA80014572A /* Renderer.cpp in Sources */,
 				074E4A631E263FA80014572A /* Scene.cpp in Sources */,
@@ -784,6 +806,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/lua",
 					"$(PROJECT_DIR)",
+					/usr/local/Cellar/glew/2.0.0/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -801,6 +824,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/lua",
 					"$(PROJECT_DIR)",
+					/usr/local/Cellar/glew/2.0.0/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -923,11 +947,17 @@
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					/usr/local/opt/glew/include/,
+					"$(inherited)",
+					/usr/X11/include/,
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					/usr/local/lib/lua,
+					/usr/local/Cellar/glew/1.13.0/lib,
+					/usr/local/Cellar/glew/2.0.0/lib,
 				);
 				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
@@ -943,11 +973,17 @@
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					/usr/local/opt/glew/include/,
+					"$(inherited)",
+					/usr/X11/include/,
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					/usr/local/lib/lua,
+					/usr/local/Cellar/glew/1.13.0/lib,
+					/usr/local/Cellar/glew/2.0.0/lib,
 				);
 				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
@@ -967,6 +1003,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/Cellar/boost/1.63.0/lib,
+					/usr/local/Cellar/glew/2.0.0/lib,
 				);
 				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
@@ -985,6 +1022,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/Cellar/boost/1.63.0/lib,
+					/usr/local/Cellar/glew/2.0.0/lib,
 				);
 				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";

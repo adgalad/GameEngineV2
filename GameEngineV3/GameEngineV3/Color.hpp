@@ -90,6 +90,21 @@ public:
   inline bool operator == (Color other) {
     return r == other.r and b == other.b and g == other.g;
   }
+  
+  Color operator + (Color c){
+    int nr = r + c.r;
+    int ng = g + c.g;
+    int nb = b + c.b;
+    
+    return Color(nr <= 255 ? nr : 255, ng <= 255 ? ng : 255, nb <= 255 ? nb : 255);
+  }
+  
+  Color operator - (Color c){
+    int nr = r - c.r;
+    int ng = g - c.g;
+    int nb = b - c.b;
+    return Color(nr >= 0  ? nr : 0, ng >= 0 ? ng : 0, nb >= 0 ? nb : 0);
+  }
 	
 };
 }

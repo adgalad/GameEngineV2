@@ -11,7 +11,7 @@
 
 #ifdef __cplusplus
 
-#include "Scene.hpp"
+#include "Game.hpp"
 #include "Animator.hpp"
 
 
@@ -32,7 +32,7 @@ namespace engine {
     
   public:
     Tile(){}
-    Vector2D position;
+    Vector2 position;
     
     Tile(Texture* t){
       texture = t;
@@ -71,7 +71,7 @@ namespace engine {
     
     Grid2D(){};
   public:
-    Grid2D(string name, Rect size, Vector2D tileSize);
+    Grid2D(string name, Rect size, Vector2 tileSize);
     
     
     
@@ -88,19 +88,19 @@ namespace engine {
           _tiles[i][j]->Render();
         }
       }
-      setSceneAsRenderTarget();
+      Application.setSceneAsRenderTarget();
       
     }
     
     virtual void Render() {
       Rect srcRect = camera.getCameraRect();
       
-      _tileMap->Render(Vector2D(srcRect.x,srcRect.y), Vector2D(1,1), &srcRect);
+      _tileMap->Render(Vector2(srcRect.x,srcRect.y), Vector2(1,1), &srcRect);
     }
     
     virtual void addTile(Tile *tile, int i, int j){
       _tiles[i][j] = tile;
-      tile->position = Vector2D(_tileSize.x*i,_tileSize.y*j);
+      tile->position = Vector2(_tileSize.x*i,_tileSize.y*j);
     }
     
     void addTexture(Texture* t){
@@ -108,7 +108,7 @@ namespace engine {
     }
     
   private:
-    Vector2D         _tileSize;
+    Vector2         _tileSize;
     Rect             _gridSize;
     vector<Texture*> _textures;
     Texture*         _tileMap = NULL;

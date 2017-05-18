@@ -100,6 +100,8 @@ public:
 	 **/
 	void Update();
 	
+  void Reset();
+  
 protected:
 	bool _collision = false;             //True if a collision occurs
 	bool _trigger;                       //True if the collider is a trigger

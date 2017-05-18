@@ -9,14 +9,14 @@
 #include "Chess.hpp"
 
 bool     Piece::_busyMouse = false;
-Vector2D Piece::_size      = Vector2D(68,68);
+Vector2 Piece::_size      = Vector2(68,68);
 
 Piece*   Board::piecesBoard[8][8];
 
 void loadChess(){
   shared_ptr<Board> board = shared_ptr<Board>(new Board());
   
-  Game::Application->currentScene = board;
+  Application.currentScene = board;
   
 }
 
@@ -29,12 +29,12 @@ void Piece::Update(){
       _grabed    = false;
       _busyMouse = false;
       
-      Vector2D oldPos = _boardPosition;
+      Vector2 oldPos = _boardPosition;
       
       
       setBoardPosition(transform.position);
       Board::piecesBoard[(int)oldPos.x][(int)oldPos.y] = NULL;
-      Vector2D newPos = _boardPosition;
+      Vector2 newPos = _boardPosition;
       Piece   *piece  = Board::piecesBoard[(int)newPos.x][(int)newPos.y];
       
       if (not (oldPos == newPos or piece == NULL)){
@@ -69,8 +69,8 @@ Board::Board() : Scene("Chess_Board", Rect(0,0,628,628))
     _whitePieces[i]->type = WPAWN;
     _blackPieces[i]->type = BPAWN;
     
-    _whitePieces[i]->setBoardPosition(Vector2D(43+68*i, 43+68));
-    _blackPieces[i]->setBoardPosition(Vector2D(43+68*i, 43+68*6));
+    _whitePieces[i]->setBoardPosition(Vector2(43+68*i, 43+68));
+    _blackPieces[i]->setBoardPosition(Vector2(43+68*i, 43+68*6));
     
     _whitePieces[i]->texture = pieces->sheet[11];
     _blackPieces[i]->texture = pieces->sheet[5];
@@ -112,22 +112,22 @@ Board::Board() : Scene("Chess_Board", Rect(0,0,628,628))
   _whitePieces[15]->texture = pieces->sheet[8];
   _blackPieces[15]->texture = pieces->sheet[2];
   
-  _whitePieces[8]->setBoardPosition (Vector2D(     43, 43));
-  _blackPieces[8]->setBoardPosition (Vector2D(     43, 43+68*7));
-  _whitePieces[9]->setBoardPosition (Vector2D(  43+68, 43));
-  _blackPieces[9]->setBoardPosition (Vector2D(  43+68, 43+68*7));
-  _whitePieces[10]->setBoardPosition(Vector2D(43+68*2, 43));
-  _blackPieces[10]->setBoardPosition(Vector2D(43+68*2, 43+68*7));
-  _whitePieces[11]->setBoardPosition(Vector2D(43+68*3, 43));
-  _blackPieces[11]->setBoardPosition(Vector2D(43+68*3, 43+68*7));
-  _whitePieces[12]->setBoardPosition(Vector2D(43+68*4, 43));
-  _blackPieces[12]->setBoardPosition(Vector2D(43+68*4, 43+68*7));
-  _whitePieces[13]->setBoardPosition(Vector2D(43+68*5, 43));
-  _blackPieces[13]->setBoardPosition(Vector2D(43+68*5, 43+68*7));
-  _whitePieces[14]->setBoardPosition(Vector2D(43+68*6, 43));
-  _blackPieces[14]->setBoardPosition(Vector2D(43+68*6, 43+68*7));
-  _whitePieces[15]->setBoardPosition(Vector2D(43+68*7, 43));
-  _blackPieces[15]->setBoardPosition(Vector2D(43+68*7, 43+68*7));
+  _whitePieces[8]->setBoardPosition (Vector2(     43, 43));
+  _blackPieces[8]->setBoardPosition (Vector2(     43, 43+68*7));
+  _whitePieces[9]->setBoardPosition (Vector2(  43+68, 43));
+  _blackPieces[9]->setBoardPosition (Vector2(  43+68, 43+68*7));
+  _whitePieces[10]->setBoardPosition(Vector2(43+68*2, 43));
+  _blackPieces[10]->setBoardPosition(Vector2(43+68*2, 43+68*7));
+  _whitePieces[11]->setBoardPosition(Vector2(43+68*3, 43));
+  _blackPieces[11]->setBoardPosition(Vector2(43+68*3, 43+68*7));
+  _whitePieces[12]->setBoardPosition(Vector2(43+68*4, 43));
+  _blackPieces[12]->setBoardPosition(Vector2(43+68*4, 43+68*7));
+  _whitePieces[13]->setBoardPosition(Vector2(43+68*5, 43));
+  _blackPieces[13]->setBoardPosition(Vector2(43+68*5, 43+68*7));
+  _whitePieces[14]->setBoardPosition(Vector2(43+68*6, 43));
+  _blackPieces[14]->setBoardPosition(Vector2(43+68*6, 43+68*7));
+  _whitePieces[15]->setBoardPosition(Vector2(43+68*7, 43));
+  _blackPieces[15]->setBoardPosition(Vector2(43+68*7, 43+68*7));
   
   addObject(_whitePieces[8]);
   addObject(_blackPieces[8]);
@@ -147,8 +147,8 @@ Board::Board() : Scene("Chess_Board", Rect(0,0,628,628))
   addObject(_blackPieces[15]);
   
   for (int i = 0; i < 16; ++i) {
-    SDL_Point wv = _whitePieces[i]->getBoardPosition().to_SDL_Point();
-    SDL_Point bv = _blackPieces[i]->getBoardPosition().to_SDL_Point();
+    SDL_Point wv = _whitePieces[i]->getBoardPosition().toSDLPoint();
+    SDL_Point bv = _blackPieces[i]->getBoardPosition().toSDLPoint();
     piecesBoard[wv.x][wv.y] = _whitePieces[i];
     piecesBoard[bv.x][bv.y] = _blackPieces[i];
   }

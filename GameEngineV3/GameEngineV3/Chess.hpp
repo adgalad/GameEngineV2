@@ -77,17 +77,17 @@ public:
   PieceType type;
   
   
-  inline Vector2D getBoardPosition(){
+  inline Vector2 getBoardPosition(){
     return _boardPosition;
   }
   
-  void setBoardPosition(Vector2D pos){
+  void setBoardPosition(Vector2 pos){
     if (pos.x >= 43 and pos.x < 43+8*68 and pos.y >= 43 and pos.y < 43+8*68){
       int nx = (pos.x - 43 + 34)/68;
       int ny = (pos.y - 43 + 34)/68;
       
-      _boardPosition = Vector2D(nx,ny);
-      _previousPosition = _boardPosition*68+Vector2D(43,43);
+      _boardPosition = Vector2(nx,ny);
+      _previousPosition = _boardPosition*68+Vector2(43,43);
     }
     else {
       Debug::Log("Bad position for piece of type: " +
@@ -105,11 +105,11 @@ public:
   
 private:
   static bool     _busyMouse;
-  static Vector2D _size;
+  static Vector2 _size;
   
   bool     _grabed = false;
-  Vector2D _boardPosition;
-  Vector2D _previousPosition;
+  Vector2 _boardPosition;
+  Vector2 _previousPosition;
   
   
 };
@@ -126,7 +126,7 @@ public:
   
   void Update() {
     if (not Piece::_busyMouse and Input::MouseButtonPressed(MOUSE_LEFT_BUTTON)){
-      Vector2D click = Input::GetMouseClickPosition();
+      Vector2 click = Input::GetMouseClickPosition();
       int nx = (click.x - 43)/68;
       int ny = (click.y - 43)/68;
       Debug::Log(to_string(nx) + "  " + to_string(ny));

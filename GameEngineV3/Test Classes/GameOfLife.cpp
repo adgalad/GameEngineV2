@@ -52,7 +52,7 @@ bool GameOfLife::loadFile(const char* filename){
 void GameOfLife::nextGeneration(){
 	alive = 0;
 	dead = 0;
-	Texture::renderer->setRenderColor(Color::yellow);
+	Application.renderer()->setRenderColor(Color::yellow);
 	for (int i = 0 ; i < y ; ++i){
 		for (int j = 0 ; j < x ; ++j){
 			int p = 0;
@@ -71,7 +71,7 @@ void GameOfLife::nextGeneration(){
 					if (grid[i][j]){
 						++alive;
 						newgrid[i][j] = 1;
-						Texture::drawPoint(Vector2D(j,i));
+						Texture::drawPoint(Vector2(j,i));
 					} else {
 						++dead;
 						newgrid[i][j] = 0;
@@ -80,7 +80,7 @@ void GameOfLife::nextGeneration(){
 				case 3:
 					++alive;
 					newgrid[i][j] = 1;
-					Texture::drawPoint(Vector2D(j,i));
+					Texture::drawPoint(Vector2(j,i));
 					break;
 					
 				default:
@@ -97,7 +97,7 @@ void GameOfLife::nextGeneration(){
 			grid[i][j] = newgrid[i][j];
 		}
 	}
-	Texture::renderer->setRenderColor(Color::black);
+	Application.renderer()->setRenderColor(Color::black);
 }
 
 
@@ -146,5 +146,5 @@ void loadGol(){
 	GameOfLife *object = new GameOfLife();
 	Scene *scene = new Scene("Game of Life",Rect(0,0,800,600));
 	scene->addObject(object);
-  Game::Application->currentScene = shared_ptr<Scene>(scene);
+  Application.currentScene = shared_ptr<Scene>(scene);
 }

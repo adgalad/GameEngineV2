@@ -14,6 +14,7 @@
 #include "Animator.hpp"
 #include "Collision.hpp"
 #include "PhysicController.hpp"
+#include "Game.hpp"
 
 using namespace engine ;
 
@@ -31,9 +32,9 @@ class O2 : public Object{
 		r.y -= 1;
 		r.w += 2;
 		r.h += 2;
-		Texture::renderer->setRenderColor(Color::red);
+		Application.renderer()->setRenderColor(Color::red);
 		Texture::drawRect(r);
-		Texture::renderer->setRenderColor(Color::black);
+		Application.renderer()->setRenderColor(Color::black);
 	}
 };
 
@@ -52,7 +53,7 @@ public:
 		animator = (Animator*)getModule("Animator");
 		rc = (RectangleCollider*)getModule("RectangleCollider");
 		pc = (PhysicController*)getModule("PhysicController");
-    pc->maxVelocity = Vector2D(50,500);
+    pc->maxVelocity = Vector2(50,500);
 		if (not (pc and rc and animator)){
 			error("Error: Couldn't find a module. The program will be terminated.");
 		}
@@ -66,50 +67,50 @@ public:
 		xs = 0;
 		ys = 0;
 		if (Input::KeyDown(KEY_LEFT_ARROW)){
-//			pc->addForce(Vector2D(-5,0));
-			move(Vector2D(-n,0));
+//			pc->addForce(Vector2(-5,0));
+			move(Vector2(-n,0));
 			xs = -n;
 			direction = false;
 			moving = true;
 
 		}
 		if (Input::KeyDown(KEY_RIGHT_ARROW)){
-//			pc->addForce(Vector2D(5,0));
-			move(Vector2D(n,0));
+//			pc->addForce(Vector2(5,0));
+			move(Vector2(n,0));
 			xs = n;
 			direction = true;
 			moving = true;
 			
 		}
 //		if (Input::KeyDown(KEY_UP_ARROW)){
-//			pc->addForce(Vector2D(0,-5));
+//			pc->addForce(Vector2(0,-5));
 //		}
 //		
 		if (Input::KeyDown(KEY_DOWN_ARROW)){
-			pc->addForce(Vector2D(0,5));
+			pc->addForce(Vector2(0,5));
 		}
 		if (Input::KeyDown(KEY_UP_ARROW)){
-			pc->addForce(Vector2D(0,-9));
+			pc->addForce(Vector2(0,-9));
 
-//			move(Vector2D(0,-n));
+//			move(Vector2(0,-n));
 			ys = n;
 			moving = true;
 		}
 //		if (Input::KeyDown(KEY_DOWN_ARROW)){
-//			move(Vector2D(0,n));
+//			move(Vector2(0,n));
 //			ys = n;
 //			moving = true;
 //		}
 		
 		if (Input::KeyDown(KEY_NUMPAD_PLUS)){
-			setScale(transform.scale + Vector2D(0.1,0.1));
+			setScale(transform.scale + Vector2(0.1,0.1));
 		}
 		else if (Input::KeyDown(KEY_NUMPAD_MINUS)){
-			setScale(transform.scale - Vector2D(0.1,0.1));
+			setScale(transform.scale - Vector2(0.1,0.1));
 		}
 		
 		if (Input::KeyDown(KEY_COMMA)){
-			pc->addForce(Vector2D(5,-5));
+			pc->addForce(Vector2(5,-5));
 		}
 		if (moving) {
 			if (direction){
@@ -142,11 +143,11 @@ public:
 		r.w += 2;
 		r.h += 2;
 		
-		if (trigger) Texture::renderer->setRenderColor(Color::green);
-		else		 Texture::renderer->setRenderColor(Color::red);
+		if (trigger) Application.renderer()->setRenderColor(Color::green);
+		else		 Application.renderer()->setRenderColor(Color::red);
 		
 		Texture::drawRect(r);
-		Texture::renderer->setRenderColor(Color::black);
+		Application.renderer()->setRenderColor(Color::black);
 		
 		trigger = false;
 	}
@@ -183,35 +184,35 @@ public:
 		xs = 0;
 		ys = 0;
 		if (Input::KeyDown(KEY_A)){
-			move(Vector2D(-n,0));
+			move(Vector2(-n,0));
 			xs = -n;
 			direction = false;
 			moving = true;
 			
 		}
 		if (Input::KeyDown(KEY_D)){
-			move(Vector2D(n,0));
+			move(Vector2(n,0));
 			xs = n;
 			direction = true;
 			moving = true;
 			
 		}
 		if (Input::KeyDown(KEY_W)){
-			move(Vector2D(0,-n));
+			move(Vector2(0,-n));
 			ys = n;
 			moving = true;
 		}
 		if (Input::KeyDown(KEY_S)){
-			move(Vector2D(0,n));
+			move(Vector2(0,n));
 			ys = n;
 			moving = true;
 		}
 		
 		if (Input::KeyDown(KEY_NUMPAD_PLUS)){
-			setScale(transform.scale + Vector2D(0.1,0.1));
+			setScale(transform.scale + Vector2(0.1,0.1));
 		}
 		else if (Input::KeyDown(KEY_NUMPAD_MINUS)){
-			setScale(transform.scale - Vector2D(0.1,0.1));
+			setScale(transform.scale - Vector2(0.1,0.1));
 		}
     if (moving) {
       if (direction){
@@ -235,9 +236,9 @@ public:
 
 
 	void AfterRender(){
-		Texture::renderer->setRenderColor(Color::red);
+		Application.renderer()->setRenderColor(Color::red);
 		Texture::drawRect(rc->absolute_rect);
-		Texture::renderer->setRenderColor(Color::black);
+		Application.renderer()->setRenderColor(Color::black);
 	}
 	
 };

@@ -16,6 +16,15 @@
 #include <SDL2_mixer/SDL_mixer.h>
 #include <SDL2_ttf/SDL_ttf.h>
 
+#include <SDL2/SDL_opengl.h>
+
+#include <OpenGL/OpenGL.h>
+#include <OpenGL/glu.h>
+
+
+//#include <GL/glxew.h>
+
+
 #include "Debug.hpp"
 
 #include <cstdio>
@@ -27,15 +36,17 @@
 #include <vector>
 
 
+#define GAME_ENGINE_V3
+
 #define ENABLE_BOOST_SERIALIZATION
-#define ENABLE_BOOST_XML_SERIALIZATION
+//#define ENABLE_BOOST_XML_SERIALIZATION
+
+
 #ifdef ENABLE_BOOST_SERIALIZATION
 
-  #include <boost/serialization/nvp.hpp>
-  #include <boost/archive/binary_oarchive.hpp>
-  #include <boost/archive/binary_iarchive.hpp>
-  #include <boost/archive/text_oarchive.hpp>
-  #include <boost/archive/text_iarchive.hpp>
+
+
+
   #include <boost/serialization/assume_abstract.hpp>
   #include <boost/serialization/utility.hpp>
 
@@ -54,33 +65,57 @@
 
 
 /* Enable xml serializations of C++ classes */
-//  #ifdef ENABLE_BOOST_SERIALIZATION_XML
+#ifdef ENABLE_BOOST_SERIALIZATION_XML
+  #include <boost/serialization/nvp.hpp>
+  #include <boost/archive/xml_iarchive.hpp>
+  #include <boost/archive/xml_oarchive.hpp>
+  #include <boost/archive/text_oarchive.hpp>
+  #include <boost/archive/text_iarchive.hpp>
 
-    #define TAG_BASE(archive, T) \
-      archive & BOOST_SERIALIZATION_BASE_OBJECT_NVP(T)
+  #define TAG_BASE(archive, T) \
+    archive & BOOST_SERIALIZATION_BASE_OBJECT_NVP(T)
 
-    #define TAG(archive,name) archive & BOOST_SERIALIZATION_NVP(name)
+  #define TAG(archive,name) archive & BOOST_SERIALIZATION_NVP(name)
 
-    #define TAG_IA(archive, obj) archive >> BOOST_SERIALIZATION_NVP(obj)
+  #define TAG_IA(archive, obj) archive >> BOOST_SERIALIZATION_NVP(obj)
 
-    #define TAG_OA(archive, obj) archive << BOOST_SERIALIZATION_NVP(obj)
+  #define TAG_OA(archive, obj) archive << BOOST_SERIALIZATION_NVP(obj)
 
-    #define EXPORT_IMPLEMENT(T) BOOST_CLASS_EXPORT_IMPLEMENT(T)
+  #define EXPORT_IMPLEMENT(T) BOOST_CLASS_EXPORT_IMPLEMENT(T)
 
+  #define OUT_ARCHIVE boost::archive::xml_oarchive
+  #define IN_ARCHIVE boost::archive::xml_iarchive
+
+#else
+  #include <boost/archive/binary_oarchive.hpp>
+  #include <boost/archive/binary_iarchive.hpp>
+  #define TAG_BASE(archive, T) archive & boost::serialization::base_object<T>(*this)
+
+  #define TAG(archive,name) archive & name
+
+  #define TAG_IA(archive, obj) archive >> obj
+
+  #define TAG_OA(archive, obj) archive << obj
+
+  #define EXPORT_IMPLEMENT(T) BOOST_CLASS_EXPORT_IMPLEMENT(T)
+
+  #define OUT_ARCHIVE boost::archive::binary_oarchive
+  #define IN_ARCHIVE boost::archive::binary_iarchive
+
+#endif
 
 #define EXPORT_KEY(T) \
-  BOOST_CLASS_EXPORT_KEY(T) \
+  BOOST_CLASS_EXPORT_KEY(T)
 //  BOOST_CLASS_TRACKING(T, 2)
 
 #define EXPORT_ABSTRACT_KEY(T) \
   BOOST_CLASS_EXPORT_KEY(T) \
-  BOOST_SERIALIZATION_ASSUME_ABSTRACT(T) \
+  BOOST_SERIALIZATION_ASSUME_ABSTRACT(T)
 //  BOOST_CLASS_TRACKING(T, 2)
 
 
   #include <boost/config.hpp>
-  #include <boost/archive/xml_iarchive.hpp>
-  #include <boost/archive/xml_oarchive.hpp>
+
 
 #endif
 

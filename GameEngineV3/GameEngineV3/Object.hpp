@@ -95,8 +95,8 @@ class ObjectT {
 		Stores the Object's position and scale
 	 **/
 	struct Transform {
-		Vector2D position;
-		Vector2D scale;
+		Vector2 position;
+		Vector2 scale;
 	};
 	
 public:
@@ -105,7 +105,7 @@ public:
 	string			          tag = "";       /**< Tags                              */
 	string			          name;           /**< Name                              */
 	const Transform&    transform;      /**< Read-Only reference to _transform */
-	const Vector2D&     movement;       /**< Read-Only reference to _movement  */
+	const Vector2&     movement;       /**< Read-Only reference to _movement  */
 	const bool          &deleted, &hidden;
 	Scene*              scene;
 
@@ -145,17 +145,17 @@ public:
 	/**
 		Set the position to the Object's Transform
 	 **/
-	void setPosition(Vector2D);
+	void setPosition(Vector2);
 	
 	/**
 		Set the scale to the Object's Transform
 	 **/
-	void setScale(Vector2D);
+	void setScale(Vector2);
 	
 	/**
-		Adds an Vector2D to the movement vector
+		Adds an Vector2 to the movement vector
 	 **/
-	void move(Vector2D);
+	void move(Vector2);
 	
 	/**
 		Renders the Object's Texture. Called on every iteration of the main
@@ -201,7 +201,7 @@ public:
 	/**
 		Retores the initial Transform.
 	 **/
-	inline void reset(){ _transform = _initial_transform; }
+  virtual void reset();
 
 	/**
 		Return the Object's id
@@ -230,7 +230,7 @@ private:
 	int id;
 
 	
-	Vector2D	    _movement;           /**< How many pixels will move the object */
+	Vector2	    _movement;           /**< How many pixels will move the object */
 	Transform	  _transform;          /**< Storage the Object's position and scale */
 	Transform	  _initial_transform;  /**< Saves the initial transform */
 	bool        _deleted  = false;   /**< If true, the Scene will delete the Object. */

@@ -76,7 +76,7 @@ void RectangleCollider::Update(){
   
 	for (int i = 0 ; i < colliders.size(); ++i)
 	{
-		if (colliders[i]->id != this->id and !colliders[i]->object->deleted)
+		if (colliders[i]->id != this->id and !colliders[i]->object->deleted and !colliders[i]->object->hidden)
 		{
 			if (!colliders[i]->isTrigger() and !_trigger )
 			{
@@ -98,6 +98,11 @@ void RectangleCollider::Update(){
 
 	absolute_rect.x += object->movement.x;
 	absolute_rect.y += object->movement.y;
+}
+
+void RectangleCollider::Reset(){
+  absolute_rect.x = object->transform.position.x;
+  absolute_rect.y = object->transform.position.y;
 }
 
 bool RectangleCollider::checkTriggerWith(RectangleCollider *collider){
@@ -156,11 +161,11 @@ bool RectangleCollider::checkCollisionWith(RectangleCollider *collider, double f
 		if (leftABeforeMove < leftB and rightABeforeMove  > rightB and
 				topABeforeMove  > topB  and bottomABeforeMove < bottomB)
 		{
-			object->move(-object->movement+Vector2D(0, bottomB - bottomA));
+			object->move(-object->movement+Vector2(0, bottomB - bottomA));
 			return false;
 		}
 		
-		Vector2D new_move = object->movement;
+		Vector2 new_move = object->movement;
 		if ((topB    <= bottomABeforeMove and bottomABeforeMove <= bottomB) or
 				(bottomB >= topABeforeMove    and topABeforeMove    >= topB   ) or
 				(topB    >= topABeforeMove    and bottomABeforeMove >= bottomB))

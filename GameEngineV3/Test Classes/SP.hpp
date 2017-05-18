@@ -13,7 +13,7 @@
 #include "Animator.hpp"
 #include "Collision.hpp"
 #include "Timer.hpp"
-#include "Scene.hpp"
+#include "Game.hpp"
 
 #define BulletRight "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/BulletRight.png"
 #define BulletLeft  "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/BulletLeft.png"
@@ -25,7 +25,7 @@ using namespace engine ;
 
 double circlef(double x);
 
-void plot(double (*f)(double),Vector2D range,int n = 100, Vector2D scale = Vector2D(1,1));
+void plot(double (*f)(double),Vector2 range,int n = 100, Vector2 scale = Vector2(1,1));
 
 class Target : public Object {
   SERIALIZE
@@ -57,7 +57,7 @@ class TimerJumpAfterBullet : public TimerOld {
   }
   
   void trigger() {
-    pc->addForce(Vector2D(0,-20));
+    pc->addForce(Vector2(0,-20));
   }
   
 };
@@ -153,7 +153,7 @@ public:
   RectangleCollider *rc;
   float steps = 0;
   int direction = 0;
-  Vector2D moveVector;
+  Vector2 moveVector;
   
   Sound sword;
   

@@ -59,12 +59,12 @@ class Circle {
   }
   
 public:
-	Vector2D center;
-	Vector2D radius;
+	Vector2 center;
+	Vector2 radius;
 	
-	Circle(Vector2D center, double radius);
+	Circle(Vector2 center, double radius);
 	
-	Circle(Vector2D center, Vector2D radius);
+	Circle(Vector2 center, Vector2 radius);
 	
 	inline string toStr(){
 		return "Center: ("+to_string(center.x)+", "+to_string(center.y)+

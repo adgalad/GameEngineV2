@@ -29,8 +29,8 @@ class PhysicController : public ObjectModule {
   }
   
 public:
-	Vector2D velocity;
-	Vector2D maxVelocity;
+	Vector2 velocity;
+	Vector2 maxVelocity;
   bool     affectedByGravity = true;
   const double& friction;
 	
@@ -40,7 +40,7 @@ public:
   
   inline void setFriction(double f){ _friction = f; }
 	
-	void addForce(Vector2D force);
+	void addForce(Vector2 force);
 	
 	void Init();
 	
@@ -52,13 +52,13 @@ public:
 	
 	void addFrictionY(float f);
 	
-  inline static void setGravity(Vector2D gravity){ _gravity = gravity; }
+  inline static void setGravity(Vector2 gravity){ _gravity = gravity; }
 
 
 	
 private:
 	double _friction = 1;
-	static Vector2D _gravity;
+	static Vector2 _gravity;
 };
   
 }

@@ -143,7 +143,7 @@ void Texture::loadImage(string file, int rows, int columns){
 	source_rect.h = sdl_surface->h/columns;
 }
 
-void Texture::Render(Vector2D position, Vector2D scale, Rect *srcRect, int angle, bool inverted){
+void Texture::Render(Vector2 position, Vector2 scale, Rect *srcRect, int angle, bool inverted){
 	if (!sdl_texture) {
     SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,
                              "Error",

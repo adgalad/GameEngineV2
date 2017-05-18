@@ -10,7 +10,7 @@
 
 using namespace engine;
 
-Vector2D PhysicController::_gravity = Vector2D(0,1);
+Vector2 PhysicController::_gravity = Vector2(0,1);
 
 PhysicController::PhysicController() : friction(_friction){ setName(""); }
 
@@ -18,7 +18,7 @@ void PhysicController::setName(string name) {
   ObjectModule::setName("PhysicController");
 }
 
-void PhysicController::addForce(Vector2D force) {
+void PhysicController::addForce(Vector2 force) {
   velocity += force;
   // X Axis
   if (velocity.x > maxVelocity.x)

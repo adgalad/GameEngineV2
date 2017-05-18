@@ -24,9 +24,9 @@ class Bush : public Object{
 		rc = (RectangleCollider*)getModule("RectangleCollider");
 	}
 	void AfterRender(){
-		Texture::renderer->setRenderColor(Color::red);
+		Application.renderer()->setRenderColor(Color::red);
 		Texture::drawRect(rc->absolute_rect);
-		Texture::renderer->setRenderColor(Color::black);
+		Application.renderer()->setRenderColor(Color::black);
 	}
 };
 

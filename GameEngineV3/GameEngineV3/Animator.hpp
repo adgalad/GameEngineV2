@@ -60,7 +60,7 @@ class Sprite{
   SPLIT_SERIALIZATION
   
   int _rows, _columns;
-  Vector2D _pos, _interSpace;
+  Vector2 _pos, _interSpace;
   string _image;
   
   void init();
@@ -91,8 +91,8 @@ public:
          string image,
          int rows,
          int columns,
-         Vector2D pos = Vector2D(0,0),
-         Vector2D interSpace = Vector2D(0,0));
+         Vector2 pos = Vector2(0,0),
+         Vector2 interSpace = Vector2(0,0));
   
 
 	

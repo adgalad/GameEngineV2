@@ -60,7 +60,7 @@ namespace engine {
     void Update(){
       
       if (_started){
-        if (_timer < 0){
+        if (_timer <= 0){
           Finish();
         }
         else if (_timer > 0 and !_pause) {

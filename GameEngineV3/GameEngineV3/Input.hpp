@@ -417,17 +417,35 @@ public:
   /**
    *  Gets the cursor position of the last click.
    *
-   *  @return Returns a Vector2D with the position of the last click.
+   *  @return Returns a Vector2 with the position of the last click.
    */
-  static inline Vector2D GetMouseClickPosition() {
+  static inline Vector2 GetMouseClickPosition() {
     return _input._mousePosition;
+  }
+  
+  
+  static inline Vector2 GetAxis(){
+    Vector2 v = Vector2(0,0);
+    if (_input._keyState[code(KEY_LEFT_ARROW)]){
+      v.x -= 1;
+    }
+    if (_input._keyState[code(KEY_RIGHT_ARROW)]){
+      v.x += 1;
+    }
+    if (_input._keyState[code(KEY_UP_ARROW)]){
+      v.y -= 1;
+    }
+    if (_input._keyState[code(KEY_DOWN_ARROW)]){
+      v.y += 1;
+    }
+    return v;
   }
 
 private:
   static Input _input;          /// Global input handler
   
   SDL_Event _event;             /// Events handler
-  Vector2D  _mousePosition;     /// Mouse Position
+  Vector2  _mousePosition;     /// Mouse Position
   bool      _isPressed[512];    /// Array that store which keys are already pressed
   Uint8    *_keyState   = NULL; /// Keyboard State
   Uint32    _mouseState = 0;    /// Mouse's Key State

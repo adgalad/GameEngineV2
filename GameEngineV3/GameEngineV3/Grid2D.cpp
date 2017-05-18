@@ -11,7 +11,7 @@
 
 using namespace engine;
 
-Grid2D::Grid2D(string name, Rect gridSize, Vector2D tileSize)
+Grid2D::Grid2D(string name, Rect gridSize, Vector2 tileSize)
   : Scene(name,Rect(0,0,gridSize.w * tileSize.x, gridSize.h * tileSize.y))
   , _tileSize(tileSize), _gridSize(gridSize)
 {

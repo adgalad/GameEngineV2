@@ -18,8 +18,8 @@ Sprite::Sprite(string name,
                string image,
                int rows,
                int columns,
-               Vector2D pos,
-               Vector2D interSpace)
+               Vector2 pos,
+               Vector2 interSpace)
 {
 	this->name  = name;
 	_image      = image;
