@@ -25,7 +25,11 @@ class SPScene : public Scene {
   template <class Archive>
   void serialize(Archive & ar, const unsigned int version){
     
+<<<<<<< HEAD
     ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Scene);
+=======
+    TAG_BASE(ar,Scene);
+>>>>>>> OpenGL
 
   }
   SPScene(){}

@@ -5824,7 +5824,11 @@ namespace Catch {
             { SIGINT,  "SIGINT - Terminal interrupt signal" },
             { SIGILL,  "SIGILL - Illegal instruction signal" },
             { SIGFPE,  "SIGFPE - Floating point error signal" },
+<<<<<<< HEAD
             { SIGSEGV, "SIGSEGV - Segmentation violation signal" },
+=======
+            { SIGSEGV, "SIGSEGV - Edgeation violation signal" },
+>>>>>>> OpenGL
             { SIGTERM, "SIGTERM - Termination request signal" },
             { SIGABRT, "SIGABRT - Abort (abnormal termination) signal" }
         };

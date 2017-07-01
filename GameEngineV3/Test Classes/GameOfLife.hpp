@@ -58,7 +58,11 @@ private:
 	int dead, alive;
 };
 
+<<<<<<< HEAD
 void loadGol(Game *game);
+=======
+void loadGol();
+>>>>>>> OpenGL
 
 
 
