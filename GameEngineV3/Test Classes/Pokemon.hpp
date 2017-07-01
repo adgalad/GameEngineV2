@@ -18,15 +18,24 @@ void loadTest(Game *game);
 
 
 class Bush : public Object{
+  SERIALIZE
+  
+  template<class Archive>
+  void serialize(Archive & ar, const unsigned int version)
+  {
+    TAG_BASE(ar, Object);
+    rc = (RectangleCollider*)getModule("RectangleCollider");
+  }
+  
 	RectangleCollider *rc;
 	
 	void Start(){
 		rc = (RectangleCollider*)getModule("RectangleCollider");
 	}
 	void AfterRender(){
-		Application.renderer()->setRenderColor(Color::red);
-		Texture::drawRect(rc->absolute_rect);
-		Application.renderer()->setRenderColor(Color::black);
+//		Application.renderer()->setDrawColor(Color::red);
+//		Texture::drawRect(rc->absolute_rect);
+//		Application.renderer()->setDrawColor(Color::black);
 	}
 };
 

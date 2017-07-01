@@ -32,15 +32,27 @@ class O2 : public Object{
 		r.y -= 1;
 		r.w += 2;
 		r.h += 2;
-		Application.renderer()->setRenderColor(Color::red);
+		Application.renderer()->setDrawColor(Color::red);
 		Texture::drawRect(r);
-		Application.renderer()->setRenderColor(Color::black);
+		Application.renderer()->setDrawColor(Color::black);
 	}
 };
 
 class O1 : public Object {
 public:
 	
+  SERIALIZE
+  
+  template<class Archive>
+  void serialize(Archive & ar, const unsigned int version)
+  {
+    TAG(ar, direction);
+    TAG(ar, xs);
+    TAG(ar, ys);
+    TAG(ar, trigger);    
+    TAG_BASE(ar, Object);
+  }
+  
 	bool direction;
 	int xs,ys;
 	bool trigger;
@@ -143,11 +155,11 @@ public:
 		r.w += 2;
 		r.h += 2;
 		
-		if (trigger) Application.renderer()->setRenderColor(Color::green);
-		else		 Application.renderer()->setRenderColor(Color::red);
+		if (trigger) Application.renderer()->setDrawColor(Color::green);
+		else		 Application.renderer()->setDrawColor(Color::red);
 		
 		Texture::drawRect(r);
-		Application.renderer()->setRenderColor(Color::black);
+		Application.renderer()->setDrawColor(Color::black);
 		
 		trigger = false;
 	}
@@ -164,9 +176,9 @@ public:
 	PhysicController *pc;
     
     ~O3(){
-        delete animator;
-        delete rc;
-        delete pc;
+        if (animator) delete animator;
+        if (rc)       delete rc;
+        if (pc)       delete pc;
     }
     
 	void Start(){
@@ -236,16 +248,16 @@ public:
 
 
 	void AfterRender(){
-		Application.renderer()->setRenderColor(Color::red);
+		Application.renderer()->setDrawColor(Color::red);
 		Texture::drawRect(rc->absolute_rect);
-		Application.renderer()->setRenderColor(Color::black);
+		Application.renderer()->setDrawColor(Color::black);
 	}
 	
 };
 
 #endif
 
-
+EXPORT_KEY(O1);
 
 
 
