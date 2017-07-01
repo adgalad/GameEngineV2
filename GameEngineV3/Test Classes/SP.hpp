@@ -13,11 +13,7 @@
 #include "Animator.hpp"
 #include "Collision.hpp"
 #include "Timer.hpp"
-<<<<<<< HEAD
-#include "Scene.hpp"
-=======
 #include "Game.hpp"
->>>>>>> OpenGL
 
 #define BulletRight "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/BulletRight.png"
 #define BulletLeft  "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/BulletLeft.png"
@@ -29,11 +25,7 @@ using namespace engine ;
 
 double circlef(double x);
 
-<<<<<<< HEAD
-void plot(double (*f)(double),Vector2D range,int n = 100, Vector2D scale = Vector2D(1,1));
-=======
 void plot(double (*f)(double),Vector2 range,int n = 100, Vector2 scale = Vector2(1,1));
->>>>>>> OpenGL
 
 class Target : public Object {
   SERIALIZE
@@ -51,19 +43,11 @@ class Target : public Object {
   void AfterRender();
 };
 
-<<<<<<< HEAD
-class TimerJumpAfterBullet : public Timer {
-  SERIALIZE
-  template <class Archive>
-  void serialize(Archive & ar, const unsigned int version){
-    TAG_BASE(ar, Timer);
-=======
 class TimerJumpAfterBullet : public TimerOld {
   SERIALIZE
   template <class Archive>
   void serialize(Archive & ar, const unsigned int version){
     TAG_BASE(ar, TimerOld);
->>>>>>> OpenGL
     TAG(ar,pc);
   }
   
@@ -73,11 +57,7 @@ class TimerJumpAfterBullet : public TimerOld {
   }
   
   void trigger() {
-<<<<<<< HEAD
-    pc->addForce(Vector2D(0,-20));
-=======
     pc->addForce(Vector2(0,-20));
->>>>>>> OpenGL
   }
   
 };
@@ -173,11 +153,7 @@ public:
   RectangleCollider *rc;
   float steps = 0;
   int direction = 0;
-<<<<<<< HEAD
-  Vector2D moveVector;
-=======
   Vector2 moveVector;
->>>>>>> OpenGL
   
   Sound sword;
   

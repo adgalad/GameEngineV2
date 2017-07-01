@@ -4,27 +4,21 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-<<<<<<< HEAD
-=======
 		<key>Client.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>7</integer>
 		</dict>
->>>>>>> OpenGL
 		<key>GameEngine.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-<<<<<<< HEAD
-=======
 		<key>GameEngine3D.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
->>>>>>> OpenGL
 		<key>GameEngineEditor.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -35,14 +29,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-<<<<<<< HEAD
-=======
 		<key>Server.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>6</integer>
 		</dict>
->>>>>>> OpenGL
 		<key>Test.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -66,8 +57,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-<<<<<<< HEAD
-=======
 		<key>078C33921F05E4DF0092B6B4</key>
 		<dict>
 			<key>primary</key>
@@ -88,7 +77,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
->>>>>>> OpenGL
 		<key>0791DB0E1CA79739004D2C63</key>
 		<dict>
 			<key>primary</key>
@@ -124,14 +112,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-<<<<<<< HEAD
-=======
 		<key>07D763DD1ECFDB5500A2C10E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
->>>>>>> OpenGL
 	</dict>
 </dict>
 </plist>
