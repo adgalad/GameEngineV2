@@ -15,10 +15,10 @@
 #include "Timer.hpp"
 #include "Game.hpp"
 
-#define BulletRight "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/BulletRight.png"
-#define BulletLeft  "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/BulletLeft.png"
-#define SwordSound  "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/sword.mp3"
-#define SPScript    "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/SP.lua"
+#define BulletRight "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/BulletRight.png"
+#define BulletLeft  "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/BulletLeft.png"
+#define SwordSound  "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/sword.mp3"
+#define SPScript    "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/SP.lua"
 
 
 using namespace engine ;

@@ -38,6 +38,7 @@ class O2 : public Object{
 	}
 };
 
+
 class O1 : public Object {
 public:
 	
@@ -52,7 +53,7 @@ public:
     TAG(ar, trigger);    
     TAG_BASE(ar, Object);
   }
-  
+
 	bool direction;
 	int xs,ys;
 	bool trigger;
@@ -257,8 +258,8 @@ public:
 
 #endif
 
-EXPORT_KEY(O1);
 
+EXPORT_KEY(O1);
 
 
 

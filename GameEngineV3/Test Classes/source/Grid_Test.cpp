@@ -8,10 +8,10 @@
 
 #include "Grid_Test.hpp"
 
-#define JUGADOR_DOWN  "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/EfisDown.png"
-#define JUGADOR_UP    "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/EfisUp.png"
-#define JUGADOR_RIGHT "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/EfisRight.png"
-#define JUGADOR_LEFT  "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/EfisLeft.png"
+#define JUGADOR_DOWN  "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/EfisDown.png"
+#define JUGADOR_UP    "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/EfisUp.png"
+#define JUGADOR_RIGHT "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/EfisRight.png"
+#define JUGADOR_LEFT  "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/EfisLeft.png"
 
 void loadGridTest(Game *game){
 

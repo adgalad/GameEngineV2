@@ -12,7 +12,7 @@
 #include "Game.hpp"
 #include "Grid2D.hpp"
 
-#define tile "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/master-tileset.png"
+#define tile "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/master-tileset.png"
 
 using namespace engine;
 

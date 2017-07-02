@@ -38,7 +38,7 @@ public:
   
 	void Start(){
 		this->Scene::Start();
-		Sound::PlayMusic("/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Elwynn Forest.mp3", -1);
+		Sound::PlayMusic("/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Elwynn Forest.mp3", -1);
 	}
 };
 EXPORT_KEY(SPScene);

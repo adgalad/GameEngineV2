@@ -42,17 +42,18 @@ int main(int argc, const char * argv[]) {
   
   
 	Application.setMaxFramesPerSecond(60);
-  Server s;
 //  delete game;
 //  
 //  Window   *tmain_window = new Window("Game Engine V3", 800,600);
 //  Renderer2D *trenderer    = new Renderer2D(tmain_window);
 //  Game     *tgame        = new Game(tmain_window, trenderer);
 //  loadGame("/Users/carlosspaggiari/Game.xml", game);
-    thread t (&Server::Start, &s);
+//    thread t (&Server::Start, &s);
 	Application.Run();
-//  saveGame("/Users/carlosspaggiari/Game.xml", game);
+//  saveSerialize<Game>("/Users/carlosspaggiari/Game.xml", Application);
 //  loadGame("/Users/carlosspaggiari/Game.xml", game);
+  
+  
   
 	GameEngineQuit();
   

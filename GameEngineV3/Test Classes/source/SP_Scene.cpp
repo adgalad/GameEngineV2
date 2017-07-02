@@ -8,16 +8,16 @@
 
 #include "SP_Scene.hpp"
 
-#define Background "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/sf2-bg.jpg"
-#define GroundTexture "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/sf2-ground.jpg"
+#define Background "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/sf2-bg.jpg"
+#define GroundTexture "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/sf2-ground.jpg"
 
-#define SPRight      "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/sp_right.png"
-#define SPStandRight "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/sp_stand_right.png"
-#define SPLeft       "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/sp_left.png"
-#define SPStandLeft  "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/sp_stand_left.png"
-#define TargetTex    "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/target_dummy.gif"
+#define SPRight      "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/sp_right.png"
+#define SPStandRight "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/sp_stand_right.png"
+#define SPLeft       "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/sp_left.png"
+#define SPStandLeft  "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/sp_stand_left.png"
+#define TargetTex    "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/target_dummy.gif"
 
-#define pokemon "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/pokemon/pokemon sprites 1111112222233333444445555566666677777888889999900000 copy.bmp"
+#define pokemon "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/pokemon/pokemon sprites 1111112222233333444445555566666677777888889999900000 copy.bmp"
 
 
 

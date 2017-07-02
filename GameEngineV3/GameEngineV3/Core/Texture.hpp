@@ -120,7 +120,7 @@ public:
       SDL_DestroyTexture(sdl_texture);
       sdl_texture = NULL;
     }
-    cout << r.toStr();
+    
 		sdl_texture = SDL_CreateTexture(_renderer->sdl_renderer,
 									 SDL_PIXELFORMAT_ABGR8888,
 									 SDL_TEXTUREACCESS_TARGET,

@@ -30,27 +30,16 @@ int main(int argc, const char * argv[]) {
   Options.showColliders = true;
 
   loadPokemon(&Application);
-
-  //
-  std::ostringstream sc = sceneToStream(*Application.currentScene);
-  
-  istringstream iss (sc.str());
-  Scene *newScene = new Scene();
-  streamToScene(&iss, *newScene);
-  
-  
-  //
-  
   
   Application.setMaxFramesPerSecond(60);
-  Server s;
+//  Server s;
 
-  thread t (&Server::Start, &s);
+//  thread t (&Server::Start, &s);
   Application.Run();
 
   
-  s.Stop();
-  t.join();
+//  s.Stop();
+//  t.join();
   
   GameEngineQuit();
   

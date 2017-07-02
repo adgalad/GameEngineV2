@@ -12,35 +12,39 @@
 Server::Server() : Server(100, "127.0.0.1", 8080){
   
 }
-
+typedef pair<int, ClientHandler> p;
 Server::~Server(){
   
   FD_ZERO(&_active_fds);
   FD_ZERO(&_ready_fds);
+  
+  auto i = clients.begin();
+  
+  foreach(i, clients){
+    close(i->second->fd);
+  }
 }
 
 Server::Server(uint32_t maxClients, const char* inet, uint32_t port):Socket(inet, port){
   _maxNumberOfClients = maxClients;
-  _fd = create_TCP_socket(PF_INET);
-  
+  bind_internet_addr();
   int yes = 1;
 #ifdef __APPLE__
-  if ( setsockopt(_fd, SOL_SOCKET, SO_REUSEPORT, &yes, sizeof(int)) == -1 )
+  if ( setsockopt(fd(), SOL_SOCKET, SO_REUSEPORT, &yes, sizeof(int)) == -1 )
 #elif __linux__                          //  ^^--vv
-    if ( setsockopt(_fd, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(int)) == -1 )
+    if ( setsockopt(fd(), SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(int)) == -1 )
 #endif
     {
       perror("Server: Failed setting socket option `SO_REUSEPORT`");
     }
-  bind_internet_addr(_fd, ip(), Server::port());
   
   FD_ZERO(&_active_fds);
-  FD_SET(_fd, &_active_fds);
+  FD_SET(fd(), &_active_fds);
 }
 
 void Server::Start() {
   printf("Server: Listening ...\n");
-  if (listen(_fd, 1) < 0) {
+  if (listen(fd(), 1) < 0) {
     perror ("No Listen: ");
     exit(1);
   }
@@ -77,12 +81,12 @@ void Server::catchClient(){
   
   if (not _run) return;
   
-  if (FD_ISSET(_fd, &_ready_fds)){
+  if (FD_ISSET(fd(), &_ready_fds)){
     
     printf("Server: Accepting ...\n");
     ClientHandler *client = new ClientHandler();
-    socklen_t len = sizeof _addr;
-    int conn = accept(_fd, (struct sockaddr *)&client->addr, &len);
+    socklen_t len = sizeof (struct sockaddr);
+    int conn = accept(fd(), (struct sockaddr *)&client->addr, &len);
     
   
     if (conn < 0){
@@ -96,8 +100,8 @@ void Server::catchClient(){
     if (FD_ISSET(client->fd, &_active_fds)){
       
       if (true /* num of thread < max num of thread */) {
-        Debug::Log("Server: Connected with " + _inet + ".\n");
-        int n = (int) recv(client->fd, (void*)&_signal, sizeof(Signal), 0);
+        Debug::Log("Server: Connected with " + inet_str() + ".\n");
+        int n = (int) Recive(client->fd, (void*)&_signal, sizeof(Signal));
         
         if (n < 0){
           printf("ERROR: Can not receive messages\n");
@@ -127,11 +131,11 @@ void Server::catchClient(){
         //          }
         //
       } else {
-        printf("Server (%d): Refusing `%s`\n",getpid(), inet_str());
-        printf("Debug: Clearing FD %d\n", client->fd);
+        Debug::Log("Server: Refusing " + inet_str());
+        Debug::Log("Clearing FD " + to_string(client->fd));
         _signal.type = REFUSED;
         
-        send_data(client->fd, (void*)&_signal, sizeof(Signal));
+        Send(client->fd, (void*)&_signal, sizeof(Signal));
         FD_CLR(client->fd, &_active_fds);
         
       }
@@ -141,17 +145,18 @@ void Server::catchClient(){
 
 void Server::serveClient (ClientHandler *client){
   
-  send_data(client->fd,&client->fd, sizeof(int));
+  Send(client->fd,&client->fd, sizeof(int));
   printf("Se envio un entero al cliente: %d\n", client->fd);
   
   do {
-    ostringstream oss = sceneToStream(*Application.currentScene);
-    send_data(client->fd, (char*)&oss.str()[0], oss.str().size() * sizeof(char));
+    ostringstream oss = serialize(*Application.currentScene);
+    size_t size = oss.str().size() * sizeof(char);
+    Send(client->fd, (char*)&oss.str()[0], size);
     printf("Se envio la Escena.\n");
     
-    if (recv(client->fd, &_signal, sizeof (Signal), 0) < 0) return;
+    if (Recive(client->fd, &_signal, sizeof (Signal)) < 0) return;
     cout << "Se recibio la senal: " << _signal.type << endl;
-  } while (_signal.type == UPDATE);
-  
-  
+    
+    
+  } while (_signal.type != EXIT);
 }

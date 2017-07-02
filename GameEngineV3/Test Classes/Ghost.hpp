@@ -122,7 +122,7 @@ public:
     tag = "ghost";
     saved.alreadySaved = false;
     
-    s.loadSound("/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Pacman/ghost eat 2.wav");
+    s.loadSound("/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Pacman/ghost eat 2.wav");
     s.setChannel(5);
   }
   

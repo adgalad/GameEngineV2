@@ -41,6 +41,7 @@
 
 #include "Debug.hpp"
 
+#define foreach(i, c) for (i = c.begin(); i != c.end(); ++i)
 
 //#define ENABLE_BOOST_SERIALIZATION_XML
 #ifdef ENABLE_BOOST_SERIALIZATION
@@ -155,6 +156,46 @@ void GameEngineInit();
 void GameEngineQuit();
 
 }
+
+
+template <class _SerializeType>
+void saveSerialize(std::string filename, const _SerializeType &obj){
+  std::ofstream ofs(filename);
+  assert(ofs.good());
+  OUT_ARCHIVE oa(ofs);
+  TAG_OA(oa, obj);
+  ofs.close();
+}
+
+
+template <class _SerializeType>
+void loadSerialize(std::string filename, _SerializeType &obj){
+  std::ifstream ifs(filename);
+  assert(ifs.good());
+  IN_ARCHIVE ia(ifs);
+  TAG_IA(ia,obj);
+  ifs.close();
+}
+
+template <class _SerializeType>
+std::ostringstream serialize(const _SerializeType &obj){
+  std::ostringstream oss (std::ostringstream::binary);
+  assert(oss.good());
+  OUT_ARCHIVE oa(oss);
+  TAG_OA(oa, obj);
+  return oss;
+}
+
+template <class _SerializeType>
+void deserialize(std::string s, _SerializeType obj){
+  std::istringstream iss (s, std::istringstream::binary);
+  assert(iss.good());
+  IN_ARCHIVE ia(iss);
+  TAG_IA(ia, obj);
+}
+
+
+
 #endif
 
 engine::string readFile(engine::string file);

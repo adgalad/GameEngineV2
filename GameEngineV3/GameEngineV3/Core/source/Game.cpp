@@ -28,7 +28,6 @@ Game::Game(Window *window, Renderer2D *renderer){
 Game::~Game(){
 	delete main_window;
 	delete _renderer;
-//  if (server) delete server;
 	Sound::Quit();
 }
 
@@ -100,28 +99,3 @@ void Game::SetWindow(Window *window, Renderer2D *renderer){
 }
 
 
-template <class T> void saveSerialize(std::string filename, const T &obj){
-  std::ofstream ofs(filename);
-  assert(ofs.good());
-  
-  OUT_ARCHIVE oa(ofs);
-  
-  
-  TAG_OA(oa, obj);
-  ofs.close();
-}
-
-template <class T> void loadSerialize(std::string filename, T &obj){
-  std::ifstream ifs(filename);
-  assert(ifs.good());
-
-
-  IN_ARCHIVE ia(ifs);
-
-  
-  TAG_IA(ia,obj);
-  ifs.close();
-}
-
-template void saveSerialize<Scene>(string file, const Scene & obj);
-template void loadSerialize<Scene>(string file, Scene &obj);

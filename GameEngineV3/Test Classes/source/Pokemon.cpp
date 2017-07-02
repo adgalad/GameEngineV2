@@ -73,8 +73,8 @@ void loadPokemon(Game *game)
 	
 	shared_ptr<Texture> grass
         = shared_ptr<Texture>(new Texture("grass",
-            "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/grass.bmp"));
-//	Texture *bush = new Texture("bush", "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/pokemon/bush.bmp");
+          "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/grass.bmp"));
+//	Texture *bush = new Texture("bush", "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/pokemon/bush.bmp");
     
 	shared_ptr<Scene> s1 =
         shared_ptr<Scene>(new Scene("pokemon scene", Rect(0,0,30*16,30*16)));

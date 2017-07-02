@@ -50,9 +50,9 @@ public:
     collider = new RectangleCollider(Rect(12,12,16,16));
     addModule(collider);
     anim = (Animator*)getModule("Animator");
-    sa.loadSound("/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Pacman/munch A+B.wav");
-    sb.loadSound("/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Pacman/death 1.wav");
-    sc.loadSound("/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Pacman/ghost eat 7.wav");
+    sa.loadSound("/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Pacman/munch A+B.wav");
+    sb.loadSound("/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Pacman/death 1.wav");
+    sc.loadSound("/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Pacman/ghost eat 7.wav");
     sa.setChannel(1);
     sb.setChannel(2);
     sc.setChannel(4);
@@ -359,40 +359,40 @@ public:
     
     gPacman = pacman;
     
-    readMap("/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Pacman/Original");
-    Texture *bg = new Texture("background", "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Pacman/PacmanBg.jpg");
-    Sprite *pmdown = new Sprite("pmdown", "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Pacman/pmdown.png", 1, 4);
-    Sprite *pmup = new Sprite("pmup", "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Pacman/pmup.png", 1, 4);
-    Sprite *pmright = new Sprite("pmright", "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Pacman/pmright.png", 4, 1);
-    Sprite *pmleft = new Sprite("pmleft", "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Pacman/pmleft.png", 4, 1);
-    Sprite *pmdie  = new Sprite("pmdie", "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Pacman/pmdie.png", 1, 7);
+    readMap("/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Pacman/Original");
+    Texture *bg = new Texture("background", "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Pacman/PacmanBg.jpg");
+    Sprite *pmdown = new Sprite("pmdown", "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Pacman/pmdown.png", 1, 4);
+    Sprite *pmup = new Sprite("pmup", "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Pacman/pmup.png", 1, 4);
+    Sprite *pmright = new Sprite("pmright", "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Pacman/pmright.png", 4, 1);
+    Sprite *pmleft = new Sprite("pmleft", "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Pacman/pmleft.png", 4, 1);
+    Sprite *pmdie  = new Sprite("pmdie", "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Pacman/pmdie.png", 1, 7);
     
     
-    Sprite *frightened = new Sprite("frightened", "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Pacman/frightened.png",2,1);
-    Sprite *encouraged = new Sprite("encouraged", "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Pacman/encouraged.png",4,1);
-    Sprite *dieright   = new Sprite("dieright", "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Pacman/dieright.png",1,1);
+    Sprite *frightened = new Sprite("frightened", "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Pacman/frightened.png",2,1);
+    Sprite *encouraged = new Sprite("encouraged", "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Pacman/encouraged.png",4,1);
+    Sprite *dieright   = new Sprite("dieright", "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Pacman/dieright.png",1,1);
     
-    Sprite *blinkydown  = new Sprite("down", "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Pacman/blinkydown.png", 2,1);
-    Sprite *blinkyup    = new Sprite("up", "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Pacman/blinkyup.png", 2,1);
-    Sprite *blinkyright = new Sprite("right", "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Pacman/blinkyright.png", 2,1);
-    Sprite *blinkyleft  = new Sprite("left", "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Pacman/blinkyleft.png", 2,1);
+    Sprite *blinkydown  = new Sprite("down", "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Pacman/blinkydown.png", 2,1);
+    Sprite *blinkyup    = new Sprite("up", "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Pacman/blinkyup.png", 2,1);
+    Sprite *blinkyright = new Sprite("right", "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Pacman/blinkyright.png", 2,1);
+    Sprite *blinkyleft  = new Sprite("left", "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Pacman/blinkyleft.png", 2,1);
     
-    Sprite *pinkydown  = new Sprite("down", "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Pacman/pinkydown.png", 2,1);
-    Sprite *pinkyup    = new Sprite("up", "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Pacman/pinkyup.png", 2,1);
-    Sprite *pinkyright = new Sprite("right", "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Pacman/pinkyright.png", 2,1);
-    Sprite *pinkyleft  = new Sprite("left", "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Pacman/pinkyleft.png", 2,1);
+    Sprite *pinkydown  = new Sprite("down", "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Pacman/pinkydown.png", 2,1);
+    Sprite *pinkyup    = new Sprite("up", "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Pacman/pinkyup.png", 2,1);
+    Sprite *pinkyright = new Sprite("right", "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Pacman/pinkyright.png", 2,1);
+    Sprite *pinkyleft  = new Sprite("left", "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Pacman/pinkyleft.png", 2,1);
     
-    Sprite *inkydown  = new Sprite("down", "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Pacman/inkydown.png", 2,1);
-    Sprite *inkyup    = new Sprite("up", "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Pacman/inkyup.png", 2,1);
-    Sprite *inkyright = new Sprite("right", "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Pacman/inkyright.png", 2,1);
-    Sprite *inkyleft  = new Sprite("left", "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Pacman/inkyleft.png", 2,1);
+    Sprite *inkydown  = new Sprite("down", "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Pacman/inkydown.png", 2,1);
+    Sprite *inkyup    = new Sprite("up", "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Pacman/inkyup.png", 2,1);
+    Sprite *inkyright = new Sprite("right", "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Pacman/inkyright.png", 2,1);
+    Sprite *inkyleft  = new Sprite("left", "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Pacman/inkyleft.png", 2,1);
     
-    Sprite *clydedown  = new Sprite("down", "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Pacman/clydedown.png", 2,1);
-    Sprite *clydeup    = new Sprite("up", "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Pacman/clydeup.png", 2,1);
-    Sprite *clyderight = new Sprite("right", "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Pacman/clyderight.png", 2,1);
-    Sprite *clydeleft  = new Sprite("left", "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Pacman/clydeleft.png", 2,1);
+    Sprite *clydedown  = new Sprite("down", "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Pacman/clydedown.png", 2,1);
+    Sprite *clydeup    = new Sprite("up", "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Pacman/clydeup.png", 2,1);
+    Sprite *clyderight = new Sprite("right", "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Pacman/clyderight.png", 2,1);
+    Sprite *clydeleft  = new Sprite("left", "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Pacman/clydeleft.png", 2,1);
     
-    EpicSoundToKillYourEnemies.loadSound("/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/Pacman/large pellet loop.wav");
+    EpicSoundToKillYourEnemies.loadSound("/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/Pacman/large pellet loop.wav");
     EpicSoundToKillYourEnemies.setChannel(3);
     Animator *anim = new Animator();
     

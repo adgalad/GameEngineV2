@@ -154,9 +154,6 @@ private:
 using namespace engine;
 EXPORT_KEY(Scene);
 
-std::ostringstream sceneToStream(const Scene &scene);
-
-void streamToScene(std::istringstream *sceneBytes, Scene &scene);
 
 
 #endif

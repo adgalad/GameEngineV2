@@ -13,8 +13,8 @@
 #include "Game.hpp"
 #include "Animator.hpp"
 
-#define BOARD_PATH  "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/board.jpg"
-#define PIECES_PATH "/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/pieces.png"
+#define BOARD_PATH  "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/board.jpg"
+#define PIECES_PATH "/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/pieces.png"
 
 #define BSIZE  8
 #define MAXMV  57

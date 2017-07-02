@@ -37,7 +37,7 @@ public:
 	
 	void Start() {
 		genRandomGrid(800, 600);
-//		loadFile("/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV3/GameEngineV3/Resources/glider6.gl");
+//		loadFile("/Users/carlosspaggiari/GameEngineV3/GameEngineV3/Resources/glider6.gl");
 
 	}
 	

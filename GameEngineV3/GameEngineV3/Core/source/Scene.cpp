@@ -185,18 +185,6 @@ EXPORT_IMPLEMENT(Scene);
 EXPORT_IMPLEMENT(Object);
 EXPORT_IMPLEMENT(ObjectModule);
 
-std::ostringstream sceneToStream(const Scene &scene){
-  std::ostringstream ostrs (std::ostringstream::binary);
-  OUT_ARCHIVE oa(ostrs);
-  TAG_OA(oa, scene);
-  return ostrs;
-}
-
-void streamToScene(std::istringstream *istrs, Scene &scene){
-  IN_ARCHIVE ia(*istrs);
-  TAG_IA(ia, scene);
-}
-
 
 
 

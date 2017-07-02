@@ -111,8 +111,7 @@ public:
   
 }
 
-template <class T> void saveSerialize(std::string filename, const T &obj);
-template <class T> void loadSerialize(std::string filename, T &obj);
+
 
 extern Game Application;
 
