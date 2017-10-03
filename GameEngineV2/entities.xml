@@ -1,4 +1,0 @@
-
-<entity name = "cosa" texture = "yoshi" X = "400" Y="50">
-	<script path="/Volumes/HDD/C-C++/PROYECTOS/Juego_SDL/GameEngineV2/GameEngineV2/player.lua"/>
-</entity>
