@@ -14,21 +14,27 @@
 #ifdef __cplusplus
 #include "GE_SDL.hpp"
 #include "Vector.hpp"
-
 namespace engine {
 
   /**
-   Enum with all the mouse buttons supported.
+   Enum with all the supported mouse buttons.
    */
 enum MouseInput {
   MOUSE_LEFT_BUTTON   = SDL_BUTTON_LEFT,
   MOUSE_MIDDLE_BUTTON = SDL_BUTTON_MIDDLE,
   MOUSE_RIGHT_BUTTON  = SDL_BUTTON_RIGHT
 };
+  
+  enum KeystateType {
+    NO_EVENT       = 0,
+    HARDWARE_EVENT = 1,
+    NETWORK_EVENT  = 2
+  };
+  
 
   
   /**
-   Enum with all the keyboard keys supported.
+   Enum with all the supported keyboard keys.
    */
 enum KeyCode {
   KEY_UNKNOW           = SDLK_UNKNOWN,
@@ -299,32 +305,39 @@ enum KeyCode {
 //  		= Sleep_Key,
 };
 
-class Input {
+  typedef struct KeyEventP {
+    SDL_EventType type;
+    KeyCode       key;
+  };
+
+  
+class InputT {
   /**
    *  Private constructor
    */
-  Input(){};
+  
 
 public:
   
+  InputT(){};
   /**
    *   Updates and saves the keyboard state within _keyState 
    *   as well asupdates mouse state and position with the
    *   variables _mouseState and _mousePosition
    */
-  static inline void Update() {
+  virtual inline void Update() {
     int x, y;
 
-    while (SDL_PollEvent(&_input._event)) {
-      if (_input._event.type == SDL_KEYUP) {
-        _input._isPressed[code(_input._event.key.keysym.sym)] = false;
+    while (SDL_PollEvent(&_event)) {
+      if (_event.type == SDL_KEYUP) {
+        _isPressed[code(_event.key.keysym.sym)] = false;
       }
     }
     int i = 0;
-    _input._keyState = (Uint8 *)SDL_GetKeyboardState(&i);
-    _input._mouseState = SDL_GetMouseState(&x, &y);
-    _input._mousePosition.x = x;
-    _input._mousePosition.y = y;
+    _keyState = (Uint8 *)SDL_GetKeyboardState(&i);
+    _mouseState = SDL_GetMouseState(&x, &y);
+    _mousePosition.x = x;
+    _mousePosition.y = y;
   }
 
   /**
@@ -332,7 +345,7 @@ public:
    *
    *  @return Returns True if a quit event was triggered
    */
-  static inline bool Quit() { return _input._event.type == SDL_QUIT; }
+  inline bool Quit() { return _event.type == SDL_QUIT; }
 
   /**
    *  Checks if a key was pressed but not if hold. To handle
@@ -342,13 +355,13 @@ public:
    *
    *  @return Returns true once if the key was pressed.
    */
-  static inline bool KeyPressed(KeyCode key) {
+  virtual inline bool KeyPressed(KeyCode key) {
     unsigned int keyCode = code(key);
-    if (_input._keyState[keyCode]) {
-      if (_input._isPressed[keyCode]) {
+    if (_keyState[keyCode]) {
+      if (_isPressed[keyCode]) {
         return false;
       } else {
-        return _input._isPressed[keyCode] = true;
+        return _isPressed[keyCode] = 1;
       }
     }
     return false;
@@ -361,9 +374,14 @@ public:
    *
    *  @return Returns True if the key was released.
    */
-  static inline bool KeyReleased(KeyCode key) {
-    return _input._event.type == SDL_KEYUP and
-           _input._event.key.keysym.sym == key;
+   virtual inline bool KeyReleased(KeyCode key) {
+
+    if (Options.allowUserInput) {
+      
+    }
+    return _event.type == SDL_KEYUP and
+          _event.key.keysym.sym == key;
+    
   }
 
 
@@ -374,8 +392,9 @@ public:
    *
    *  @return Returns True if the key is pressed.
    */
-  static inline bool KeyDown(KeyCode key) {
-    return _input._keyState[code(key)];
+  virtual inline bool KeyDown(KeyCode key) {
+    return _keyState[code(key)];
+
   }
 
   /**
@@ -386,9 +405,9 @@ public:
    *
    *  @return Returns true once if the button was pressed.
    */
-  static inline bool MouseButton(MouseInput button) {
-    return _input._event.type == SDL_MOUSEBUTTONUP and
-           _input._event.button.button == button;
+  inline bool MouseButton(MouseInput button) {
+    return _event.type == SDL_MOUSEBUTTONUP and
+           _event.button.button == button;
   }
 
   /**
@@ -398,8 +417,8 @@ public:
    *
    *  @return Return True if the mouse button is pressed
    */
-  static inline bool MouseButtonPressed(MouseInput button) {
-    return _input._mouseState & SDL_BUTTON(button);
+   inline bool MouseButtonPressed(MouseInput button) {
+    return _mouseState & SDL_BUTTON(button);
   }
 
   /**
@@ -409,9 +428,9 @@ public:
    *
    *  @return Return True if the mouse button was released
    */
-  static inline bool MouseButtonReleased(MouseInput button) {
-    return _input._event.type == SDL_MOUSEBUTTONUP and
-           _input._event.button.button == button;
+   inline bool MouseButtonReleased(MouseInput button) {
+    return _event.type == SDL_MOUSEBUTTONUP and
+           _event.button.button == button;
   }
 
   /**
@@ -419,38 +438,48 @@ public:
    *
    *  @return Returns a Vector2 with the position of the last click.
    */
-  static inline Vector2 GetMouseClickPosition() {
-    return _input._mousePosition;
+   inline Vector2 GetMouseClickPosition() {
+    return _mousePosition;
   }
   
   
-  static inline Vector2 GetAxis(){
+   inline Vector2 GetAxis(){
     Vector2 v = Vector2(0,0);
-    if (_input._keyState[code(KEY_LEFT_ARROW)]){
+    if (_keyState[code(KEY_LEFT_ARROW)]){
       v.x -= 1;
     }
-    if (_input._keyState[code(KEY_RIGHT_ARROW)]){
+    if (_keyState[code(KEY_RIGHT_ARROW)]){
       v.x += 1;
     }
-    if (_input._keyState[code(KEY_UP_ARROW)]){
+    if (_keyState[code(KEY_UP_ARROW)]){
       v.y -= 1;
     }
-    if (_input._keyState[code(KEY_DOWN_ARROW)]){
+    if (_keyState[code(KEY_DOWN_ARROW)]){
       v.y += 1;
     }
     return v;
   }
-
+  
+   vector<KeyEventP> getUserEvents(){
+    return _netEvents;
+  }
+  
+protected:
+  vector<KeyEventP> _netEvents;
+  
 private:
-  static Input _input;          /// Global input handler
   
   SDL_Event _event;             /// Events handler
-  Vector2  _mousePosition;     /// Mouse Position
+  Vector2   _mousePosition;     /// Mouse Position
   bool      _isPressed[512];    /// Array that store which keys are already pressed
   Uint8    *_keyState   = NULL; /// Keyboard State
   Uint32    _mouseState = 0;    /// Mouse's Key State
+  
 };
 }
+
+
+extern engine::InputT *Input;
 
 #endif
 

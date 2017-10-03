@@ -127,7 +127,7 @@ public:
   }
   
   void Update() {
-    if (Input::KeyDown(KEY_M)){
+    if (Input->KeyDown(KEY_M)){
       setFrightened();
     }
     
@@ -447,7 +447,7 @@ public:
   }
   
   void Start(){
-    ResetTimer(waves[0].timer/5);
+    ResetTimer(waves[0].timer);
     StartTimer();
   }
   
@@ -456,7 +456,7 @@ public:
   void Finish() {
     if (g->mode == Frightened && g->tag != "dead"){
       g->anim->setSprite("encouraged");
-      ResetTimer(2000/5);
+      ResetTimer(2000);
       g->mode = Encouraged;
     }
     else if (g->mode == Encouraged){
@@ -473,7 +473,7 @@ public:
       } else if (waves[nwave].mode == Exit){
         g->targetTile = Vector2(13,11);
       }
-      ResetTimer(waves[nwave].timer/5);
+      ResetTimer(waves[nwave].timer);
     }
   }
 

@@ -128,7 +128,6 @@ private:
 public:
   
   Socket(const char* ip, in_port_t port){
-    _fd = create_TCP_socket(PF_INET);
     fill_sockaddr_in(&_addr, inet_addr(ip), port);
     printf(">> %s\n", inet_ntoa(_addr.sin_addr));
     _inet = string(ip) + ":" + to_string(port);

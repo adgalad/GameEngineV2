@@ -24,8 +24,8 @@ void loadChess(){
 void Piece::Update(){
   if (hidden) return;
   if (_grabed){
-    setPosition(Input::GetMouseClickPosition() - _size/2);
-    if (Input:: MouseButtonReleased(MOUSE_LEFT_BUTTON)){
+    setPosition(Input->GetMouseClickPosition() - _size/2);
+    if (Input->MouseButtonReleased(MOUSE_LEFT_BUTTON)){
       _grabed    = false;
       _busyMouse = false;
       

@@ -61,6 +61,19 @@ Window::Window(string name, Uint32 w, Uint32 h, Uint32 flags){
 	Debug::Log("Window was initialized succesfully.");
 }
 
+Window::Window(const void *data){
+  if (SDL_Init(0) < 0){
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,
+                             "Error",
+                             ("ERROR initializing SDL.\n "+string(SDL_GetError())).c_str(),
+                             NULL);
+    error("ERROR initializing SDL.\n "+string(SDL_GetError()));
+    exit(EXIT_FAILURE);
+  }
+  sdl_window = SDL_CreateWindowFrom(data);
+  Debug::Log("Window was initialized succesfully.");
+}
+
 Window::~Window(){
 	SDL_DestroyWindow(sdl_window);
 	sdl_window = NULL;

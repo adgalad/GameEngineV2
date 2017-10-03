@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:../Downloads/SDL2-2.0.5/Xcode/SDL/SDL.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:GameEngineV3/GameEngineV3.xcodeproj">
+   </FileRef>
+</Workspace>

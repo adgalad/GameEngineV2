@@ -12,15 +12,9 @@
 
 using namespace engine;
 
-GameOptions initialOptions() {
-  GameOptions options;
-  options.showColliders = false;
-  
-  return options;
-}
 
 
-GameOptions Options = initialOptions();
+GameState Options;
 
 const float PI = 3.1416;
 
@@ -75,6 +69,7 @@ void engine::GameEngineInit(){
 	Debug::Log("SDL2 Mixer loaded succesfully.");
   
   srand((unsigned int)time(NULL));
+  
 }
 
 void engine::GameEngineQuit(){

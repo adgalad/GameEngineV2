@@ -20,6 +20,8 @@ public:
   
 	Window(string name, Uint32 w, Uint32 h, Uint32 flags = SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
 	
+  Window(const void *data);
+  
 	~Window();
 
 #ifdef ENGINE_OPENGL

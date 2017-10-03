@@ -340,30 +340,30 @@ public:
   void Update(){
   
 
-    if (Input::KeyDown(KEY_Q)){
+    if (Input->KeyDown(KEY_Q)){
       degree = (degree + 1) % 360;
       f.angle(degree);
     }
-    if (Input::KeyDown(KEY_W)){
+    if (Input->KeyDown(KEY_W)){
       degree = (degree - 1) % 360;
       f.angle(degree);
     }
     
-    if (Input::KeyDown(KEY_S)){
+    if (Input->KeyDown(KEY_S)){
       f.distance++;
     }
-    if (Input::KeyDown(KEY_A)){
+    if (Input->KeyDown(KEY_A)){
       f.distance--;
     }
     
-    if (Input::KeyPressed(KEY_Z)){
+    if (Input->KeyPressed(KEY_Z)){
       p->setScale(p->transform.scale + Vector2(1,1));
     }
-    if (Input::KeyPressed(KEY_X)){
+    if (Input->KeyPressed(KEY_X)){
       p->setScale(p->transform.scale - Vector2(1,1));
     }
     
-    f.origin += Input::GetAxis();
+    f.origin += Input->GetAxis();
     
     p->filler = f;
     p->refreshPolygon();

@@ -21,7 +21,7 @@
 
 
 int main(int argc, const char * argv[]) {
-
+  
 	GameEngineInit();
 	Window   *main_window = new Window("Game Engine V3", 800,600);
 	Renderer2D *renderer    = new Renderer2D(main_window);
@@ -30,12 +30,12 @@ int main(int argc, const char * argv[]) {
   Options.showColliders = true;
   
 //  loadTest(&Application);
-  loadPokemon(&Application);
+//  loadPokemon(&Application);
 //  LoadSP(&Application);
 //  loadGol();
 //  loadGridTest(&game);
 //  loadChess(&game);
-//  loadPacman();
+  loadPacman();
 //  loadDraw();
 //  Application.currentScene = shared_ptr<Scene>(new NNCircle);
   

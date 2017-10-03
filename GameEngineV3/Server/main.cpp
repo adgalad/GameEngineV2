@@ -18,6 +18,7 @@
 #include "Pacman.hpp"
 //#include "NNCircleTest.hpp"
 #include "DrawPrimitives.hpp"
+#include "NetworkInput.hpp"
 
 
 int main(int argc, const char * argv[]) {
@@ -32,15 +33,22 @@ int main(int argc, const char * argv[]) {
   loadPokemon(&Application);
   
   Application.setMaxFramesPerSecond(60);
-//  Server s;
+  Server s;
 
-//  thread t (&Server::Start, &s);
+  thread t (&Server::Start, &s);
+  Input = new NetworkInput();
   Application.Run();
 
   
-//  s.Stop();
-//  t.join();
+  s.Stop();
+  t.join();
+
+  if (true) ;
+  else if (true) ;
+  else if (true) ;
+  else printf("hola");
   
+
   GameEngineQuit();
   
   //  delete game;

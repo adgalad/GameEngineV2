@@ -10,6 +10,9 @@
 #define Game_hpp
 
 
+
+
+
 #ifdef __cplusplus
 
 
@@ -111,11 +114,19 @@ public:
   
 }
 
-
-
 extern Game Application;
-
 
 #endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+void* Cocoa_Game_Window();
+void Cocoa_Game_Run();
+#ifdef __cplusplus
+}
+#endif
+
+
 #endif /* Game_hpp */
+

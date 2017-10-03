@@ -96,6 +96,7 @@ void fill_sockaddr_in ( struct sockaddr_in *adr
 
 int Socket::bind_internet_addr ()
 {
+  _fd = create_TCP_socket(PF_INET);
   int output = bind(_fd, (struct sockaddr *)&_addr, sizeof _addr);
   if (output == -1) {
     fprintf(stderr,"Could not bind address to socket no. %d\nerrno: %s\n", _fd, strerror(errno));
@@ -147,8 +148,10 @@ int Socket::Recive(uint32_t fd, void* buffer, size_t size){
   
 }
 
-int Socket::Connect(){
+int Socket::Connect() {
+  _fd = create_TCP_socket(PF_INET);
   return connect(_fd, (const struct sockaddr*)&_addr, sizeof(struct sockaddr));
+  
 }
 
 

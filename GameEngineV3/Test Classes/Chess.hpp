@@ -125,8 +125,8 @@ public:
   Board();
   
   void Update() {
-    if (not Piece::_busyMouse and Input::MouseButtonPressed(MOUSE_LEFT_BUTTON)){
-      Vector2 click = Input::GetMouseClickPosition();
+    if (not Piece::_busyMouse and Input->MouseButtonPressed(MOUSE_LEFT_BUTTON)){
+      Vector2 click = Input->GetMouseClickPosition();
       int nx = (click.x - 43)/68;
       int ny = (click.y - 43)/68;
       Debug::Log(to_string(nx) + "  " + to_string(ny));

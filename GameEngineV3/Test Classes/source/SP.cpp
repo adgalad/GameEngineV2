@@ -116,13 +116,13 @@ void SP::Update() {
     --steps;
   } else {
   
-    if (Input::KeyDown(KEY_LEFT_ARROW)){
+    if (Input->KeyDown(KEY_LEFT_ARROW)){
       direction = false;
       steps = 20/n;
       moveVector = Vector2(-5*n,0);
     }
     
-    if (Input::KeyDown(KEY_RIGHT_ARROW)){
+    if (Input->KeyDown(KEY_RIGHT_ARROW)){
       direction = true;
       steps = 20/n;
       moveVector = Vector2(5*n,0);
@@ -170,26 +170,26 @@ void SP1::Start(){
 void SP1::Update() {
   moving = false;
   
-  if (Input::KeyDown(KEY_LEFT_ARROW)){
+  if (Input->KeyDown(KEY_LEFT_ARROW)){
     pc->addForce(Vector2(-speed,0));
     direction = false;
     moving = true;
   }
   
   
-  if (Input::KeyDown(KEY_RIGHT_ARROW)){
+  if (Input->KeyDown(KEY_RIGHT_ARROW)){
     pc->addForce(Vector2(speed,0));
     direction = true;
     moving = true;
   }
-  //		if (Input::KeyDown(KEY_DOWN_ARROW)){
+  //		if (Input->KeyDown(KEY_DOWN_ARROW)){
   //			move(Vector2(0,n));
   //			moving = true;
   //		}
-  if (Input::KeyDown(KEY_UP_ARROW)){
+  if (Input->KeyDown(KEY_UP_ARROW)){
     if (onGround) pc->addForce(Vector2(0,-speed*2));
   }
-  if (Input::KeyPressed(KEY_M)){
+  if (Input->KeyPressed(KEY_M)){
     if (not timer->isActive()) timer->active();
     Bullet *b = new Bullet(direction);
     b->name = "bullet";

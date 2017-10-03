@@ -31,7 +31,7 @@ Server::Server(uint32_t maxClients, const char* inet, uint32_t port):Socket(inet
   int yes = 1;
 #ifdef __APPLE__
   if ( setsockopt(fd(), SOL_SOCKET, SO_REUSEPORT, &yes, sizeof(int)) == -1 )
-#elif __linux__                          //  ^^--vv
+#elif __linux__                    //  ^----v
     if ( setsockopt(fd(), SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(int)) == -1 )
 #endif
     {
@@ -48,8 +48,7 @@ void Server::Start() {
     perror ("No Listen: ");
     exit(1);
   }
-  
-  
+
   while (_run) {
     catchClient();
   }
@@ -148,15 +147,16 @@ void Server::serveClient (ClientHandler *client){
   Send(client->fd,&client->fd, sizeof(int));
   printf("Se envio un entero al cliente: %d\n", client->fd);
   
+  string str = serialize(*Application.currentScene);
+  size_t size = str.size() * sizeof(char);
+  Send(client->fd, (char*)&str[0], size);
+  printf("Se envio la Escena.\n");
+  
   do {
-    ostringstream oss = serialize(*Application.currentScene);
-    size_t size = oss.str().size() * sizeof(char);
-    Send(client->fd, (char*)&oss.str()[0], size);
-    printf("Se envio la Escena.\n");
-    
     if (Recive(client->fd, &_signal, sizeof (Signal)) < 0) return;
     cout << "Se recibio la senal: " << _signal.type << endl;
     
+    vector<KeyEventP> events = Input->getUserEvents();
     
   } while (_signal.type != EXIT);
 }

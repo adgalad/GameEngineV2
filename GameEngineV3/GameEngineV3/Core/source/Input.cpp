@@ -1,5 +1,5 @@
 //
-//  Input::cpp
+//  Input.cpp
 //  GameEngineV3
 //
 //  Created by Carlos Spaggiari Roa on 3/21/16.
@@ -10,4 +10,6 @@
 
 using namespace engine;
 
-Input Input::_input;
+InputT *Input = NULL;
+
+

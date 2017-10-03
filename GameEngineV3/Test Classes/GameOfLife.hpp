@@ -42,7 +42,7 @@ public:
 	}
 	
 	inline void Update(){
-		if (Input::KeyPressed(KEY_P)) pause = not pause;
+		if (Input->KeyPressed(KEY_P)) pause = not pause;
 		
 		if (not pause)
 			nextGeneration();

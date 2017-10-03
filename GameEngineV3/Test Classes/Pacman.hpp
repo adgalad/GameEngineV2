@@ -93,16 +93,16 @@ public:
         scaledPos = Vector2(0,14);
       }
       direction prevDir = dir;
-      if (Input::KeyDown(KEY_UP_ARROW)){
+      if (Input->KeyDown(KEY_UP_ARROW)){
         sprName = "pmup";
         dir = Up;
-      } else if (Input::KeyDown(KEY_DOWN_ARROW)){
+      } else if (Input->KeyDown(KEY_DOWN_ARROW)){
         sprName = "pmdown";
         dir = Down;
-      } else if (Input::KeyDown(KEY_RIGHT_ARROW)){
+      } else if (Input->KeyDown(KEY_RIGHT_ARROW)){
         sprName = "pmright";
         dir = Right;
-      } else if (Input::KeyDown(KEY_LEFT_ARROW)){
+      } else if (Input->KeyDown(KEY_LEFT_ARROW)){
         sprName = "pmleft";
         dir = Left;
       }
@@ -340,11 +340,11 @@ public:
   void Start() {
     Scene::Start();
     
-//    p = new Population(100, 13, 4);
-//    p->fitness = pacmanFitness;
+    p = new Population(100, 13, 4);
+    p->fitness = pacmanFitness;
 //    savePopulation("/Users/carlosspaggiari/pacman.ge", p);
     
-    p = loadPopulation("/Users/carlosspaggiari/pacman.ge");
+//    p = loadPopulation("/Users/carlosspaggiari/pacman.ge");
     p->setupParameters( 0.3    // Min distance for compatibility
                        , 1     // c1
                        , 1     // c2
@@ -569,9 +569,9 @@ public:
       p->_calculateFitness();
       p->crossOver();
       p->generation++;
-      savePopulation("/Users/carlosspaggiari/pacman.ge", p);
-      printf("Weight: %d,  Connection: %d,  Neuron: %d\n",wm,cm,nm);
-      printf("Generation: %d, Pop: %d, Species: %d  Fitness: %f\n----------------------\n",p->generation, p->population, (int)p->species.size(), gBestFitness);
+//      savePopulation("/Users/carlosspaggiari/pacman.ge", p);
+//      printf("Weight: %d,  Connection: %d,  Neuron: %d\n",wm,cm,nm);
+//      printf("Generation: %d, Pop: %d, Species: %d  Fitness: %f\n----------------------\n",p->generation, p->population, (int)p->species.size(), gBestFitness);
     }
     
     pacman->nn = p->species[nni][nnj];
@@ -584,7 +584,7 @@ public:
   
   void Update(){
     Scene::Update();
-    if (Input::KeyPressed(KEY_SPACE)){
+    if (Input->KeyPressed(KEY_SPACE)){
       Reset();
     }
 //    system("clear");

@@ -14,13 +14,9 @@ namespace engine {
 class Sound {
 public:
 	
-	Sound(){
-		
-	}
+	Sound(){}
 	
-	~Sound(){
-		Mix_FreeChunk(_chunk);
-	}
+	~Sound(){ Mix_FreeChunk(_chunk); }
 	
 	inline bool loadSound(string file){
 		_chunk = Mix_LoadWAV(file.c_str());
@@ -32,7 +28,7 @@ public:
 	}
 	
 	inline void play(int loop){
-//		Mix_PlayChannel(_channel, _chunk, loop);
+		Mix_PlayChannel(_channel, _chunk, loop);
 	}
 	
 	inline void pause(){
@@ -94,15 +90,12 @@ public:
 private:
 	
 	static Mix_Music *_current_music; /**< Only one Music can be reproduced at time.
-									       If another music is loaded, the
-									       previous one is freed. */
-	
-	static int        _numChannel;    /**< Number of channels currently allocated. */
-	
-	Mix_Chunk        *_chunk = NULL;  /**< Raw info of the sound file. */
-	
-	int               _channel = -1;  /**< Channel where the sound will be played,
-									       -1 means the first channel availible. */
+                                         If another music is loaded, the
+                                         previous one is freed. */
+	static int _numChannel;    /**< Number of channels currently allocated. */
+	Mix_Chunk* _chunk = NULL;  /**< Raw info of the sound file. */
+	int        _channel = -1;  /**< Channel where the sound will be played,
+                                        -1 means the first channel availible. */
 
 	
 };

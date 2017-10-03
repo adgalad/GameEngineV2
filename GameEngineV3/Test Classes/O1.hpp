@@ -14,6 +14,7 @@
 #include "Animator.hpp"
 #include "Collision.hpp"
 #include "PhysicController.hpp"
+#include "NetworkPlayer.hpp"
 #include "Game.hpp"
 
 using namespace engine ;
@@ -39,7 +40,7 @@ class O2 : public Object{
 };
 
 
-class O1 : public Object {
+class O1 : public NetworkPlayer {
 public:
 	
   SERIALIZE
@@ -79,7 +80,7 @@ public:
 		double n = 10.0;
 		xs = 0;
 		ys = 0;
-		if (Input::KeyDown(KEY_LEFT_ARROW)){
+		if (Input->KeyDown(KEY_LEFT_ARROW)){
 //			pc->addForce(Vector2(-5,0));
 			move(Vector2(-n,0));
 			xs = -n;
@@ -87,7 +88,7 @@ public:
 			moving = true;
 
 		}
-		if (Input::KeyDown(KEY_RIGHT_ARROW)){
+		if (Input->KeyDown(KEY_RIGHT_ARROW)){
 //			pc->addForce(Vector2(5,0));
 			move(Vector2(n,0));
 			xs = n;
@@ -95,34 +96,34 @@ public:
 			moving = true;
 			
 		}
-//		if (Input::KeyDown(KEY_UP_ARROW)){
+//		if (Input->KeyDown(KEY_UP_ARROW)){
 //			pc->addForce(Vector2(0,-5));
 //		}
 //		
-		if (Input::KeyDown(KEY_DOWN_ARROW)){
+		if (Input->KeyDown(KEY_DOWN_ARROW)){
 			pc->addForce(Vector2(0,5));
 		}
-		if (Input::KeyDown(KEY_UP_ARROW)){
+		if (Input->KeyDown(KEY_UP_ARROW)){
 			pc->addForce(Vector2(0,-9));
 
 //			move(Vector2(0,-n));
 			ys = n;
 			moving = true;
 		}
-//		if (Input::KeyDown(KEY_DOWN_ARROW)){
+//		if (Input->KeyDown(KEY_DOWN_ARROW)){
 //			move(Vector2(0,n));
 //			ys = n;
 //			moving = true;
 //		}
 		
-		if (Input::KeyDown(KEY_NUMPAD_PLUS)){
+		if (Input->KeyDown(KEY_NUMPAD_PLUS)){
 			setScale(transform.scale + Vector2(0.1,0.1));
 		}
-		else if (Input::KeyDown(KEY_NUMPAD_MINUS)){
+		else if (Input->KeyDown(KEY_NUMPAD_MINUS)){
 			setScale(transform.scale - Vector2(0.1,0.1));
 		}
 		
-		if (Input::KeyDown(KEY_COMMA)){
+		if (Input->KeyDown(KEY_COMMA)){
 			pc->addForce(Vector2(5,-5));
 		}
 		if (moving) {
@@ -196,35 +197,35 @@ public:
 		double n = 10.0;
 		xs = 0;
 		ys = 0;
-		if (Input::KeyDown(KEY_A)){
+		if (Input->KeyDown(KEY_A)){
 			move(Vector2(-n,0));
 			xs = -n;
 			direction = false;
 			moving = true;
 			
 		}
-		if (Input::KeyDown(KEY_D)){
+		if (Input->KeyDown(KEY_D)){
 			move(Vector2(n,0));
 			xs = n;
 			direction = true;
 			moving = true;
 			
 		}
-		if (Input::KeyDown(KEY_W)){
+		if (Input->KeyDown(KEY_W)){
 			move(Vector2(0,-n));
 			ys = n;
 			moving = true;
 		}
-		if (Input::KeyDown(KEY_S)){
+		if (Input->KeyDown(KEY_S)){
 			move(Vector2(0,n));
 			ys = n;
 			moving = true;
 		}
 		
-		if (Input::KeyDown(KEY_NUMPAD_PLUS)){
+		if (Input->KeyDown(KEY_NUMPAD_PLUS)){
 			setScale(transform.scale + Vector2(0.1,0.1));
 		}
-		else if (Input::KeyDown(KEY_NUMPAD_MINUS)){
+		else if (Input->KeyDown(KEY_NUMPAD_MINUS)){
 			setScale(transform.scale - Vector2(0.1,0.1));
 		}
     if (moving) {

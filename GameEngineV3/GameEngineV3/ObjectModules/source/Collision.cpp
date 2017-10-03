@@ -37,10 +37,10 @@ RectangleCollider::RectangleCollider(Rect r){
 }
 
 RectangleCollider::~RectangleCollider(){
-	for (int i = 0 ; i < colliders.size() ; ++i) {
-		if (colliders[i]->id == this->id){
-			colliders.erase(colliders.begin()+i);
-			
+  auto col = colliders.begin();
+  foreach(col, colliders){
+		if ((*col)->id == this->id){
+			colliders.erase(col);			
 		}
 	}
 }

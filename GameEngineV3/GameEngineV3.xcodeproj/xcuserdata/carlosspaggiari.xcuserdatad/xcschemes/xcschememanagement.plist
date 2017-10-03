@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
+		<key>Editor.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
 		<key>GameEngine.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -53,6 +58,11 @@
 			<true/>
 		</dict>
 		<key>072EB08A1C9CF72400E87910</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>072FB32A1F5FC2BE00B00A75</key>
 		<dict>
 			<key>primary</key>
 			<true/>

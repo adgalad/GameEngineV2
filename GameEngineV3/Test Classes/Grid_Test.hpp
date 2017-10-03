@@ -31,16 +31,16 @@ public:
   
   void Update(){
     int n = 1;
-    if (Input::KeyDown(KEY_W)){
+    if (Input->KeyDown(KEY_W)){
         move(Vector2(0,-n));
         anim->setSprite("Jugador_up");
-    } else if (Input::KeyDown(KEY_S)){
+    } else if (Input->KeyDown(KEY_S)){
         move(Vector2(0,n));
         anim->setSprite("Jugador_down");
-    } else if (Input::KeyDown(KEY_A)){
+    } else if (Input->KeyDown(KEY_A)){
         move(Vector2(-n,0));
         anim->setSprite("Jugador_left");
-    } else if (Input::KeyDown(KEY_D)){
+    } else if (Input->KeyDown(KEY_D)){
         move(Vector2(n,0));
         anim->setSprite("Jugador_right");
     }

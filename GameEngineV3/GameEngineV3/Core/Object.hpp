@@ -20,7 +20,13 @@
 
 namespace engine {
 
-
+  typedef enum ObjectType {
+    OBJECT         = 0,
+    PLAYER         = 1,
+    NETWORK_PLAYER = 2
+  };
+  
+  
 template<class Scene, class ObjectModule>
 class ObjectT {
   
@@ -167,7 +173,7 @@ public:
 		Private Update function. It's called before every Update().
 	  Can't be overrided.
 	 **/
-	void InternalUpdate();
+	virtual void InternalUpdate();
 	
 	/**
 		Can be used to setup the user's defined attributes. It's called 
@@ -224,7 +230,17 @@ public:
   }
   
   inline void isTarget(bool b) { _isTarget = b; }
-	
+  
+  inline ObjectType getType(){
+    return _objectType;
+  }
+  
+protected:
+  
+  inline void setType(ObjectType type){
+    _objectType = type;
+  }  
+  
 private:
 	static int _id;
 	int id;
@@ -237,6 +253,7 @@ private:
 	bool        __deleted = false;
 	bool        _hidden   = false;   /**< If true, the scene will ignore the Object. */
   bool        _isTarget = false;
+  ObjectType  _objectType = OBJECT;
   
 	vector<ObjectModule *>	modules; /**< Modules associate to the Object. */
   vector<LuaScript*> scripts;

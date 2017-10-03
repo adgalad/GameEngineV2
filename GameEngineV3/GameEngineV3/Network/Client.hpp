@@ -38,10 +38,10 @@ public:
   void Connect() {
     errno = 0;
     cout << "Client: Connecting to " << inet_str() << endl;
+
     long n;
     int i = 0;
     do {
-      new_socket(PF_INET);
       n = Socket::Connect();
       ++i;
       if (i % 10 == 9){
@@ -79,30 +79,32 @@ public:
     Scene *scene = new Scene();
     deserialize(s, *scene);
     Application.currentScene = shared_ptr<Scene> (scene);
-    thread t (&Client::Update, this);
+    thread t (&Client::_Update, this);
 //
     Application.Run();
   }
   
+  virtual void Update() {
+    string s = Recive(fd());
+    Scene *scene = new Scene();
+    deserialize(s, *scene);
+    update_mutex.lock();
+    while (Application.currentScene.use_count() > 0){
+      Application.currentScene.reset();
+    }
+    Application.currentScene = shared_ptr<Scene> (scene);
+    Application.currentScene->Init();
+    update_mutex.unlock();
+  }
   
-  void Update(){
+  
+private:
+  
+  void _Update(){
     while (true){
       _signal.type = UPDATE;
       Send(fd(), &_signal, sizeof(Signal));
-      
-      
-      string s = Recive(fd());
-      Scene *scene = new Scene();
-      deserialize(s, *scene);
-      update_mutex.lock();
-      while (Application.currentScene.use_count() > 0){
-        Application.currentScene.reset();
-      }
-      Application.currentScene = shared_ptr<Scene> (scene);
-      Application.currentScene->Init();
-      update_mutex.unlock();
-
-
+      Update();
     }
   }
   
